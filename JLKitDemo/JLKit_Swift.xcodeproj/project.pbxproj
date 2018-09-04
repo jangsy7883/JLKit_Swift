@@ -31,9 +31,7 @@
 		3D5B277320B5270D003FA63A /* UIDevice+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B271920B5270D003FA63A /* UIDevice+JLKit.m */; };
 		3D5B277620B5270D003FA63A /* UIScreen+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B271E20B5270D003FA63A /* UIScreen+JLKit.m */; };
 		3D5B277920B5270D003FA63A /* UISearchBar+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B272220B5270D003FA63A /* UISearchBar+JLKit.m */; };
-		3D5B277A20B5270D003FA63A /* UIView+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B272320B5270D003FA63A /* UIView+JLKit.m */; };
 		3D5B278020B5270D003FA63A /* UIImage+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B272C20B5270D003FA63A /* UIImage+JLKit.m */; };
-		3D5B278220B5270D003FA63A /* UIViewController+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B273020B5270D003FA63A /* UIViewController+JLKit.m */; };
 		3D5B278420B5270D003FA63A /* NSArray+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B273920B5270D003FA63A /* NSArray+JLKit.m */; };
 		3D5B278920B5270D003FA63A /* NSDate+JLAge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B274220B5270D003FA63A /* NSDate+JLAge.m */; };
 		3D5B278C20B5270D003FA63A /* NSThread+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B274920B5270D003FA63A /* NSThread+JLKit.m */; };
@@ -64,6 +62,7 @@
 		EFE4499C213E19190022B495 /* Locale+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4499B213E19190022B495 /* Locale+JLExtension.swift */; };
 		EFE449A1213E4C770022B495 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */; };
 		EFE449A2213E4C770022B495 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE449A0213E4C770022B495 /* Main.storyboard */; };
+		EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,18 +98,14 @@
 		3D5B271720B5270D003FA63A /* UIColor+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JLKit.m"; sourceTree = "<group>"; };
 		3D5B271820B5270D003FA63A /* CALayer+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+JLKit.m"; sourceTree = "<group>"; };
 		3D5B271920B5270D003FA63A /* UIDevice+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JLKit.m"; sourceTree = "<group>"; };
-		3D5B271C20B5270D003FA63A /* UIViewController+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JLKit.h"; sourceTree = "<group>"; };
 		3D5B271E20B5270D003FA63A /* UIScreen+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+JLKit.m"; sourceTree = "<group>"; };
 		3D5B271F20B5270D003FA63A /* UIImage+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JLKit.h"; sourceTree = "<group>"; };
 		3D5B272220B5270D003FA63A /* UISearchBar+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+JLKit.m"; sourceTree = "<group>"; };
-		3D5B272320B5270D003FA63A /* UIView+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JLKit.m"; sourceTree = "<group>"; };
 		3D5B272620B5270D003FA63A /* CALayer+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+JLKit.h"; sourceTree = "<group>"; };
 		3D5B272720B5270D003FA63A /* UIColor+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JLKit.h"; sourceTree = "<group>"; };
 		3D5B272C20B5270D003FA63A /* UIImage+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JLKit.m"; sourceTree = "<group>"; };
 		3D5B272E20B5270D003FA63A /* UIScreen+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+JLKit.h"; sourceTree = "<group>"; };
-		3D5B273020B5270D003FA63A /* UIViewController+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JLKit.m"; sourceTree = "<group>"; };
 		3D5B273220B5270D003FA63A /* UIDevice+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JLKit.h"; sourceTree = "<group>"; };
-		3D5B273420B5270D003FA63A /* UIView+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JLKit.h"; sourceTree = "<group>"; };
 		3D5B273520B5270D003FA63A /* UISearchBar+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+JLKit.h"; sourceTree = "<group>"; };
 		3D5B273920B5270D003FA63A /* NSArray+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JLKit.m"; sourceTree = "<group>"; };
 		3D5B273A20B5270D003FA63A /* CGGeometryExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGGeometryExtension.h; sourceTree = "<group>"; };
@@ -156,6 +151,7 @@
 		EFE4499B213E19190022B495 /* Locale+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFE449A0213E4C770022B495 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+JLExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +207,7 @@
 				3D5B279C20B53044003FA63A /* UITableView+JLExtension.swift */,
 				3D5B279820B52E42003FA63A /* UITableViewCell+JLExtension.swift */,
 				3D5B26FF20B5270D003FA63A /* UIView+JLExtension.swift */,
+				EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -268,10 +265,6 @@
 				3D5B271E20B5270D003FA63A /* UIScreen+JLKit.m */,
 				3D5B273520B5270D003FA63A /* UISearchBar+JLKit.h */,
 				3D5B272220B5270D003FA63A /* UISearchBar+JLKit.m */,
-				3D5B273420B5270D003FA63A /* UIView+JLKit.h */,
-				3D5B272320B5270D003FA63A /* UIView+JLKit.m */,
-				3D5B271C20B5270D003FA63A /* UIViewController+JLKit.h */,
-				3D5B273020B5270D003FA63A /* UIViewController+JLKit.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -472,7 +465,6 @@
 				3D5B277320B5270D003FA63A /* UIDevice+JLKit.m in Sources */,
 				3D5B279520B5273A003FA63A /* SKProduct+JLextension.swift in Sources */,
 				3D5B276C20B5270D003FA63A /* Error+JLExtension.swift in Sources */,
-				3D5B278220B5270D003FA63A /* UIViewController+JLKit.m in Sources */,
 				3D5B278920B5270D003FA63A /* NSDate+JLAge.m in Sources */,
 				3D5B279720B52A36003FA63A /* NSAttributedString+JLExtension.swift in Sources */,
 				3D5B27A320B5359F003FA63A /* UIButton+JLExtension.swift in Sources */,
@@ -490,6 +482,7 @@
 				3D5B277120B5270D003FA63A /* UIColor+JLKit.m in Sources */,
 				3D5B276320B5270D003FA63A /* UIStoryboard+JLExtension.swift in Sources */,
 				3D5B278420B5270D003FA63A /* NSArray+JLKit.m in Sources */,
+				EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */,
 				3D5B27A720B53DC1003FA63A /* UIApplication+JLExtension.swift in Sources */,
 				3D5B279F20B53053003FA63A /* UICollectionView+JLExtension.swift in Sources */,
 				3D5B277220B5270D003FA63A /* CALayer+JLKit.m in Sources */,
@@ -501,7 +494,6 @@
 				EFE4499C213E19190022B495 /* Locale+JLExtension.swift in Sources */,
 				3D5B276620B5270D003FA63A /* NSNumber+JLExtension.swift in Sources */,
 				3D5B276F20B5270D003FA63A /* String+JLExtension.swift in Sources */,
-				3D5B277A20B5270D003FA63A /* UIView+JLKit.m in Sources */,
 				EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */,
 				3D5B276020B5270D003FA63A /* UIBarButtonItem+JLExtension.swift in Sources */,
 				3D5B275D20B5270D003FA63A /* JLReusable.swift in Sources */,

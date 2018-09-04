@@ -64,7 +64,7 @@ extension String {
         return false
     }
 }
-
+/*
 enum CryptoAlgorithm {
     case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
     
@@ -108,3 +108,4 @@ extension String {
         return (0..<digestLength).reduce("") { $0 + String(format: "%02hhx", result[$1])}
     }
 }
+*/

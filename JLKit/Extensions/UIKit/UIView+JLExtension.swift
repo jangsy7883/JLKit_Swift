@@ -13,6 +13,28 @@ extension UIView {
         }
     }
 
+    var superViewController : UIViewController? {
+        var view :UIView?  = self
+        while view != nil {
+            if let viewController = view?.next as? UIViewController {
+                return viewController
+            }else {
+                view = view?.superview
+            }
+        }
+        return nil
+    }
+    
+    
+    func screenShot(afterScreenUpdates:Bool = true) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, UIScreen.main.scale)
+        drawHierarchy(in: self.bounds, afterScreenUpdates: afterScreenUpdates)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    
     func rotate(angle: CGFloat) {
         transform = CGAffineTransform.identity
 

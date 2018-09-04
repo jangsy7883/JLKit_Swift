@@ -10,7 +10,7 @@ import UIKit
 
 extension UIAlertController {
 
-    @nonobjc @discardableResult convenience init(aTitle: String? = nil, message: String? = nil, preferredStyle: UIAlertControllerStyle = .alert, actions: [UIAlertAction]? = nil) {
+    @discardableResult convenience init(aTitle: String? = nil, message: String? = nil, preferredStyle: UIAlertControllerStyle = .alert, actions: [UIAlertAction]? = nil) {
         if preferredStyle == .alert || aTitle == nil {
             self.init(title: "", message: message, preferredStyle: preferredStyle)
         } else {
@@ -22,21 +22,19 @@ extension UIAlertController {
         }
     }
 
-    @nonobjc @discardableResult func addAction(_ title: String?, style: UIAlertActionStyle = .default, handler: ((UIAlertAction) -> Swift.Void)? = nil) -> Self {
-        
-        
+    @discardableResult func addAction(_ title: String?, style: UIAlertActionStyle = .default, handler: ((UIAlertAction) -> Swift.Void)? = nil) -> Self {
         addAction(UIAlertAction(title: title, style: style, handler: handler))
         return self
     }
 
-    func setSourceView(_ view: UIView, permittedArrowDirections directions: UIPopoverArrowDirection = .any) {
+    func setSourceView(_ view: UIView, permittedArrowDirections directions: UIPopoverArrowDirection = .any) -> Self {
         popoverPresentationController?.sourceView = view
         popoverPresentationController?.sourceRect = view.bounds
-        popoverPresentationController?.permittedArrowDirections = directions
+        popoverPresentationController?.permittedArrowDirections = directions        
+        return self
     }
 
-    @nonobjc func showAlert(animated: Bool = true, completion: (() -> Swift.Void)? = nil) {
-        guard let viewController = UIViewController.visible() else { return }
-        viewController.present(self, animated: animated, completion: completion)
+    func show(animated: Bool = true, completion: (() -> Swift.Void)? = nil) {
+        UIViewController.topMostViewController()?.present(self, animated: animated, completion: completion)
     }
 }

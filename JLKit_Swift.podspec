@@ -89,12 +89,12 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |core|
     core.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Protocols/'
+    core.dependency = 'JLKit_Swift/Ojbcs'
     end
-
-  s.subspec 'Objc' do |sp|
-    sp.dependency 'JLKit/Core'
-    sp.source_files = 'JLKit/Objcs/Foundation/','JLKit/Objcs/UIKit/'
-    end
+    
+  s.subspec 'Ojbcs' do |core|
+    core.source_files = 'JLKit/Objcs', 'JLKit/Objcs/Foundation/','JLKit/Objcs/UIKit/'    
+  end    
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  A list of resources included with the Pod. These are copied into the

@@ -10,8 +10,7 @@ import UIKit
 
 extension UITableViewCell {
     var superTableView:UITableView? {
-        var view = superview
-        
+        var view = superview        
         while view != nil {
             if let tableView = view as? UITableView {
                 return tableView
