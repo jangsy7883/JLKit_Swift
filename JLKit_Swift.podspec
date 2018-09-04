@@ -89,10 +89,10 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |core|
     core.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Protocols/'
-    core.dependency = 'JLKit_Swift/Ojbcs'
+    core.dependency 'JLKit_Swift/Objcs'
     end
     
-  s.subspec 'Ojbcs' do |core|
+  s.subspec 'Objcs' do |core|
     core.source_files = 'JLKit/Objcs', 'JLKit/Objcs/Foundation/','JLKit/Objcs/UIKit/'    
   end    
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
