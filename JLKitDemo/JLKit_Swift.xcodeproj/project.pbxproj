@@ -52,9 +52,7 @@
 		EF2C6826207AE7AA000C07BA /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2C6815207AE7A9000C07BA /* Loggable.swift */; };
 		EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A1207AE60400857D26 /* AppDelegate.swift */; };
 		EF3BB0A4207AE60400857D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A3207AE60400857D26 /* ViewController.swift */; };
-		EF3BB0A7207AE60400857D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF3BB0A5207AE60400857D26 /* Main.storyboard */; };
 		EF3BB0A9207AE60500857D26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF3BB0A8207AE60500857D26 /* Assets.xcassets */; };
-		EF3BB0AC207AE60500857D26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF3BB0AA207AE60500857D26 /* LaunchScreen.storyboard */; };
 		EF3BB0B7207AE60600857D26 /* JLKit_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0B6207AE60600857D26 /* JLKit_SwiftUITests.swift */; };
 		EFE4498E213E0E720022B495 /* FileManager+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4498D213E0E720022B495 /* FileManager+JLExtension.swift */; };
 		EFE44990213E0F230022B495 /* Range+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4498F213E0F220022B495 /* Range+JLExtension.swift */; };
@@ -64,6 +62,8 @@
 		EFE44998213E16C90022B495 /* Int+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE44997213E16C90022B495 /* Int+JLExtension.swift */; };
 		EFE4499A213E189B0022B495 /* Collection+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE44999213E189B0022B495 /* Collection+JLExtension.swift */; };
 		EFE4499C213E19190022B495 /* Locale+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4499B213E19190022B495 /* Locale+JLExtension.swift */; };
+		EFE449A1213E4C770022B495 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */; };
+		EFE449A2213E4C770022B495 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE449A0213E4C770022B495 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,9 +141,7 @@
 		EF3BB09E207AE60400857D26 /* JLKit_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLKit_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3BB0A1207AE60400857D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF3BB0A3207AE60400857D26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EF3BB0A6207AE60400857D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF3BB0A8207AE60500857D26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EF3BB0AB207AE60500857D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF3BB0AD207AE60500857D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF3BB0B2207AE60500857D26 /* JLKit_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLKit_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3BB0B6207AE60600857D26 /* JLKit_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLKit_SwiftUITests.swift; sourceTree = "<group>"; };
@@ -156,8 +154,8 @@
 		EFE44997213E16C90022B495 /* Int+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE44999213E189B0022B495 /* Collection+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE4499B213E19190022B495 /* Locale+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+JLExtension.swift"; sourceTree = "<group>"; };
-		EFE4499D213E1D0D0022B495 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
-		EFE4499E213E1D0D0022B495 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFE449A0213E4C770022B495 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,9 +333,9 @@
 				EF3BB0A1207AE60400857D26 /* AppDelegate.swift */,
 				EF3BB0A3207AE60400857D26 /* ViewController.swift */,
 				EF2C682A207AE9BB000C07BA /* JLKit_Swift-Bridging-Header.h */,
-				EF3BB0A5207AE60400857D26 /* Main.storyboard */,
 				EF3BB0A8207AE60500857D26 /* Assets.xcassets */,
-				EF3BB0AA207AE60500857D26 /* LaunchScreen.storyboard */,
+				EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */,
+				EFE449A0213E4C770022B495 /* Main.storyboard */,
 				EF3BB0AD207AE60500857D26 /* Info.plist */,
 			);
 			path = JLKit_Swift;
@@ -434,9 +432,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF3BB0AC207AE60500857D26 /* LaunchScreen.storyboard in Resources */,
+				EFE449A2213E4C770022B495 /* Main.storyboard in Resources */,
 				EF3BB0A9207AE60500857D26 /* Assets.xcassets in Resources */,
-				EF3BB0A7207AE60400857D26 /* Main.storyboard in Resources */,
+				EFE449A1213E4C770022B495 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,27 +525,6 @@
 			targetProxy = EF3BB0B3207AE60500857D26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		EF3BB0A5207AE60400857D26 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF3BB0A6207AE60400857D26 /* Base */,
-				EFE4499D213E1D0D0022B495 /* ko */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EF3BB0AA207AE60500857D26 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF3BB0AB207AE60500857D26 /* Base */,
-				EFE4499E213E1D0D0022B495 /* ko */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EF3BB0B9207AE60600857D26 /* Debug */ = {
