@@ -17,8 +17,8 @@ extension UIBarButtonItem {
             button.addTarget(target, action: action, for: .touchUpInside)
         }
 
-        if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
-            button.tintColor = appdelegate.window?.tintColor
+        if let window = UIApplication.shared.delegate?.window, let tineColor = window?.tintColor {            
+            button.tintColor = tineColor
         }
         self.init(customView: button)
     }
