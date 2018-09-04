@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "JLKit_Swift"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "JLKit"
 
   # This description is used to generate tags and improve search results.
@@ -88,11 +88,12 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
-   core.source_files = 'JLKit/Extensions/', 'JLKit/Protocols/'
+    core.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Protocols/'
     end
 
   s.subspec 'Objc' do |sp|
-    sp.source_files = 'JLKit/Objcs/'
+    sp.dependency 'JLKit/Core'
+    sp.source_files = 'JLKit/Objcs/Foundation/','JLKit/Objcs/UIKit/'
     end
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
