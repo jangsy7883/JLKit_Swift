@@ -712,7 +712,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q8H8354XB;
+				DEVELOPMENT_TEAM = SCHCN3R38K;
 				INFOPLIST_FILE = JLKit_SwiftUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -732,7 +732,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Q8H8354XB;
+				DEVELOPMENT_TEAM = SCHCN3R38K;
 				INFOPLIST_FILE = JLKit_SwiftUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
