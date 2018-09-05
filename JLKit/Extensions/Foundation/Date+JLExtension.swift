@@ -8,66 +8,56 @@
 
 import Foundation
 
-enum DateComparisonType {
-    // Days
-    case isToday
-    case isTomorrow
-    case isYesterday
-    case isSameDay(as:Date)
-    // Weeks
-    case isThisWeek
-    case isNextWeek
-    case isLastWeek
-    case isSameWeek(as:Date)
-    // Months
-    case isThisMonth
-    case isNextMonth
-    case isLastMonth
-    case isSameMonth(as:Date)
-    // Years
-    case isThisYear
-    case isNextYear
-    case isLastYear
-    case isSameYear(as:Date)
-    // Relative Time
-    case isInTheFuture
-    case isInThePast
-    case isEarlier(than:Date)
-    case isLater(than:Date)
-    case isWeekday
-    case isWeekend
-}
-
-enum DateComponentType {
+public enum DateComponentType {
     case second, minute, hour, day, weekday, nthWeekday, week, month, year
 }
 
 extension Date {
+    public static let minuteInSeconds: Double = 60
+    public static let hourInSeconds: Double = 3600
+    public static let dayInSeconds: Double = 86400
+    public static let weekInSeconds: Double = 604800
+    public static let yearInSeconds: Double = 31556926
     
-    // MARK: Intervals In Seconds
-    internal static let minuteInSeconds: Double = 60
-    internal static let hourInSeconds: Double = 3600
-    internal static let dayInSeconds: Double = 86400
-    internal static let weekInSeconds: Double = 604800
-    internal static let yearInSeconds: Double = 31556926
-    
-    internal static func componentFlags() -> Set<Calendar.Component> {
-        return [Calendar.Component.year,
-                Calendar.Component.month,
-                Calendar.Component.day,
-                Calendar.Component.weekOfYear,
-                Calendar.Component.hour,
-                Calendar.Component.minute,
-                Calendar.Component.second,
-                Calendar.Component.weekday,
-                Calendar.Component.weekdayOrdinal,
-                Calendar.Component.weekOfYear]
+    public enum DateComparisonType {
+        // Days
+        case isToday
+        case isTomorrow
+        case isYesterday
+        case isSameDay(as:Date)
+        // Weeks
+        case isThisWeek
+        case isNextWeek
+        case isLastWeek
+        case isSameWeek(as:Date)
+        // Months
+        case isThisMonth
+        case isNextMonth
+        case isLastMonth
+        case isSameMonth(as:Date)
+        // Years
+        case isThisYear
+        case isNextYear
+        case isLastYear
+        case isSameYear(as:Date)
+        // Relative Time
+        case isInTheFuture
+        case isInThePast
+        case isEarlier(than:Date)
+        case isLater(than:Date)
+        case isWeekday
+        case isWeekend
     }
-    internal static func components(_ fromDate: Date) -> DateComponents {
+    
+    public static func componentFlags() -> Set<Calendar.Component> {
+        return [.year, .month, .day, .weekOfYear, .hour, .minute, .second, .weekday, .weekdayOrdinal, .weekOfYear]
+    }
+    
+    public static func components(_ fromDate: Date) -> DateComponents {
         return Calendar.current.dateComponents(Date.componentFlags(), from: fromDate)
     }
     
-    internal func compare(_ comparison: DateComparisonType) -> Bool {
+    public func compare(_ comparison: DateComparisonType) -> Bool {
         switch comparison {
         case .isToday:
             return compare(.isSameDay(as: Date()))
@@ -131,7 +121,7 @@ extension Date {
         }
     }
     
-    internal func adjust(_ component: DateComponentType, offset: Int) -> Date {
+    public func adjust(_ component: DateComponentType, offset: Int) -> Date {
         var dateComp = DateComponents()
         switch component {
         case .second:
@@ -156,7 +146,7 @@ extension Date {
         return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
-    internal func component(_ component: DateComponentType) -> Int? {
+    public func component(_ component: DateComponentType) -> Int? {
         let components = Date.components(self)
         switch component {
         case .second:
@@ -180,7 +170,7 @@ extension Date {
         }
     }
     
-    internal func interval(_ component: DateComponentType, componentFlags: Set<Calendar.Component> = Date.componentFlags(), to: Date = Date()) -> Int? {
+    public func interval(_ component: DateComponentType, componentFlags: Set<Calendar.Component> = Date.componentFlags(), to: Date = Date()) -> Int? {
         let components = Calendar.current.dateComponents(componentFlags, from: self, to: to)
         switch component {
         case .second:
@@ -205,7 +195,6 @@ extension Date {
     }
     
     public init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.current) {
-        
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.timeZone = timeZone
