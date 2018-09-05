@@ -11,7 +11,7 @@ extension UIStoryboard {
         self.init(name: name, bundle: nil)
     }
 
-    class func viewController(_ identifier: String? = nil, storyboardName: String) -> UIViewController? {
+    public static func viewController(_ identifier: String? = nil, storyboardName: String) -> UIViewController? {
         let storyboard = UIStoryboard(name: storyboardName)
 
         if identifier == nil {

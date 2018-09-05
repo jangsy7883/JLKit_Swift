@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSMutableAttributedString {
-    func addAttributes(_ attrs:[NSAttributedStringKey:Any], text:String) {
+    public func addAttributes(_ attrs:[NSAttributedStringKey:Any], text:String) {
         if let range = string.range(of: text) {
             let startPos = string.distance(from: string.startIndex, to: range.lowerBound)
             
@@ -17,7 +17,7 @@ extension NSMutableAttributedString {
         }
     }
     
-    func appendString(_ text:String, attributes:[NSAttributedStringKey:Any]) {
+    public func appendString(_ text:String, attributes:[NSAttributedStringKey:Any]) {
         guard text.isEmpty == false, attributes.isEmpty == false else { return }
         append(NSAttributedString(string: text, attributes: attributes))
     }

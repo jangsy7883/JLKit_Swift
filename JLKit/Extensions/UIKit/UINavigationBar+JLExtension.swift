@@ -9,7 +9,7 @@
 import UIKit
 
 extension UINavigationBar {
-    var titleTintColor: UIColor? {
+    public var titleTintColor: UIColor? {
         set {
             var attributes: [NSAttributedStringKey: Any]?
 

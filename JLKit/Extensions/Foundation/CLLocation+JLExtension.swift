@@ -10,11 +10,11 @@ import Foundation
 import CoreLocation
 
 extension CLLocationCoordinate2D {
-    func equalTo(_ coordinate: CLLocationCoordinate2D) -> Bool {
+    public func equalTo(_ coordinate: CLLocationCoordinate2D) -> Bool {
         return (latitude == coordinate.latitude && longitude == coordinate.longitude)
     }
 
-    func distanceFrom(_ coordinate: CLLocationCoordinate2D) -> CLLocationDistance {
+    public func distanceFrom(_ coordinate: CLLocationCoordinate2D) -> CLLocationDistance {
         let toLocation = CLLocation(coordinate: self)
         let fromLocation = CLLocation(coordinate: coordinate)
 
@@ -23,7 +23,7 @@ extension CLLocationCoordinate2D {
 }
 
 extension CLLocation {
-    convenience init(coordinate:CLLocationCoordinate2D) {
+    public convenience init(coordinate:CLLocationCoordinate2D) {
         self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 }

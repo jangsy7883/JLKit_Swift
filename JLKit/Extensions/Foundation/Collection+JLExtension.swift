@@ -9,7 +9,7 @@
 import Foundation
 
 extension Collection {
-    func JSONString(_ options: JSONSerialization.WritingOptions = []) -> String? {
+    public func JSONString(_ options: JSONSerialization.WritingOptions = []) -> String? {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: self, options: options) else { return nil }
         guard let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) else { return nil }
         return JSONString

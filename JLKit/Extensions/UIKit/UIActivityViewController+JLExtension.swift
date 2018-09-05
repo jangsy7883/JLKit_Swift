@@ -10,11 +10,11 @@ import UIKit
 
 extension UIActivityViewController {
     
-    convenience init(activityItems:[Any]) {
+    public convenience init(activityItems:[Any]) {
         self.init(activityItems: activityItems, applicationActivities: nil)
     }
     
-    func show(animated:Bool = true) {
-        UIViewController.visible().present(self, animated: animated, completion: nil)
+    public func show(animated:Bool = true) {
+        UIViewController.topMostViewController()?.present(self, animated: animated, completion: nil)
     }
 }

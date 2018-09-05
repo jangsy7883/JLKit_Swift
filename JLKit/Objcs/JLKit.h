@@ -24,6 +24,4 @@
 #import "UIDevice+JLKit.h"
 #import "UIImage+JLKit.h"
 #import "UIScreen+JLKit.h"
-#import "UIView+JLKit.h"
-#import "UIViewController+JLKit.h"
 #import "UISearchBar+JLKit.h"

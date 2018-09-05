@@ -10,7 +10,7 @@ import Foundation
 
 extension Dictionary {
     
-    subscript(keyPath keyPath: String) -> Any? {
+   public subscript(keyPath keyPath: String) -> Any? {
         var keys = keyPath.components(separatedBy: ".")
         guard let first = keys.first as? Key else { return nil }
         guard let value = self[first] else { return nil }
@@ -22,7 +22,7 @@ extension Dictionary {
         return value
     }
     
-    func valueForKeys(_ keys: [Key]) -> Any? {
+    public func valueForKeys(_ keys: [Key]) -> Any? {
         for key in keys {
             if let path = key as? String, let value = self[keyPath: path] {
                 return value
