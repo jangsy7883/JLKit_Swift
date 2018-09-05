@@ -31,7 +31,7 @@ extension UIViewController {
         return baseViewController
     }
     
-    public var isPresented: Bool {        
+    public var isPresented: Bool {
         if let index = navigationController?.viewControllers.index(of: self), index > 0 {
             return false
         } else if presentingViewController != nil {

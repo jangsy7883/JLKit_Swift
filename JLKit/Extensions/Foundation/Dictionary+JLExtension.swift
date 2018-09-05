@@ -8,8 +8,7 @@
 
 import Foundation
 
-extension Dictionary {
-    
+extension Dictionary {    
    public subscript(keyPath keyPath: String) -> Any? {
         var keys = keyPath.components(separatedBy: ".")
         guard let first = keys.first as? Key else { return nil }
