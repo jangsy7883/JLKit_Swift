@@ -40,7 +40,7 @@ extension UIImage {
         return UIImage(cgImage: cgImage, scale: scale, orientation: orientation)
     }
 
-    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         var image: UIImage? = nil
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         if let context = UIGraphicsGetCurrentContext() {
@@ -56,12 +56,12 @@ extension UIImage {
 
     // MARK: Crop
 
-    func crop(bounds: CGRect) -> UIImage? {
+    public func crop(bounds: CGRect) -> UIImage? {
         return UIImage(cgImage: (self.cgImage?.cropping(to: bounds)!)!,
                        scale: 0.0, orientation: self.imageOrientation)
     }
 
-    func cropToSquare() -> UIImage? {
+    public func cropToSquare() -> UIImage? {
         let size = CGSize(width: self.size.width * self.scale, height: self.size.height * self.scale)
         let shortest = min(size.width, size.height)
 
@@ -76,7 +76,7 @@ extension UIImage {
 
     // MARK: Resize
 
-    func resize(toSize: CGSize, contentMode: UIImageContentMode = .scaleToFill) -> UIImage? {
+    public func resize(toSize: CGSize, contentMode: UIImageContentMode = .scaleToFill) -> UIImage? {
         let horizontalRatio = toSize.width / size.width
         let verticalRatio = toSize.height / size.height
         var ratio: CGFloat!

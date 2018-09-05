@@ -9,11 +9,11 @@
 import UIKit
 
 extension UIApplication {
-    static var isActive: Bool {
+    public static var isActive: Bool {
         return UIApplication.shared.applicationState == .active
     }
     
-    func open(_ url: URL, completionHandler completion: ((Bool) -> Swift.Void)? = nil) {
+    public func open(_ url: URL, completionHandler completion: ((Bool) -> Swift.Void)? = nil) {
         if #available(iOS 10, *) {
             open(url, options: [String : Any]() , completionHandler: completion)
         }else {

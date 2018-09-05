@@ -10,13 +10,13 @@ import UIKit
 
 extension UIButton {
 
-    func setBackgroundColor(_ color: UIColor?, for state: UIControlState) {
+    public func setBackgroundColor(_ color: UIColor?, for state: UIControlState) {
         guard let color = color else { return }
         setBackgroundImage(UIImage(color: color), for: state)
     }
     
     
-    func withCenterVertically(_ padding:Float) -> UIButton {
+    public func withCenterVertically(_ padding:Float) -> UIButton {
         guard let imageSize = self.imageView?.frame.size else { return self }
         guard let titleSize = self.titleLabel?.frame.size else { return self }
         
@@ -34,7 +34,7 @@ extension UIButton {
         return self
     }
     
-    func setTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
+    public func setTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents) {
         removeTarget(target, action: nil, for: controlEvents)
         addTarget(target, action: action, for: controlEvents)
     }

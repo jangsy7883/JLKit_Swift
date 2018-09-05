@@ -8,9 +8,8 @@
 
 import Foundation
 
-extension Int {
-    
-    static func random(min:Int, max:Int) -> Int {
+extension Int {    
+    public static func random(min:Int, max:Int) -> Int {
         let form = max - min + 1
         return Int(UInt32(min) + arc4random_uniform(UInt32(form)))
     }

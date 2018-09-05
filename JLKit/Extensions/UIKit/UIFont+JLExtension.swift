@@ -7,7 +7,7 @@
 //
 
 extension UIFont {
-    func withTraits(traits: UIFontDescriptorSymbolicTraits) -> UIFont {
+    public func withTraits(traits: UIFontDescriptorSymbolicTraits) -> UIFont {
         guard let descriptor = fontDescriptor.withSymbolicTraits(traits) else { return self }
         return UIFont(descriptor: descriptor, size: 0)
     }

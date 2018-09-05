@@ -67,7 +67,7 @@ extension Date {
         return Calendar.current.dateComponents(Date.componentFlags(), from: fromDate)
     }
     
-    func compare(_ comparison: DateComparisonType) -> Bool {
+    internal func compare(_ comparison: DateComparisonType) -> Bool {
         switch comparison {
         case .isToday:
             return compare(.isSameDay(as: Date()))
@@ -131,7 +131,7 @@ extension Date {
         }
     }
     
-    func adjust(_ component: DateComponentType, offset: Int) -> Date {
+    internal func adjust(_ component: DateComponentType, offset: Int) -> Date {
         var dateComp = DateComponents()
         switch component {
         case .second:
@@ -156,7 +156,7 @@ extension Date {
         return Calendar.current.date(byAdding: dateComp, to: self)!
     }
     
-    func component(_ component: DateComponentType) -> Int? {
+    internal func component(_ component: DateComponentType) -> Int? {
         let components = Date.components(self)
         switch component {
         case .second:
@@ -180,7 +180,7 @@ extension Date {
         }
     }
     
-    func interval(_ component: DateComponentType, componentFlags: Set<Calendar.Component> = Date.componentFlags(), to: Date = Date()) -> Int? {
+    internal func interval(_ component: DateComponentType, componentFlags: Set<Calendar.Component> = Date.componentFlags(), to: Date = Date()) -> Int? {
         let components = Calendar.current.dateComponents(componentFlags, from: self, to: to)
         switch component {
         case .second:
@@ -204,7 +204,7 @@ extension Date {
         }
     }
     
-    init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.current) {
+    public init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.current) {
         
         let formatter = DateFormatter()
         formatter.locale = Locale.current
@@ -218,7 +218,7 @@ extension Date {
         }
     }
     
-    func string(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, timeZone: TimeZone? = TimeZone.current) -> String {
+    public func string(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, timeZone: TimeZone? = TimeZone.current) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.timeZone = timeZone
@@ -227,7 +227,7 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func string(format: String, timeZone: TimeZone? = TimeZone.current) -> String {
+    public func string(format: String, timeZone: TimeZone? = TimeZone.current) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.timeZone = timeZone
