@@ -9,15 +9,15 @@
 import Foundation
 
 public enum DateComponentType {
-    case second, minute, hour, day, weekday, nthWeekday, week, month, year
+    case second, minute, hour, day, weekday, weekdayOrdinal, week, month, year
 }
 
 extension Date {
-    public static let minuteInSeconds: Double = 60
-    public static let hourInSeconds: Double = 3600
-    public static let dayInSeconds: Double = 86400
-    public static let weekInSeconds: Double = 604800
-    public static let yearInSeconds: Double = 31556926
+    private static let minuteInSeconds: Double = 60
+    private static let hourInSeconds: Double = 3600
+    private static let dayInSeconds: Double = 86400
+    private static let weekInSeconds: Double = 604800
+    private static let yearInSeconds: Double = 31556926
     
     public enum DateComparisonType {
         // Days
@@ -48,14 +48,12 @@ extension Date {
         case isWeekday
         case isWeekend
     }
-    
+
     public static func componentFlags() -> Set<Calendar.Component> {
         return [.year, .month, .day, .weekOfYear, .hour, .minute, .second, .weekday, .weekdayOrdinal, .weekOfYear]
     }
     
-    public static func components(_ fromDate: Date) -> DateComponents {
-        return Calendar.current.dateComponents(Date.componentFlags(), from: fromDate)
-    }
+    //MARK : Init
     
     public func compare(_ comparison: DateComparisonType) -> Bool {
         switch comparison {
@@ -134,7 +132,7 @@ extension Date {
             dateComp.day = offset
         case .weekday:
             dateComp.weekday = offset
-        case .nthWeekday:
+        case .weekdayOrdinal:
             dateComp.weekdayOrdinal = offset
         case .week:
             dateComp.weekOfYear = offset
@@ -147,7 +145,7 @@ extension Date {
     }
     
     public func component(_ component: DateComponentType) -> Int? {
-        let components = Date.components(self)
+        let components = Calendar.current.dateComponents(Date.componentFlags(), from: self)
         switch component {
         case .second:
             return components.second
@@ -159,7 +157,7 @@ extension Date {
             return components.day
         case .weekday:
             return components.weekday
-        case .nthWeekday:
+        case .weekdayOrdinal:
             return components.weekdayOrdinal
         case .week:
             return components.weekOfYear
@@ -183,7 +181,7 @@ extension Date {
             return components.day
         case .weekday:
             return components.weekday
-        case .nthWeekday:
+        case .weekdayOrdinal:
             return components.weekdayOrdinal
         case .week:
             return components.weekOfYear
@@ -193,6 +191,8 @@ extension Date {
             return components.year
         }
     }
+    
+    //MARK : Init
     
     public init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.current) {
         let formatter = DateFormatter()
@@ -206,6 +206,8 @@ extension Date {
             return nil
         }
     }
+    
+    //MARK : String format
     
     public func string(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, timeZone: TimeZone? = TimeZone.current) -> String {
         let formatter = DateFormatter()
