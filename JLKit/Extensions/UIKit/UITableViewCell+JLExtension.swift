@@ -9,7 +9,7 @@
 import UIKit
 
 extension UITableViewCell {
-    var superTableView:UITableView? {
+    public var superTableView:UITableView? {
         var view = superview        
         while view != nil {
             if let tableView = view as? UITableView {
@@ -21,7 +21,7 @@ extension UITableViewCell {
         return nil
     }
     
-    var indexPath:IndexPath? {
+    public var indexPath:IndexPath? {
         guard let tableView = superTableView else { return nil }
         return tableView.indexPath(for: self)
     }

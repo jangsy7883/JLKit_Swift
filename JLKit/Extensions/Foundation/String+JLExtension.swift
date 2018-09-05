@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSString {
-    class func nameFormClass(_ class_: Any) -> String? {
+    public static func nameFormClass(_ class_: Any) -> String? {
         let name = String(describing: class_.self)
         let words = name.components(separatedBy: ".")
         
@@ -18,30 +18,26 @@ extension NSString {
 }
 
 extension String {
-    var boolValue: Bool {
+    public var boolValue: Bool {
         get {
             return NSString(string: self).boolValue
         }
     }
     
-    var trimmedString: String {
+    public var trimmedString: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    var image: UIImage? {
+    public var image: UIImage? {
         return UIImage(named: self)
     }
-    
-    var localized: String {
-        return NSLocalizedString(self, comment: "")
-    }
-    
-    func localized(comment: String) -> String {
+
+    public func localized(tableName: String? = nil, comment: String = "") -> String {
         return NSLocalizedString(self, comment: "")
     }
     
     //
-    func regexMatches(pattern: String) -> [NSTextCheckingResult]? {
+    public func regexMatches(pattern: String) -> [NSTextCheckingResult]? {
         let regex = try? NSRegularExpression(pattern: pattern, options: [])
         if let matches = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)) {
             return matches
@@ -49,7 +45,7 @@ extension String {
         return nil
     }
     
-    func rangeOfFirstRegexMatch(pattern: String) -> NSRange? {
+    public func rangeOfFirstRegexMatch(pattern: String) -> NSRange? {
         let regex = try? NSRegularExpression(pattern: pattern, options: [])
         if let range = regex?.rangeOfFirstMatch(in: self, options: [], range: NSRange(location: 0, length: self.count)) {
             return range
@@ -57,7 +53,7 @@ extension String {
         return nil
     }
     
-    func isRegexMatch(pattern: String) -> Bool {
+    public func isRegexMatch(pattern: String) -> Bool {
         if let length = rangeOfFirstRegexMatch(pattern: pattern)?.length, length > 0 {
             return true
         }

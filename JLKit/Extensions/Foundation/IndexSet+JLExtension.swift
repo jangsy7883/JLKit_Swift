@@ -9,8 +9,7 @@
 import Foundation
 
 extension IndexSet {
-
-    var array: [Int] {
+    public var array: [Int] {
         return self.map { return $0 }
     }
 }

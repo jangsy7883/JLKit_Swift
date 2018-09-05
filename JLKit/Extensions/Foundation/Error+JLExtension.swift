@@ -9,7 +9,7 @@
 import Foundation
 
 extension Error {
-    func showAlertWithActionTitle(_ title: String!) {
+    public func showAlertWithActionTitle(_ title: String!) {
         guard let viewController = UIViewController.topMostViewController() else { return }
         let alertController = UIAlertController(title: nil, message: localizedDescription, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: title, style: .cancel, handler: nil))

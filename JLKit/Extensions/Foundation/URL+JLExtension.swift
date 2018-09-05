@@ -9,7 +9,7 @@
 import Foundation
 
 extension Foundation.URL {
-    var parameters: [String: String]? {
+    public var parameters: [String: String]? {
         guard let components = NSURLComponents(url: self, resolvingAgainstBaseURL: false) else { return nil }
         guard let items = components.queryItems, items.isEmpty == false else { return nil }
 
@@ -22,7 +22,7 @@ extension Foundation.URL {
         return parameters
     }
 
-    func withParameters(parameters: [String: Any]) -> Foundation.URL {
+    public func withParameters(parameters: [String: Any]) -> Foundation.URL {
         guard parameters.isEmpty == false else {return self}
 
         var queryItems = [URLQueryItem]()

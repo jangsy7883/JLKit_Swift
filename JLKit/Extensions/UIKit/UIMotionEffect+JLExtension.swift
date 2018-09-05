@@ -7,7 +7,7 @@
 //
 
 extension UIMotionEffect {
-    class func twoAxesShift(strength: Float) -> UIMotionEffect {
+    public static func twoAxesShift(strength: Float) -> UIMotionEffect {
         func motion(type: UIInterpolatingMotionEffectType) -> UIInterpolatingMotionEffect {
             let keyPath = type == .tiltAlongHorizontalAxis ? "center.x" : "center.y"
             let motion = UIInterpolatingMotionEffect(keyPath: keyPath, type: type)

@@ -59,10 +59,10 @@
 		EFE44996213E15D20022B495 /* IndexSet+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE44995213E15D20022B495 /* IndexSet+JLExtension.swift */; };
 		EFE44998213E16C90022B495 /* Int+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE44997213E16C90022B495 /* Int+JLExtension.swift */; };
 		EFE4499A213E189B0022B495 /* Collection+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE44999213E189B0022B495 /* Collection+JLExtension.swift */; };
-		EFE4499C213E19190022B495 /* Locale+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4499B213E19190022B495 /* Locale+JLExtension.swift */; };
 		EFE449A1213E4C770022B495 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */; };
 		EFE449A2213E4C770022B495 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE449A0213E4C770022B495 /* Main.storyboard */; };
 		EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */; };
+		EFE449A6213F5F4E0022B495 /* JLKit_Swift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,10 +148,10 @@
 		EFE44995213E15D20022B495 /* IndexSet+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexSet+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE44997213E16C90022B495 /* Int+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE44999213E189B0022B495 /* Collection+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+JLExtension.swift"; sourceTree = "<group>"; };
-		EFE4499B213E19190022B495 /* Locale+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFE449A0213E4C770022B495 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+JLExtension.swift"; sourceTree = "<group>"; };
+		EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JLKit_Swift.podspec; path = ../JLKit_Swift.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,7 +234,6 @@
 				3D5B279420B5273A003FA63A /* SKProduct+JLextension.swift */,
 				3D5B270E20B5270D003FA63A /* String+JLExtension.swift */,
 				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
-				EFE4499B213E19190022B495 /* Locale+JLExtension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -304,6 +303,7 @@
 		EF3BB095207AE60400857D26 = {
 			isa = PBXGroup;
 			children = (
+				EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */,
 				EF2C6803207AE7A9000C07BA /* JLKit */,
 				EF3BB0A0207AE60400857D26 /* JLKit_Swift */,
 				EF3BB0B5207AE60600857D26 /* JLKit_SwiftUITests */,
@@ -426,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFE449A2213E4C770022B495 /* Main.storyboard in Resources */,
+				EFE449A6213F5F4E0022B495 /* JLKit_Swift.podspec in Resources */,
 				EF3BB0A9207AE60500857D26 /* Assets.xcassets in Resources */,
 				EFE449A1213E4C770022B495 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -491,7 +492,6 @@
 				EFE4498E213E0E720022B495 /* FileManager+JLExtension.swift in Sources */,
 				3D5B276520B5270D003FA63A /* CLGeocoder+JLExtension.swift in Sources */,
 				3D5B279B20B52FC6003FA63A /* UICollectionViewCell+JLExtension.swift in Sources */,
-				EFE4499C213E19190022B495 /* Locale+JLExtension.swift in Sources */,
 				3D5B276620B5270D003FA63A /* NSNumber+JLExtension.swift in Sources */,
 				3D5B276F20B5270D003FA63A /* String+JLExtension.swift in Sources */,
 				EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */,

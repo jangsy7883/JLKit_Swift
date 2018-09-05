@@ -7,13 +7,13 @@
 //
 
 extension Float {
-    static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
+    public static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
         return value/UIScreen.main.scale
     }
 }
 
 extension CGFloat {
-    static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
+    public static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
         return value/UIScreen.main.scale
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 extension CLPlacemark {
-    var localizedAddress: String? {
+    public var localizedAddress: String? {
         guard let formattedAddressLines = addressDictionary?["FormattedAddressLines"] as? [String], formattedAddressLines.isEmpty == false else { return nil }
         var value = formattedAddressLines.first
         if let code = postalCode {

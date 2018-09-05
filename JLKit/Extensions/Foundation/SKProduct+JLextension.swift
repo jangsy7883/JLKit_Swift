@@ -10,7 +10,7 @@ import Foundation
 import StoreKit
 
 extension SKProduct {
-    var currencyPrice :String? {
+    public var currencyPrice :String? {
         let formatter = NumberFormatter()
         formatter.formatterBehavior = .behavior10_4
         formatter.numberStyle = .currency

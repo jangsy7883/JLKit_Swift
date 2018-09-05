@@ -8,7 +8,7 @@
 
 extension UIBarButtonItem {
 
-    convenience init(customImage: UIImage?, highlightedImage: UIImage? = nil, contentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3), target: Any?, action: Selector?) {
+    public convenience init(customImage: UIImage?, highlightedImage: UIImage? = nil, contentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3), target: Any?, action: Selector?) {
         let button = UIButton(type: .custom)
         button.setImage(customImage, for: .normal)
         button.setImage(highlightedImage, for: .highlighted)
@@ -17,13 +17,13 @@ extension UIBarButtonItem {
             button.addTarget(target, action: action, for: .touchUpInside)
         }
 
-        if let window = UIApplication.shared.delegate?.window, let tineColor = window?.tintColor {            
+        if let window = UIApplication.shared.delegate?.window, let tineColor = window?.tintColor {
             button.tintColor = tineColor
         }
         self.init(customView: button)
     }
     
-    convenience init(fixedSpace:CGFloat){
+    public convenience init(fixedSpace:CGFloat){
         self.init(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         self.width = fixedSpace
     }

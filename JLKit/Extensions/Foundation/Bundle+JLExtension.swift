@@ -10,14 +10,14 @@ import Foundation
 
 extension Bundle {
 
-    var appVersion: String? {
+    public var appVersion: String? {
         return self.infoDictionary?["CFBundleShortVersionString"] as? String ?? nil
     }
-    var buildVersion: String? {
+    public var buildVersion: String? {
         return self.infoDictionary?[kCFBundleVersionKey as String] as? String ?? nil
     }
  
-    func compareVersion(_ target: String!) -> ComparisonResult {
+    public func compareVersion(_ target: String!) -> ComparisonResult {
         var result: ComparisonResult = .orderedSame
         guard let version = self.appVersion else { return result }
 

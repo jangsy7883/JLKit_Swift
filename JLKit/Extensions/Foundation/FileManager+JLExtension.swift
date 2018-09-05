@@ -9,8 +9,7 @@
 import Foundation
 
 extension FileManager {
-
-    func directoryPath(for directory: FileManager.SearchPathDirectory, path: String, filename: String? = nil) -> URL? {
+    public func directoryPath(for directory: FileManager.SearchPathDirectory, path: String, filename: String? = nil) -> URL? {
         if let documentsDirectory = urls(for: directory, in: .userDomainMask).first {
             let documentsPath = documentsDirectory.appendingPathComponent(path)
             if fileExists(atPath: documentsPath.path) == false {
@@ -25,7 +24,7 @@ extension FileManager {
         return nil
     }
 
-    func groupDirectoryPath(_ groupIdentifier: String, path: String, filename: String? = nil) -> URL? {
+    public func groupDirectoryPath(_ groupIdentifier: String, path: String, filename: String? = nil) -> URL? {
         if let documentsDirectory = containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier) {
             let documentsPath = documentsDirectory.appendingPathComponent(path)
             if fileExists(atPath: documentsPath.path) == false {
@@ -40,5 +39,4 @@ extension FileManager {
         }
         return nil
     }
-
 }

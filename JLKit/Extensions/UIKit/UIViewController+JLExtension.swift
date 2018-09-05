@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIViewController {
-    static func topMostViewController(_ baseViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    public static func topMostViewController(_ baseViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let navigationController = baseViewController as? UINavigationController {
             return topMostViewController(navigationController.visibleViewController)
         }
@@ -31,8 +31,7 @@ extension UIViewController {
         return baseViewController
     }
     
-    var isPresented: Bool {
-        
+    public var isPresented: Bool {        
         if let index = navigationController?.viewControllers.index(of: self), index > 0 {
             return false
         } else if presentingViewController != nil {

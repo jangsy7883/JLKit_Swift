@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableView {
     
-    func indexPath(forCellContainingView:UIView?) -> IndexPath? {
+    public func indexPath(forCellContainingView:UIView?) -> IndexPath? {
         var view = forCellContainingView
         while view != nil {
             if let cell = view as? UITableViewCell {
