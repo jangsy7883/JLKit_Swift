@@ -1,5 +1,5 @@
 //
-//  JLReusableView.swift
+//  JLReusable.swift
 //  JLKit_Swift
 //
 //  Created by jangsy on 2018. 3. 12..
@@ -22,7 +22,7 @@ extension JLReusable where Self: UIView {
     }
 }
 
-protocol JLNibLoadable { }
+public protocol JLNibLoadable { }
 
 extension JLNibLoadable where Self: UIViewController {
     internal static func loadNib() -> Self? {

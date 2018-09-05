@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Foundation.URL {
+extension URL {
     public var parameters: [String: String]? {
         guard let components = NSURLComponents(url: self, resolvingAgainstBaseURL: false) else { return nil }
         guard let items = components.queryItems, items.isEmpty == false else { return nil }
