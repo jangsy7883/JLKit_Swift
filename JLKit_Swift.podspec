@@ -87,7 +87,7 @@ Pod::Spec.new do |s|
   #
   s.default_subspec = 'Core'
 
-  s.subspec 'Core' do |core|
+  s.subspec 'Core' do |sp|
     sp.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Protocols/'
     end
     
