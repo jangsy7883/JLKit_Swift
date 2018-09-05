@@ -37,35 +37,6 @@
             );
 }
 
-#pragma mark - formatter
-
-+ (NSDate*)dateFromString:(NSString*)dateString dateFormat:(NSString*)dateFormat timeZone:(NSTimeZone*)timeZone {
-    NSDateFormatter *dateFormatter = [self sharedDateFormatter];
-    dateFormatter.timeZone = timeZone;
-    dateFormatter.dateFormat = dateFormat;
-    
-    return [dateFormatter dateFromString:dateString];
-}
-
-+ (NSDate*)dateFromString:(NSString*)dateString dateFormat:(NSString*)dateFormat {
-    return [self dateFromString:dateString
-                     dateFormat:dateFormat
-                       timeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-}
-
-- (NSString*)stringFromDateFormat:(NSString*)stringFormat timeZone:(NSTimeZone*)timeZone {
-    NSDateFormatter *dateFormatter = [NSDate sharedDateFormatter];
-    dateFormatter.timeZone = timeZone;
-    dateFormatter.dateFormat = stringFormat;
-    
-    return [dateFormatter stringFromDate:self];
-}
-
-- (NSString*)stringFromDateFormat:(NSString*)stringFormat {
-    return [self stringFromDateFormat:stringFormat
-                             timeZone:[NSTimeZone systemTimeZone]];
-}
-
 #pragma mark - Unit
 
 - (NSInteger)valueForComponent:(NSCalendarUnit)unit {
@@ -97,15 +68,6 @@
 }
 
 #pragma mark - GETTERS
-
-- (BOOL)isToday {
-    return [self isEqualDayToDate:[NSDate date]];
-}
-
-- (BOOL)isYesterday {
-    NSDate *yesterday = [[NSDate date] dateByAddingCount:-1 forComponent:NSCalendarUnitDay];
-    return [self isEqualDayToDate:yesterday];
-}
 
 - (NSInteger)year {
     return [self valueForComponent:NSCalendarUnitYear];

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol JLReusable {}
+public protocol JLReusable {}
 
 extension JLReusable where Self: UIViewController {
     internal static var reuseIdentifier: String {
