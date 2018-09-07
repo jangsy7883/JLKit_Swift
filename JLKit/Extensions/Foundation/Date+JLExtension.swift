@@ -194,7 +194,7 @@ extension Date {
     
     //MARK : Init
     
-    public init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.current) {
+    public init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.UTC) {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.timeZone = timeZone
@@ -209,7 +209,7 @@ extension Date {
     
     //MARK : String format
     
-    public func string(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, timeZone: TimeZone? = TimeZone.current) -> String {
+    public func string(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, timeZone: TimeZone? = TimeZone.UTC) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.timeZone = timeZone
@@ -218,7 +218,7 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    public func string(format: String, timeZone: TimeZone? = TimeZone.current) -> String {
+    public func string(format: String, timeZone: TimeZone? = TimeZone.UTC) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.timeZone = timeZone

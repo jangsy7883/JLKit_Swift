@@ -9,7 +9,7 @@
 import Foundation
 
 extension UICollectionViewCell {
-    public var superCollectionView:UICollectionView? {
+    @objc public var superCollectionView:UICollectionView? {
         var view = superview
         
         while view != nil {
@@ -22,7 +22,7 @@ extension UICollectionViewCell {
         return nil
     }
     
-    public var indexPath:IndexPath? {
+    @objc public var indexPath:IndexPath? {
         guard let collectionView = superCollectionView else { return nil }
         return collectionView.indexPath(for: self)
     }

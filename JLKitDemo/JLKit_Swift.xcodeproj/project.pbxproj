@@ -48,6 +48,7 @@
 		3D5B27A320B5359F003FA63A /* UIButton+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B27A220B5359F003FA63A /* UIButton+JLExtension.swift */; };
 		3D5B27A720B53DC1003FA63A /* UIApplication+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B27A620B53DC1003FA63A /* UIApplication+JLExtension.swift */; };
 		EF2C6826207AE7AA000C07BA /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2C6815207AE7A9000C07BA /* Loggable.swift */; };
+		EF2EEDC5214204B500DFB32B /* TimeZone+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */; };
 		EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A1207AE60400857D26 /* AppDelegate.swift */; };
 		EF3BB0A4207AE60400857D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A3207AE60400857D26 /* ViewController.swift */; };
 		EF3BB0A9207AE60500857D26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF3BB0A8207AE60500857D26 /* Assets.xcassets */; };
@@ -133,6 +134,7 @@
 		3D5B27A620B53DC1003FA63A /* UIApplication+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+JLExtension.swift"; sourceTree = "<group>"; };
 		EF2C6815207AE7A9000C07BA /* Loggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
 		EF2C682A207AE9BB000C07BA /* JLKit_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JLKit_Swift-Bridging-Header.h"; path = "JLKit_Swift/JLKit_Swift-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+JLExtension.swift"; sourceTree = "<group>"; };
 		EF3BB09E207AE60400857D26 /* JLKit_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLKit_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3BB0A1207AE60400857D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF3BB0A3207AE60400857D26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				3D5B279420B5273A003FA63A /* SKProduct+JLextension.swift */,
 				3D5B270E20B5270D003FA63A /* String+JLExtension.swift */,
 				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
+				EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				3D5B276320B5270D003FA63A /* UIStoryboard+JLExtension.swift in Sources */,
 				3D5B278420B5270D003FA63A /* NSArray+JLKit.m in Sources */,
 				EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */,
+				EF2EEDC5214204B500DFB32B /* TimeZone+JLExtension.swift in Sources */,
 				3D5B27A720B53DC1003FA63A /* UIApplication+JLExtension.swift in Sources */,
 				3D5B279F20B53053003FA63A /* UICollectionView+JLExtension.swift in Sources */,
 				3D5B277220B5270D003FA63A /* CALayer+JLKit.m in Sources */,
