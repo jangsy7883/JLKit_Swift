@@ -10,7 +10,7 @@ import UIKit
 
 extension UICollectionView {
     
-    public func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
+    @objc public func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
         if indexPath.section >= numberOfSections {
             return false
         } else if indexPath.row >= numberOfItems(inSection: indexPath.section) {
@@ -20,7 +20,7 @@ extension UICollectionView {
         return true
     }
     
-    public func indexPath(forCellContainingView:UIView?) -> IndexPath? {
+    @objc public func indexPath(forCellContainingView:UIView?) -> IndexPath? {
         var view = forCellContainingView
         while view != nil {
             if let cell = view as? UICollectionViewCell {
@@ -33,7 +33,7 @@ extension UICollectionView {
         return nil
     }
     
-    public func performBatchUpdates(_ updates: (() -> Swift.Void)?, animated:Bool, completion: ((Bool) -> Swift.Void)? = nil) {
+    @objc public func performBatchUpdates(_ updates: (() -> Swift.Void)?, animated:Bool, completion: ((Bool) -> Swift.Void)? = nil) {
         let animationsEnabled = UIView.areAnimationsEnabled
         
         UIView.setAnimationsEnabled(animated)

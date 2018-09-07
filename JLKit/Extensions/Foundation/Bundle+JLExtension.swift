@@ -10,10 +10,10 @@ import Foundation
 
 extension Bundle {
 
-    public var appVersion: String? {
+    @objc public var appVersion: String? {
         return self.infoDictionary?["CFBundleShortVersionString"] as? String ?? nil
     }
-    public var buildVersion: String? {
+    @objc public var buildVersion: String? {
         return self.infoDictionary?[kCFBundleVersionKey as String] as? String ?? nil
     }
  

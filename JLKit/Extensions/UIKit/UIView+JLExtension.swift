@@ -13,7 +13,7 @@ extension UIView {
         }
     }
 
-    public var superViewController : UIViewController? {
+    @objc public var superViewController : UIViewController? {
         var view :UIView?  = self
         while view != nil {
             if let viewController = view?.next as? UIViewController {
@@ -25,8 +25,7 @@ extension UIView {
         return nil
     }
     
-    
-    public func screenShot(afterScreenUpdates:Bool = true) -> UIImage? {
+    @objc public func screenShot(afterScreenUpdates:Bool = true) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, UIScreen.main.scale)
         drawHierarchy(in: self.bounds, afterScreenUpdates: afterScreenUpdates)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -35,7 +34,7 @@ extension UIView {
     }
     
     
-    public func rotate(angle: CGFloat) {
+    @objc public func rotate(angle: CGFloat) {
         transform = CGAffineTransform.identity
 
         let radians = angle / 180.0 * CGFloat(Double.pi)
@@ -43,14 +42,14 @@ extension UIView {
         transform = rotation
     }
 
-    public func roundingCorners(_ corners: UIRectCorner, radius: CGFloat) {
+    @objc public func roundingCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         self.layer.mask = mask
     }
 
-    public func mask(withRect rect: CGRect, inverse: Bool = false) {
+    @objc public func mask(withRect rect: CGRect, inverse: Bool = false) {
         let path = UIBezierPath(rect: rect)
         let maskLayer = CAShapeLayer()
 
@@ -63,7 +62,7 @@ extension UIView {
         self.layer.mask = maskLayer
     }
 
-    public func clearMask() {
+    @objc public func clearMask() {
         self.layer.mask = nil
     }
 }
