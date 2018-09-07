@@ -23,7 +23,7 @@ extension CLLocationCoordinate2D {
 }
 
 extension CLLocation {
-    public convenience init(coordinate:CLLocationCoordinate2D) {
+    @objc public convenience init(coordinate:CLLocationCoordinate2D) {
         self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 }

@@ -9,11 +9,11 @@
 import Foundation
 
 extension NSNumber {
-    public func localizedString(numberStyle:NumberFormatter.Style) -> String {
+    @objc public func localizedString(numberStyle:NumberFormatter.Style) -> String {
         return NumberFormatter.localizedString(from: self, number: numberStyle)
     }
 
-    public func stringBy(roundingMode: NumberFormatter.RoundingMode, maximumFractionDigits: Int) -> String? {
+    @objc public func stringBy(roundingMode: NumberFormatter.RoundingMode, maximumFractionDigits: Int) -> String? {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = maximumFractionDigits
         formatter.roundingMode = roundingMode

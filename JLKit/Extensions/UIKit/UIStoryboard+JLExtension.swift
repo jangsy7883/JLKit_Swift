@@ -7,11 +7,11 @@
 //
 
 extension UIStoryboard {
-    public convenience init(name: String) {
+    @objc public convenience init(name: String) {
         self.init(name: name, bundle: nil)
     }
 
-    public static func viewController(_ identifier: String? = nil, storyboardName: String) -> UIViewController? {
+    @objc public static func viewController(_ identifier: String? = nil, storyboardName: String) -> UIViewController? {
         let storyboard = UIStoryboard(name: storyboardName)
 
         if identifier == nil {
