@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "JLKit_Swift"
-  s.version      = "0.0.9"
+  s.version      = "0.0.10"
   s.summary      = "JLKit"
 
   # This description is used to generate tags and improve search results.
@@ -50,8 +50,7 @@ Pod::Spec.new do |s|
 
   s.author             = { "jangsy" => "jangsy7883@gmail.com" }
   # Or just: s.author    = "Woody"
-  # s.authors            = { "Woody" => "woody.jang@goodoc.co.kr" }
-  # s.social_media_url   = "http://twitter.com/Woody"
+  s.authors            = { "Woody" => "woody.jang@goodoc.co.kr" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
