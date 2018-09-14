@@ -53,6 +53,7 @@
 		EF3BB0A4207AE60400857D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A3207AE60400857D26 /* ViewController.swift */; };
 		EF3BB0A9207AE60500857D26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF3BB0A8207AE60500857D26 /* Assets.xcassets */; };
 		EF3BB0B7207AE60600857D26 /* JLKit_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0B6207AE60600857D26 /* JLKit_SwiftUITests.swift */; };
+		EFA61A4B214B3C4900BE99D6 /* JLLoadNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA61A4A214B3C4900BE99D6 /* JLLoadNib.swift */; };
 		EFE4498E213E0E720022B495 /* FileManager+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4498D213E0E720022B495 /* FileManager+JLExtension.swift */; };
 		EFE44990213E0F230022B495 /* Range+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE4498F213E0F220022B495 /* Range+JLExtension.swift */; };
 		EFE44992213E0F4A0022B495 /* UIAlertController+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE44991213E0F4A0022B495 /* UIAlertController+JLExtension.swift */; };
@@ -143,6 +144,7 @@
 		EF3BB0B2207AE60500857D26 /* JLKit_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLKit_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3BB0B6207AE60600857D26 /* JLKit_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLKit_SwiftUITests.swift; sourceTree = "<group>"; };
 		EF3BB0B8207AE60600857D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFA61A4A214B3C4900BE99D6 /* JLLoadNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JLLoadNib.swift; path = ../Protocols/JLLoadNib.swift; sourceTree = "<group>"; };
 		EFE4498D213E0E720022B495 /* FileManager+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE4498F213E0F220022B495 /* Range+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+JLExtension.swift"; sourceTree = "<group>"; };
 		EFE44991213E0F4A0022B495 /* UIAlertController+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+JLExtension.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				3D5B26F920B5270D003FA63A /* JLReusable.swift */,
+				EFA61A4A214B3C4900BE99D6 /* JLLoadNib.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				3D5B275F20B5270D003FA63A /* UIImage+JLExtension.swift in Sources */,
 				3D5B277120B5270D003FA63A /* UIColor+JLKit.m in Sources */,
 				3D5B276320B5270D003FA63A /* UIStoryboard+JLExtension.swift in Sources */,
+				EFA61A4B214B3C4900BE99D6 /* JLLoadNib.swift in Sources */,
 				3D5B278420B5270D003FA63A /* NSArray+JLKit.m in Sources */,
 				EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */,
 				EF2EEDC5214204B500DFB32B /* TimeZone+JLExtension.swift in Sources */,
