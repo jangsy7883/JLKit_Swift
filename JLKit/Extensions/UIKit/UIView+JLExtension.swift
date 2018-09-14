@@ -13,13 +13,12 @@ extension UIView {
         }
     }
 
-    @objc public var superViewController : UIViewController? {
-        var view :UIView?  = self
-        while view != nil {
-            if let viewController = view?.next as? UIViewController {
+    @objc public var parentViewController : UIViewController? {
+        var parentResponder: UIResponder? = self
+        while let responder = parentResponder {
+            parentResponder = responder.next
+            if let viewController = parentResponder as? UIViewController {
                 return viewController
-            }else {
-                view = view?.superview
             }
         }
         return nil
