@@ -10,12 +10,6 @@ import Foundation
 
 public protocol JLReusable {}
 
-extension JLReusable where Self: UIViewController {
-    public static var reuseIdentifier: String {
-        return String(describing: self.self)
-    }
-}
-
 extension JLReusable where Self: UIView {
     public static var reuseIdentifier: String {
         return String(describing: self.self)
@@ -24,25 +18,9 @@ extension JLReusable where Self: UIView {
 
 public protocol JLNibLoadable { }
 
-extension JLNibLoadable where Self: UIViewController {
-    public static func loadNib() -> Self? {
-        return Self(nibName: String(describing: self.self), bundle: nil)
-    }
-}
-
 extension JLNibLoadable where Self: UIView {
     public static var nib: UINib? {
         return UINib(nibName: String(describing: self.self), bundle: nil)
-    }
-    
-    public static func loadNib() -> Self? {
-        guard let views = Bundle.main.loadNibNamed(String(describing: self.self), owner: self, options: nil) else { return nil }
-        for view in views {
-            if let view = view as? Self {
-                return view
-            }
-        }
-        return nil
     }
 }
 
