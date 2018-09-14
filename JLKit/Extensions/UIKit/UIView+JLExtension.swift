@@ -13,7 +13,7 @@ extension UIView {
         }
     }
 
-    @objc public var parentViewController : UIViewController? {
+    @objc public var superViewController : UIViewController? {
         var parentResponder: UIResponder? = self
         while let responder = parentResponder {
             parentResponder = responder.next
