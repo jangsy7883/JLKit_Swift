@@ -13,7 +13,7 @@ extension UIApplication {
         return UIApplication.shared.applicationState == .active
     }
     
-    @objc static func open(_ url: URL, completionHandler completion: ((Bool) -> Swift.Void)? = nil) {
+    @objc public static func open(_ url: URL, completionHandler completion: ((Bool) -> Swift.Void)? = nil) {
         if #available(iOS 10, *) {
             UIApplication.shared.open(url, completionHandler: completion)
         }else {
