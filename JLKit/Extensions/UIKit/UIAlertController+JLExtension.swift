@@ -10,7 +10,7 @@ import UIKit
 
 extension UIAlertController {
 
-    @discardableResult public convenience init(aTitle: String? = nil, message: String? = nil, preferredStyle: UIAlertControllerStyle = .alert, actions: [UIAlertAction]? = nil) {
+    @discardableResult public convenience init(aTitle: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction]? = nil) {
         if preferredStyle == .alert || aTitle == nil {
             self.init(title: "", message: message, preferredStyle: preferredStyle)
         } else {
@@ -22,7 +22,7 @@ extension UIAlertController {
         }
     }
 
-    @discardableResult public func addAction(_ title: String?, style: UIAlertActionStyle = .default, handler: ((UIAlertAction) -> Swift.Void)? = nil) -> Self {
+    @discardableResult public func addAction(_ title: String?, style: UIAlertAction.Style = .default, handler: ((UIAlertAction) -> Swift.Void)? = nil) -> Self {
         addAction(UIAlertAction(title: title, style: style, handler: handler))
         return self
     }
