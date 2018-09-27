@@ -11,7 +11,7 @@ import UIKit
 extension UINavigationBar {
     public var titleTintColor: UIColor? {
         set {
-            var attributes: [NSAttributedStringKey: Any]?
+            var attributes: [NSAttributedString.Key: Any]?
 
             if titleTextAttributes != nil {
                 attributes = titleTextAttributes
@@ -20,7 +20,7 @@ extension UINavigationBar {
                 if navigationBar.titleTextAttributes != nil {
                     attributes = navigationBar.titleTextAttributes
                 } else {
-                    attributes = [NSAttributedStringKey: Any]()
+                    attributes = [NSAttributedString.Key: Any]()
                 }
             }
 

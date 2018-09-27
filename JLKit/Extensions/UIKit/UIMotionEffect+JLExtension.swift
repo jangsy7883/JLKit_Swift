@@ -8,7 +8,7 @@
 
 extension UIMotionEffect {
     @objc public static func twoAxesShift(strength: Float) -> UIMotionEffect {
-        func motion(type: UIInterpolatingMotionEffectType) -> UIInterpolatingMotionEffect {
+        func motion(type: UIInterpolatingMotionEffect.EffectType) -> UIInterpolatingMotionEffect {
             let keyPath = type == .tiltAlongHorizontalAxis ? "center.x" : "center.y"
             let motion = UIInterpolatingMotionEffect(keyPath: keyPath, type: type)
             motion.minimumRelativeValue = -strength
