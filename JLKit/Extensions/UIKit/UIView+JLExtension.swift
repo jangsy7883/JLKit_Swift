@@ -54,7 +54,7 @@ extension UIView {
 
         if inverse {
             path.append(UIBezierPath(rect: self.bounds))
-            maskLayer.fillRule = kCAFillRuleEvenOdd
+            maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         }
 
         maskLayer.path = path.cgPath
