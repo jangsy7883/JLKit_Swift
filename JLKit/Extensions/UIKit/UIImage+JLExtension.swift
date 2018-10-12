@@ -6,6 +6,8 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+import UIKit
+
 /*
  참고 : https://github.com/melvitax/ImageHelper
  */

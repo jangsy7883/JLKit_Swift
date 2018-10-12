@@ -6,7 +6,7 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UICollectionViewCell {
     @objc public var superCollectionView:UICollectionView? {

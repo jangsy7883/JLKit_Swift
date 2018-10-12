@@ -6,6 +6,8 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+import UIKit
+
 extension UIMotionEffect {
     @objc public static func twoAxesShift(strength: Float) -> UIMotionEffect {
         func motion(type: UIInterpolatingMotionEffect.EffectType) -> UIInterpolatingMotionEffect {

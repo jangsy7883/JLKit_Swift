@@ -6,6 +6,8 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+import UIKit
+
 extension UIBarButtonItem {
 
     @objc public convenience init(customImage: UIImage?, highlightedImage: UIImage? = nil, contentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3), target: Any?, action: Selector?) {

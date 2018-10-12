@@ -6,6 +6,8 @@
 //  Copyright © 2018년 Goodoc. All rights reserved.
 //
 
+import UIKit
+
 extension UIStoryboard {
     @objc public convenience init(name: String) {
         self.init(name: name, bundle: nil)
