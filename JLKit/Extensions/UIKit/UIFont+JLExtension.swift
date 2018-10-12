@@ -6,6 +6,8 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+import UIKit
+
 extension UIFont {
     public func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         guard let descriptor = fontDescriptor.withSymbolicTraits(traits) else { return self }

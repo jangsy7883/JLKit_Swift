@@ -11,7 +11,7 @@ import UIKit
 extension UIAlertController {
 
     @discardableResult public convenience init(aTitle: String? = nil, message: String? = nil, preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction]? = nil) {
-        if preferredStyle == .alert || aTitle == nil {
+        if preferredStyle == .alert, aTitle == nil {
             self.init(title: "", message: message, preferredStyle: preferredStyle)
         } else {
             self.init(title: aTitle, message: message, preferredStyle: preferredStyle)

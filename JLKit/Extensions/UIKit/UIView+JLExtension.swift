@@ -6,6 +6,8 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+import UIKit
+
 extension UIView {
     @objc public static var className: String {
         get {
