@@ -9,6 +9,13 @@
 import UIKit
 
 extension UIApplication {
+    /*
+    private static var sharedApplication: UIApplication? {
+        let selector = NSSelectorFromString("sharedApplication")
+        return UIApplication.perform(selector)?.takeUnretainedValue() as? UIApplication
+    }
+     */
+    
     @objc public static var isActive: Bool {
         return UIApplication.shared.applicationState == .active
     }
