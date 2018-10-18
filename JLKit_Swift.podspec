@@ -49,8 +49,6 @@ Pod::Spec.new do |s|
   #
 
   s.author             = { "jangsy" => "jangsy7883@gmail.com" }
-  # Or just: s.author    = "Woody"
-  s.authors            = { "Woody" => "woody.jang@goodoc.co.kr" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
