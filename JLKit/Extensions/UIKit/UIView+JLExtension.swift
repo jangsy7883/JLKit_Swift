@@ -34,7 +34,6 @@ extension UIView {
         return image
     }
     
-    
     @objc public func rotate(angle: CGFloat) {
         transform = CGAffineTransform.identity
 
@@ -65,5 +64,25 @@ extension UIView {
 
     @objc public func clearMask() {
         self.layer.mask = nil
+    }
+    
+    @objc public func add(to view:UIView?) -> Self {
+        view?.addSubview(self)
+        return self
+    }
+    
+    @objc public static func animate(withDuration duration: TimeInterval,
+                                     fromView view: UIView,
+                                     constraints: @escaping () -> Void,
+                                     animations: (() -> Void)? = nil,
+                                     completion: ((Bool) -> Void)? = nil) {        
+        view.layoutIfNeeded()
+        constraints()
+        
+        UIView.animate(withDuration: duration,
+                       animations: {
+                        view.layoutIfNeeded()
+                        animations?()
+        }, completion: completion)
     }
 }

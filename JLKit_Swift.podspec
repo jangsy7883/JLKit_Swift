@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "JLKit_Swift"
-  s.version      = "0.0.15"
+  s.version      = "0.0.16"
   s.summary      = "JLKit"
 
   # This description is used to generate tags and improve search results.
@@ -49,8 +49,6 @@ Pod::Spec.new do |s|
   #
 
   s.author             = { "jangsy" => "jangsy7883@gmail.com" }
-  # Or just: s.author    = "Woody"
-  s.authors            = { "Woody" => "woody.jang@goodoc.co.kr" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -58,7 +56,6 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
   s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
@@ -128,6 +125,9 @@ Pod::Spec.new do |s|
   #  you can include multiple dependencies to ensure it works.
 
   # s.requires_arc = true
+
+  s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
