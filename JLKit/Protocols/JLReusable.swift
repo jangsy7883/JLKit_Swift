@@ -19,9 +19,10 @@ extension JLReusable where Self: UIView {
 public protocol JLNibLoadable { }
 
 extension JLNibLoadable where Self: UIView {
-    public static var nib: UINib? {
-        return UINib(nibName: String(describing: self.self), bundle: nil)
+    public static func nib(bundle: Bundle? = nil) -> UINib? {
+        return UINib(nibName: String(describing: self.self), bundle: bundle)
     }
+    
 }
 
 extension UITableView {
@@ -29,8 +30,8 @@ extension UITableView {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
-    public func register<T: UITableViewCell & JLReusable & JLNibLoadable>(_: T.Type) {
-        guard let nib = T.nib else { return }
+    public func register<T: UITableViewCell & JLReusable & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+        guard let nib = T.nib(bundle: bundle) else { return }
         register(nib, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -38,8 +39,8 @@ extension UITableView {
         register(T.self, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
     
-    public func register<T: UITableViewHeaderFooterView & JLReusable & JLNibLoadable>(_: T.Type) {
-        guard let nib = T.nib else { return }
+    public func register<T: UITableViewHeaderFooterView & JLReusable & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+        guard let nib = T.nib(bundle: bundle) else { return }
         register(nib, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -63,8 +64,8 @@ extension UICollectionView {
         register(T.self, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
     
-    public func register<T: UICollectionReusableView & JLReusable & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String) {
-        guard let nib = T.nib else { return }
+    public func register<T: UICollectionReusableView & JLReusable & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle? = nil) {
+        guard let nib = T.nib(bundle: bundle) else { return }
         register(nib, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -72,8 +73,8 @@ extension UICollectionView {
         register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
-    public func register<T: UICollectionViewCell & JLReusable & JLNibLoadable>(_: T.Type) {
-        guard let nib = T.nib else { return }
+    public func register<T: UICollectionViewCell & JLReusable & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+        guard let nib = T.nib(bundle: bundle) else { return }
         register(nib, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     

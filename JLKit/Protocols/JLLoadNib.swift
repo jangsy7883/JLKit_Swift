@@ -13,8 +13,8 @@ public protocol JLLoadNib { }
 extension UIView: JLLoadNib {}
 
 extension JLLoadNib where Self: UIView {
-    public static func loadNib(_ name: String? = nil) -> Self? {
-        guard let views = Bundle.main.loadNibNamed(name ?? String(describing: self.self), owner: self, options: nil) else { return nil }
+    public static func loadNib(_ name: String? = nil, bundle: Bundle = Bundle.main) -> Self? {
+        guard let views = bundle.loadNibNamed(name ?? String(describing: self.self), owner: self, options: nil) else { return nil }
         for view in views {
             
             if let view = view as? Self {
@@ -29,8 +29,8 @@ extension JLLoadNib where Self: UIView {
 extension UIViewController: JLLoadNib {}
 
 extension JLLoadNib where Self: UIViewController {
-    public static func loadNib() -> Self? {
-        return Self(nibName: String(describing: self.self), bundle: nil)
+    public static func loadNib(bundle: Bundle? = nil) -> Self? {
+        return Self(nibName: String(describing: self.self), bundle: bundle)
     }
 }
 
