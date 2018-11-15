@@ -22,11 +22,10 @@ extension JLNibLoadable where Self: UIView {
     public static func nib(bundle: Bundle? = nil) -> UINib? {
         return UINib(nibName: String(describing: self.self), bundle: bundle)
     }
-    
 }
 
 extension UITableView {
-    public func register<T: UITableViewCell & JLReusable>(_: T.Type) {
+    public func register<T: UITableViewCell & JLReusable>(_: T.Type, bundle: Bundle? = nil) {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -60,22 +59,22 @@ extension UITableView {
 }
 
 extension UICollectionView {
-    public func register<T: UICollectionReusableView & JLReusable>(_: T.Type, forSupplementaryViewOfKind elementKind: String) {
-        register(T.self, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
-    }
-    
-    public func register<T: UICollectionReusableView & JLReusable & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle? = nil) {
-        guard let nib = T.nib(bundle: bundle) else { return }
-        register(nib, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
-    }
-    
-    public func register<T: UICollectionViewCell & JLReusable>(_: T.Type) {
+    public func register<T: UICollectionViewCell & JLReusable>(_: T.Type, bundle: Bundle? = nil) {
         register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
     public func register<T: UICollectionViewCell & JLReusable & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
         guard let nib = T.nib(bundle: bundle) else { return }
         register(nib, forCellWithReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    public func register<T: UICollectionReusableView & JLReusable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle? = nil) {
+        register(T.self, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    public func register<T: UICollectionReusableView & JLReusable & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle? = nil) {
+        guard let nib = T.nib(bundle: bundle) else { return }
+        register(nib, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
     
     public func dequeueReusableCell<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T where T: JLReusable {
