@@ -66,7 +66,7 @@ extension UIView {
         self.layer.mask = nil
     }
     
-    @objc public func add(to view:UIView?) -> Self {
+    @objc @discardableResult public func add(to view:UIView?) -> Self {
         view?.addSubview(self)
         return self
     }

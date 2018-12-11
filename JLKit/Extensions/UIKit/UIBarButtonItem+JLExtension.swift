@@ -18,10 +18,12 @@ extension UIBarButtonItem {
         if let action = action {
             button.addTarget(target, action: action, for: .touchUpInside)
         }
-
+        
         if let window = UIApplication.shared.delegate?.window, let tineColor = window?.tintColor {
             button.tintColor = tineColor
         }
+        
+        button.sizeToFit()
         self.init(customView: button)
     }
     
