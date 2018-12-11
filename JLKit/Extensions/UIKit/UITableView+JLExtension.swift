@@ -21,5 +21,14 @@ extension UITableView {
         }
         return nil
     }
+    
+    @objc public func isLastRowOfSection(in indexPath: IndexPath) -> Bool {
+        return numberOfRows(inSection: indexPath.section) - 1 == indexPath.row
+    }
+    
+    @objc public func isLastSection(for indexPath: IndexPath) -> Bool {
+        return numberOfSections - 1 == indexPath.section
+    }
 }
+
 
