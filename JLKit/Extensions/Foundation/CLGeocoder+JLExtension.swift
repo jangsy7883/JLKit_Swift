@@ -1,9 +1,9 @@
 //
 //  CLGeocoder+JLExtension.swift
-//  Goodoc
+//  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 4. 27..
-//  Copyright © 2018년 Goodoc. All rights reserved.
+//  Copyright © 2018년 JLKit_Swift. All rights reserved.
 //
 
 import Foundation
