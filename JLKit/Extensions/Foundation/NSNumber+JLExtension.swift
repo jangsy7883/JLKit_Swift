@@ -1,6 +1,6 @@
 //
 //  NSNumber+JLExtension.swift
-//  Goodoc
+//  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 2. 26..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
