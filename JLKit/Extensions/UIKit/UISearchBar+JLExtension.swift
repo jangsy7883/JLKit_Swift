@@ -2,8 +2,8 @@
 //  UISearchBar+JLExtension.swift
 //  JLKit_Swift
 //
-//  Created by Woody on 12/10/2018.
-//  Copyright © 2018 Woody. All rights reserved.
+//  Created by Jangsy on 12/10/2018.
+//  Copyright © 2018 Dalkomm. All rights reserved.
 //
 
 import UIKit
