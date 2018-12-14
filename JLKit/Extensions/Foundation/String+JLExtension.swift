@@ -3,7 +3,7 @@
 //  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 1. 18..
-//  Copyright © 2018년 JLKit_Swift. All rights reserved.
+//  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
 import Foundation
@@ -32,8 +32,8 @@ extension String {
         return UIImage(named: self)
     }
 
-    public func localized(tableName: String? = nil, comment: String = "") -> String {
-        return NSLocalizedString(self, comment: "")
+    public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "") -> String {
+        return NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
     }
     
     //

@@ -3,7 +3,7 @@
 //  JLKit_Swift
 //
 //  Created by jangsy on 2018. 8. 27..
-//  Copyright © 2018년 JLKit_Swift. All rights reserved.
+//  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
 import Foundation

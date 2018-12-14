@@ -2,8 +2,8 @@
 //  IndexSet+JLExtension.swift
 //  JLKit_Swift
 //
-//  Created by Woody on 2018. 9. 4..
-//  Copyright © 2018년 Woody. All rights reserved.
+//  Created by Jangsy on 2018. 9. 4..
+//  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
 import Foundation

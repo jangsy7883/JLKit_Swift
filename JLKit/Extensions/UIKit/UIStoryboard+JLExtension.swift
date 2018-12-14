@@ -3,7 +3,7 @@
 //  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 2. 19..
-//  Copyright © 2018년 JLKit_Swift. All rights reserved.
+//  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
 import UIKit
