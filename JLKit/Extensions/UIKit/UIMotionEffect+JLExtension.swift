@@ -1,6 +1,6 @@
 //
 //  UIMotionEffect+JLExtension.swift
-//  JLKit_Swift
+//  Goodoc
 //
 //  Created by Jangsy on 2018. 1. 26..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
