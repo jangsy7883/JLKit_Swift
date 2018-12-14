@@ -1,9 +1,9 @@
 //
 //  Dictionary+JLExtension.swift
-//  Goodoc
+//  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 3. 20..
-//  Copyright © 2018년 Goodoc. All rights reserved.
+//  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
 import Foundation

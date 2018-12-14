@@ -1,6 +1,6 @@
 //
 //  UIImage+JLExtension.swift
-//  Goodoc
+//  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 4. 11..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
@@ -33,6 +33,8 @@ extension UIImage {
         }
     }
     
+    // MARK:
+    
     public func withInsets(_ insets: UIEdgeInsets) -> UIImage? {
         let size = CGSize(width: self.size.width + insets.left + insets.right, height: self.size.height + insets.top + insets.bottom)
         UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
@@ -58,6 +60,8 @@ extension UIImage {
         guard let cgImage = self.cgImage else { return nil }
         return UIImage(cgImage: cgImage, scale: scale, orientation: orientation)
     }
+    
+    // MARK:
     
     public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         var image: UIImage?
@@ -96,25 +100,19 @@ extension UIImage {
     }
     
     public func resize(toSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage? {
+        let ratio = resizeMode.aspectRatio(between: toSize, and: size)
+        let rect = CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio)
         
-        var rect = CGRect.zero
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        let context = CGContext(data: nil, width: Int(rect.size.width), height: Int(rect.size.height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
         
-        if resizeMode == .scaleToFill {
-            rect.size = toSize
-        } else {
-            let aspectRatio = resizeMode.aspectRatio(between: toSize, and: size)
-            
-            rect.size.width  = size.width * aspectRatio
-            rect.size.height = size.height * aspectRatio
-            rect.origin.x    = (toSize.width - size.width * aspectRatio) / 2.0
-            rect.origin.y    = (toSize.height - size.height * aspectRatio) / 2.0
-        }
+        let transform = CGAffineTransform.identity
+        context?.concatenate(transform)
+        context?.interpolationQuality = CGInterpolationQuality.high
+        context?.draw(self.cgImage!, in: rect)
         
-        UIGraphicsBeginImageContext(toSize)
-        draw(in: rect)
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return scaledImage
+        let newImage = UIImage(cgImage: (context?.makeImage()!)!, scale: self.scale, orientation: self.imageOrientation)
+        return newImage
     }
 }
