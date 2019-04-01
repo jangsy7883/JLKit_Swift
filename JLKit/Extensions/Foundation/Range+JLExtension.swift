@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 extension Range where Bound == String.Index {
     public var nsRange: NSRange {
         return NSRange(location: self.lowerBound.encodedOffset,
@@ -15,3 +15,4 @@ extension Range where Bound == String.Index {
                         self.lowerBound.encodedOffset)
     }
 }
+*/
