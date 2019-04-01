@@ -32,7 +32,7 @@ extension UIViewController {
     }
     
     @objc public var isPresented: Bool {
-        if let index = navigationController?.viewControllers.index(of: self), index > 0 {
+        if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
             return false
         } else if presentingViewController != nil {
             return true
