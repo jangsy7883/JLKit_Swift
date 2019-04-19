@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "JLKit_Swift"
-  s.version      = "0.0.23"
+  s.version      = "0.0.24"
   s.summary      = "JLKit"
 
   # This description is used to generate tags and improve search results.
