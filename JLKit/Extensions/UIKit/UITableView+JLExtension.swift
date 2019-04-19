@@ -10,6 +10,15 @@ import UIKit
 
 extension UITableView {
     
+    @objc public func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
+        if indexPath.section >= numberOfSections {
+            return false
+        } else if indexPath.row >= numberOfRows(inSection: indexPath.section) {
+            return false
+        }
+        return true
+    }
+    
     @objc public func indexPath(forCellContainingView:UIView?) -> IndexPath? {
         var view = forCellContainingView
         while view != nil {
@@ -30,5 +39,3 @@ extension UITableView {
         return numberOfSections - 1 == indexPath.section
     }
 }
-
-
