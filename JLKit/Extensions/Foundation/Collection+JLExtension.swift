@@ -20,4 +20,17 @@ extension Collection {
         return jsonData
     }
 
+    public func randomElements(_ count: UInt) -> [Element] {
+        let sampleCount = Swift.min(numericCast(count), self.count)
+        
+        var elements = Array(self)
+        var samples: [Element] = []
+        
+        while samples.count < sampleCount {
+            let idx = (0..<elements.count).randomElement()!
+            samples.append(elements.remove(at: idx))
+        }
+        
+        return samples
+    }
 }

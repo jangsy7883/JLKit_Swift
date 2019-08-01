@@ -20,4 +20,19 @@ extension Array {
             self[index] = value
         }
     }
+    
+    public mutating func shuffle() {
+        guard self.count >= 1 else { return }
+        
+        for i in (1..<self.count).reversed() {
+            let j = (0...i).randomElement()!
+            self.swapAt(j, i)
+        }
+    }
+    
+    public var shuffled: [Element] {
+        var elements = self
+        elements.shuffle()
+        return elements
+    }
 }

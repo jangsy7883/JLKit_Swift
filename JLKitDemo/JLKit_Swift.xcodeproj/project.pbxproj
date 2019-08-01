@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F172B63229E1EBF00E584A4 /* UIColor+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */; };
+		2F1934EB22B9AF7900064CDE /* NumberFormatter+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */; };
+		2F1934ED22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */; };
 		3D5B275D20B5270D003FA63A /* JLReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26F920B5270D003FA63A /* JLReusable.swift */; };
 		3D5B275E20B5270D003FA63A /* UIFont+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */; };
 		3D5B275F20B5270D003FA63A /* UIImage+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JLExtension.swift"; sourceTree = "<group>"; };
+		2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+JLExtension.swift"; sourceTree = "<group>"; };
+		2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B26F920B5270D003FA63A /* JLReusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLReusable.swift; sourceTree = "<group>"; };
 		3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+JLExtension.swift"; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 				EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */,
 				EFEEBE2821707D2200C78C2C /* UISearchBar+JLExtension.swift */,
 				2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */,
+				2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				3D5B270E20B5270D003FA63A /* String+JLExtension.swift */,
 				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
 				EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */,
+				2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -466,6 +472,8 @@
 				EFE44994213E0FF90022B495 /* UINavigationBar+JLExtension.swift in Sources */,
 				3D5B277620B5270D003FA63A /* UIScreen+JLKit.m in Sources */,
 				3D5B276920B5270D003FA63A /* CLPlacemark+JLExtension.swift in Sources */,
+				2F1934ED22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift in Sources */,
+				2F1934EB22B9AF7900064CDE /* NumberFormatter+JLExtension.swift in Sources */,
 				3D5B278D20B5270D003FA63A /* NSDate+JLKit.m in Sources */,
 				3D5B277320B5270D003FA63A /* UIDevice+JLKit.m in Sources */,
 				EFEEBE2921707D2200C78C2C /* UISearchBar+JLExtension.swift in Sources */,
