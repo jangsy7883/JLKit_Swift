@@ -16,8 +16,6 @@
 
 + (UIImage *)imageNamed:(NSString *)name orientation:(UIImageOrientation)orientation;
 
-//- (UIImage *)imageWithTintColor:(UIColor *)color;
-
 //
 - (UIImage *)cropImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular;
 - (UIImage *)imageWithAngle:(NSInteger)angle;
