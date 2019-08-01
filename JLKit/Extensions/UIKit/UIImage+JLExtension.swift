@@ -103,16 +103,26 @@ extension UIImage {
         let ratio = resizeMode.aspectRatio(between: toSize, and: size)
         let rect = CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio)
         
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let context = CGContext(data: nil, width: Int(rect.size.width), height: Int(rect.size.height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+//        let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+//        let context = CGContext(data: nil, width: Int(rect.size.height), height: Int(rect.size.width), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+//
+//        let transform = CGAffineTransform.identity
+//        context?.concatenate(transform)
+//        context?.interpolationQuality = CGInterpolationQuality.high
+//        context?.draw(self.cgImage!, in: rect)
+//
+//        let newImage = UIImage(cgImage: (context?.makeImage()!)!, scale: self.scale, orientation: self.imageOrientation)
+//        return newImage
         
-        let transform = CGAffineTransform.identity
-        context?.concatenate(transform)
-        context?.interpolationQuality = CGInterpolationQuality.high
-        context?.draw(self.cgImage!, in: rect)
+        var resultImage = self
         
-        let newImage = UIImage(cgImage: (context?.makeImage()!)!, scale: self.scale, orientation: self.imageOrientation)
-        return newImage
+        UIGraphicsBeginImageContextWithOptions(rect.size, true, 1.0)
+        self.draw(in: rect)
+        guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else { return resultImage }
+        resultImage = resizedImage
+        UIGraphicsEndImageContext()
+        
+        return resultImage
     }
 }
