@@ -31,7 +31,7 @@
     }
     return nil;
 }
-
+/*
 - (UIImage *)imageWithTintColor:(UIColor *)color {
     if (color) {
         UIGraphicsBeginImageContextWithOptions(self.size, NO, [UIScreen mainScreen].scale);
@@ -52,6 +52,7 @@
     
     return self;
 }
+ */
 
 #pragma mark - equal
 
