@@ -31,28 +31,6 @@
     }
     return nil;
 }
-/*
-- (UIImage *)imageWithTintColor:(UIColor *)color {
-    if (color) {
-        UIGraphicsBeginImageContextWithOptions(self.size, NO, [UIScreen mainScreen].scale);
-        
-        CGRect rect = CGRectZero;
-        rect.size = self.size;
-        
-        [color set];
-        UIRectFill(rect);
-        
-        [self drawInRect:rect blendMode:kCGBlendModeDestinationIn alpha:1.0];
-        
-        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        return image;
-    }
-    
-    return self;
-}
- */
 
 #pragma mark - equal
 
