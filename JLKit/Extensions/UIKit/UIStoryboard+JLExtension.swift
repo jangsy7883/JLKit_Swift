@@ -5,7 +5,7 @@
 //  Created by Jangsy on 2018. 2. 19..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UIStoryboard {
@@ -24,3 +24,4 @@ extension UIStoryboard {
         return nil
     }
 }
+#endif

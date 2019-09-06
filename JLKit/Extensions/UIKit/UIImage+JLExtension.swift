@@ -65,7 +65,11 @@ extension UIImage {
     
     public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         var image: UIImage?
+        #if os(iOS)
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        #else
+        UIGraphicsBeginImageContextWithOptions(size, false, 1)
+        #endif
         if let context = UIGraphicsGetCurrentContext() {
             context.setFillColor(color.cgColor)
             context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
