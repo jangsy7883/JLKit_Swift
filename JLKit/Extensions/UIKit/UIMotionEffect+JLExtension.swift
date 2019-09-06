@@ -5,7 +5,7 @@
 //  Created by Jangsy on 2018. 1. 26..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UIMotionEffect {
@@ -26,3 +26,4 @@ extension UIMotionEffect {
         return group
     }
 }
+#endif

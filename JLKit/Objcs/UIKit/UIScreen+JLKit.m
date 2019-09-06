@@ -5,7 +5,7 @@
 //  Created by Jangsy7883 on 2015. 10. 4..
 //  Copyright © 2015년 Dalkomm. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import "UIScreen+JLKit.h"
 
 @implementation UIScreen (Additions)
@@ -26,3 +26,4 @@
     }
 }
 @end
+#endif

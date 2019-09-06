@@ -5,7 +5,7 @@
 //  Created by jangsy on 2018. 5. 23..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UICollectionViewCell {
@@ -27,3 +27,4 @@ extension UICollectionViewCell {
         return collectionView.indexPath(for: self)
     }
 }
+#endif

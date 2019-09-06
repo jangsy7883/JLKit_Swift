@@ -5,7 +5,7 @@
 //  Created by Jangsy7883 on 11. 9. 5..
 //  Copyright © 2012년 Dalkomm Apps. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import <UIKit/UIKit.h>
 
 #define IS_IPAD         (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -31,3 +31,4 @@
 @property (nonatomic, readonly ,  strong) NSString* ipAddressForWiFi; //연결된 WiFi의 IP Address
 
 @end
+#endif

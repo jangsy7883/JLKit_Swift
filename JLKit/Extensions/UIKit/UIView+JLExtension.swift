@@ -5,7 +5,7 @@
 //  Created by Jangsy on 2018. 1. 18..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UIView {
@@ -86,3 +86,4 @@ extension UIView {
         }, completion: completion)
     }
 }
+#endif

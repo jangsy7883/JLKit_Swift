@@ -6,6 +6,7 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension UIApplication {
@@ -33,3 +34,4 @@ extension UIApplication {
         }
     }
 }
+#endif
