@@ -9,6 +9,7 @@
 import Foundation
 
 extension Error {
+    #if os(iOS)
     public func showAlertWithActionTitle(_ title: String!) {
         guard let viewController = UIViewController.topMostViewController() else { return }
         let alertController = UIAlertController(title: nil, message: localizedDescription, preferredStyle: .alert)
@@ -16,4 +17,5 @@ extension Error {
         
         viewController.present(alertController, animated: true, completion: nil)
     }
+    #endif
 }

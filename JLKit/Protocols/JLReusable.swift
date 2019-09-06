@@ -5,7 +5,7 @@
 //  Created by jangsy on 2018. 3. 12..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import Foundation
 import UIKit
 
@@ -93,3 +93,4 @@ extension UICollectionView {
     }
     
 }
+#endif
