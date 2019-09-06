@@ -5,7 +5,7 @@
 //  Created by Jangsy7883 on 11. 9. 5..
 //  Copyright © 2012년 Dalkomm Apps. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import "UIDevice+JLKit.h"
 
 #include <sys/socket.h> // Per msqr
@@ -131,3 +131,4 @@
 }
 
 @end
+#endif

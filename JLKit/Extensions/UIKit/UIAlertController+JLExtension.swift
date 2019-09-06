@@ -6,6 +6,7 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 extension UIAlertController {
@@ -38,3 +39,4 @@ extension UIAlertController {
         UIViewController.topMostViewController()?.present(self, animated: animated, completion: completion)
     }
 }
+#endif

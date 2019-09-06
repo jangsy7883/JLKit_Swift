@@ -5,7 +5,7 @@
 //  Created by Jangsy on 2018. 5. 10..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UIBarButtonItem {
@@ -32,3 +32,4 @@ extension UIBarButtonItem {
         self.width = fixedSpace
     }
 }
+#endif

@@ -117,7 +117,7 @@ extension UIImage {
         
         var resultImage = self
         
-        UIGraphicsBeginImageContextWithOptions(rect.size, true, 1.0)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
         self.draw(in: rect)
         guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else { return resultImage }
         resultImage = resizedImage
