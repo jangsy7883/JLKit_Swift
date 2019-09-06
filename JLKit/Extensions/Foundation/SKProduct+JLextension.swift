@@ -5,7 +5,7 @@
 //  Created by jangsy on 2018. 5. 23..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import Foundation
 import StoreKit
 
@@ -19,3 +19,4 @@ extension SKProduct {
         return formatter.string(from: price)
     }
 }
+#endif
