@@ -25,9 +25,11 @@
 + (UIImage *)imageNamed:(NSString *)name orientation:(UIImageOrientation)orientation {
     UIImage *image = [UIImage imageNamed:name];
     if (image) {
-        return [[UIImage alloc] initWithCGImage:image.CGImage
-                                          scale:[UIScreen mainScreen].scale
-                                    orientation:UIImageOrientationLeft];
+        #if TARGET_OS_IOS
+        return [[UIImage alloc] initWithCGImage:image.CGImage scale:[UIScreen mainScreen].scale orientation:UIImageOrientationLeft];
+        #else
+        return [[UIImage alloc] initWithCGImage:image.CGImage scale:1 orientation:UIImageOrientationLeft];
+        #endif
     }
     return nil;
 }
@@ -56,10 +58,7 @@
 }
 
 - (BOOL)isEqualToImage:(UIImage *)toImage {
-    if (toImage == nil) {
-        return NO;
-    }
-    
+    if (toImage == nil) { return NO; }    
     NSData *data1 = UIImagePNGRepresentation(self);
     NSData *data2 = UIImagePNGRepresentation(toImage);
     
@@ -100,7 +99,7 @@
 }
 
 #pragma mark - crop
-
+#if TARGET_OS_IOS
 - (UIImage *)cropImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular {
     UIImage *croppedImage = nil;
     UIGraphicsBeginImageContextWithOptions(frame.size, ![self hasAlpha] && !circular, self.scale); {
@@ -139,7 +138,7 @@
                               angle:angle
                        circularClip:NO];
 }
-
+#endif
 #pragma mark - GETTERS
 
 - (BOOL)hasAlpha {
