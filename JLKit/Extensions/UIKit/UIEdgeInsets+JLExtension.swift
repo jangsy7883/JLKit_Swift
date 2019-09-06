@@ -5,7 +5,7 @@
 //  Created by 장석용 on 19/06/2019.
 //  Copyright © 2019 Woody. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UIEdgeInsets {
@@ -25,3 +25,4 @@ extension UIEdgeInsets {
         return inset
     }
 }
+#endif

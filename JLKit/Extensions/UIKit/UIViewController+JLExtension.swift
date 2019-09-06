@@ -5,7 +5,7 @@
 //  Created by Jangsy on 2018. 9. 4..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UIViewController {
@@ -45,3 +45,4 @@ extension UIViewController {
         }
     }
 }
+#endif

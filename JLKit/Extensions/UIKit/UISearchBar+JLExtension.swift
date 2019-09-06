@@ -5,7 +5,7 @@
 //  Created by Jangsy on 12/10/2018.
 //  Copyright © 2018 Dalkomm. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UISearchBar {
@@ -28,3 +28,4 @@ extension UISearchBar {
         return findTextField(in: self)
     }
 }
+#endif

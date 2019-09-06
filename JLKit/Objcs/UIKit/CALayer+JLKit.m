@@ -5,7 +5,7 @@
 //  Created by Jangsy7883 on 2015. 12. 2..
 //  Copyright © 2015년 Dalkomm. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import "CALayer+JLKit.h"
 #import <UIKit/UIKit.h>
 
@@ -20,3 +20,4 @@
 }
 
 @end
+#endif
