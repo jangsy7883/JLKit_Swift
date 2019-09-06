@@ -17,9 +17,10 @@
 + (UIImage *)imageNamed:(NSString *)name orientation:(UIImageOrientation)orientation;
 
 //
+#if TARGET_OS_IOS
 - (UIImage *)cropImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular;
 - (UIImage *)imageWithAngle:(NSInteger)angle;
-
+#endif
 //
 - (CGSize)sizeToFitByWidth:(CGFloat)width scaleAspectFit:(BOOL)scaleAspectFit;
 - (CGSize)sizeToFit:(CGSize)size scaleAspectFit:(BOOL)scaleAspectFit;
