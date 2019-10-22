@@ -15,7 +15,7 @@ extension UIButton {
         setBackgroundImage(UIImage(color: color), for: state)
     }
     
-    @objc public func withCenterVertically(_ padding:Float) -> UIButton {
+    @objc @discardableResult public func withCenterVertically(_ padding:Float) -> UIButton {
         guard let imageSize = self.imageView?.frame.size else { return self }
         guard let titleSize = self.titleLabel?.frame.size else { return self }
         
