@@ -19,6 +19,7 @@ extension Date {
     private static let weekInSeconds: Double = 604800
     private static let yearInSeconds: Double = 31556926
     
+    /*
     public enum DateComparisonType {
         // Days
         case isToday
@@ -48,13 +49,15 @@ extension Date {
         case isWeekday
         case isWeekend
     }
-
+     */
+    
     public static func componentFlags() -> Set<Calendar.Component> {
         return [.year, .month, .day, .weekOfYear, .hour, .minute, .second, .weekday, .weekdayOrdinal, .weekOfYear]
     }
     
     //MARK : Init
     
+    /*
     public func compare(_ comparison: DateComparisonType) -> Bool {
         switch comparison {
         case .isToday:
@@ -118,7 +121,7 @@ extension Date {
             return (component(.weekday) == range.lowerBound || component(.weekday) == range.upperBound - range.lowerBound)
         }
     }
-    
+    */
     public func adjust(_ component: DateComponentType, offset: Int) -> Date {
         var dateComp = DateComponents()
         switch component {
