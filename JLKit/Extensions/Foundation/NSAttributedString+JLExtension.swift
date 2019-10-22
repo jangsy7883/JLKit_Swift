@@ -13,7 +13,7 @@ extension NSMutableAttributedString {
         if let range = string.range(of: text) {
             let startPos = string.distance(from: string.startIndex, to: range.lowerBound)
             
-            addAttributes(attrs, range: NSMakeRange(startPos, text.count))
+            addAttributes(attrs, range: NSMakeRange(startPos, text.utf16.count))
         }
     }
     
