@@ -8,12 +8,12 @@
 
 Pod::Spec.new do |s|
     s.name          = 'JLKit_Swift'
-    s.version       = '0.0.40'
+    s.version       = '0.0.41'
     s.summary       = 'JLKit'
     s.homepage      = 'https://github.com/jangsy7883/JLKit_Swift'
     s.license       = { :type => 'MIT', :file => 'LICENSE' }
     s.author        = { 'jangsy' => 'jangsy7883@gmail.com' }
-    s.source        = { :git => 'https://github.com/jangsy7883/JLKit_Swift.git', :tag => s.version.to_s, submodules => true }
+    s.source        = { :git => 'https://github.com/jangsy7883/JLKit_Swift.git', :tag => s.version.to_s }
     s.swift_version = '5.0'
     s.ios.deployment_target = '9.0'
     s.watchos.deployment_target = '5.3'
@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'Core' do |sp|
         sp.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Protocols/'
+        sp.frameworks = 'Photos'
     end
 
     s.subspec 'Objcs' do |sp|
