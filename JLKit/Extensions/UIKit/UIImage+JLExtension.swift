@@ -16,15 +16,12 @@ extension UIImage {
     public enum UIImageResizeMode {
         case aspectFit
         case aspectFill
-        case scaleToFill
         
         func aspectRatio(between size: CGSize, and otherSize: CGSize) -> CGFloat {
             let aspectWidth  = size.width/otherSize.width
             let aspectHeight = size.height/otherSize.height
             
             switch self {
-            case .scaleToFill:
-                return 1
             case .aspectFill:
                 return max(aspectWidth, aspectHeight)
             case .aspectFit:
@@ -90,35 +87,32 @@ extension UIImage {
     
     public func cropToSquare() -> UIImage? {
         let shortest = min(size.width, size.height)
-        return resize(toSize: CGSize(width: shortest, height: shortest), resizeMode: .aspectFill)
+        return resize(rect: CGRect(x: 0, y: 0, width: shortest, height: shortest))
     }
     
     // MARK: Resize
-    public func resize(toMaxLength: CGFloat) -> UIImage? {
-        let horizontalRatio = toMaxLength / size.width
-        let verticalRatio = toMaxLength / size.height
+    public func resize(toMaxPixel pixel: CGFloat) -> UIImage? {
+        let horizontalRatio = pixel / size.width
+        let verticalRatio = pixel / size.height
         let ratio = min(horizontalRatio, verticalRatio)
-        
-        let toSize = CGSize(width: size.width * ratio, height: size.height * ratio)
-        return resize(toSize: toSize, resizeMode: .scaleToFill)
+        return resize(rect: CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio))
+    }
+
+    public func resize(toMinPixel pixel: CGFloat) -> UIImage? {
+        let horizontalRatio = pixel / size.width
+        let verticalRatio = pixel / size.height
+        let ratio = max(horizontalRatio, verticalRatio)
+        return resize(rect: CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio))
     }
     
     public func resize(toSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage? {
         let ratio = resizeMode.aspectRatio(between: toSize, and: size)
         let rect = CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio)
         
-//        let colorSpace = CGColorSpaceCreateDeviceRGB()
-//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-//        let context = CGContext(data: nil, width: Int(rect.size.height), height: Int(rect.size.width), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
-//
-//        let transform = CGAffineTransform.identity
-//        context?.concatenate(transform)
-//        context?.interpolationQuality = CGInterpolationQuality.high
-//        context?.draw(self.cgImage!, in: rect)
-//
-//        let newImage = UIImage(cgImage: (context?.makeImage()!)!, scale: self.scale, orientation: self.imageOrientation)
-//        return newImage
-        
+        return resize(rect: rect)
+    }
+    
+    public func resize(rect: CGRect) -> UIImage? {
         var resultImage = self
         
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
