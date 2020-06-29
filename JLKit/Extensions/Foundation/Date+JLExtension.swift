@@ -7,7 +7,7 @@
 //
 
 import Foundation
-/*
+
 public enum DateComponentType {
     case second, minute, hour, day, weekday, weekdayOrdinal, week, month, year
 }
@@ -196,7 +196,7 @@ extension Date {
     }
     
     //MARK : Init
-    
+/*
     public init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.UTC) {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
@@ -228,5 +228,6 @@ extension Date {
         formatter.dateFormat = format
         return formatter.string(from: self)
     }
+ */
 }
-*/
+
