@@ -5,7 +5,7 @@
 //  Created by 장석용 on 2020/06/29.
 //  Copyright © 2020 Woody. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension UIImageView {
@@ -14,3 +14,4 @@ extension UIImageView {
         self.tintColor = tintColor
     }
 }
+#endif
