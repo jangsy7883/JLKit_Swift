@@ -9,11 +9,11 @@
 import Foundation
 
 extension Int64 {
-    var intValue: Int? {
+    public var intValue: Int? {
         return Int(exactly: self)
     }
 
-    var string: String {
+    public var string: String {
         return String(self)
     }
 }

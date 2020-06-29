@@ -71,7 +71,7 @@ extension String {
     
     
     #if os(iOS)
-    func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
+    public func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
         return self.boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
     }
     #endif
