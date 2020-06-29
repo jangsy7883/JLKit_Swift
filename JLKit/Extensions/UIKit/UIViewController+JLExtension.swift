@@ -8,6 +8,22 @@
 #if os(iOS)
 import UIKit
 
+extension UIStoryboard {
+    public enum Name: String {
+        case main = "Main"
+
+        public func viewController(identifier: String) -> UIViewController {
+            let storyboard = UIStoryboard(name: self.rawValue, bundle: nil)
+            return storyboard.instantiateViewController(withIdentifier: identifier)
+        }
+
+        public func initialViewController() -> UIViewController? {
+            let storyboard = UIStoryboard(name: self.rawValue, bundle: nil)
+            return storyboard.instantiateInitialViewController()
+        }
+    }
+}
+
 extension UIViewController {
     @objc public static func topMostViewController(_ baseViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let navigationController = baseViewController as? UINavigationController {
@@ -44,25 +60,7 @@ extension UIViewController {
             return false
         }
     }
-}
 
-extension UIStoryboard {
-    public enum Name: String {
-        case main = "Main"
-
-        public func viewController(identifier: String) -> UIViewController {
-            let storyboard = UIStoryboard(name: self.rawValue, bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: identifier)
-        }
-
-        public func initialViewController() -> UIViewController? {
-            let storyboard = UIStoryboard(name: self.rawValue, bundle: nil)
-            return storyboard.instantiateInitialViewController()
-        }
-    }
-}
-
-extension UIViewController {
     public static func instantiate(storyboard: UIStoryboard.Name, identifier: String) -> UIViewController {
         let storyboard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: identifier)
