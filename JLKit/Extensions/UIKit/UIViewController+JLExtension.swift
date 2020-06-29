@@ -10,7 +10,7 @@ import UIKit
 
 extension UIStoryboard {
     public struct Name {
-        let name: String
+        public let name: String
         
         public init(_ name: String) {
             self.name = name
