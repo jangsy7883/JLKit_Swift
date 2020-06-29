@@ -6,7 +6,7 @@
 //  Copyright © 2020 Woody. All rights reserved.
 //
 
-import Foundation
+#if canImport(Photos)
 import Photos
 
 extension PHPhotoLibrary {
@@ -23,3 +23,4 @@ extension PHPhotoLibrary {
         }
     }
 }
+#endif

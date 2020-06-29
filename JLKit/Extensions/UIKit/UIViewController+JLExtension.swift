@@ -71,6 +71,6 @@ extension UIViewController {
     public static func instantiate(storyboard: UIStoryboard.Name) -> Self {
         return instantiate(storyboard: storyboard, identifier: String(describing: self)) as! Self
     }
-}≈
+}
 
 #endif
