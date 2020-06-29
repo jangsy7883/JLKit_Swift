@@ -45,4 +45,32 @@ extension UIViewController {
         }
     }
 }
+
+extension UIStoryboard {
+    public enum Name: String {
+        case main = "Main"
+
+        public func viewController(identifier: String) -> UIViewController {
+            let storyboard = UIStoryboard(name: self.rawValue, bundle: nil)
+            return storyboard.instantiateViewController(withIdentifier: identifier)
+        }
+
+        public func initialViewController() -> UIViewController? {
+            let storyboard = UIStoryboard(name: self.rawValue, bundle: nil)
+            return storyboard.instantiateInitialViewController()
+        }
+    }
+}
+
+extension UIViewController {
+    public static func instantiate(storyboard: UIStoryboard.Name, identifier: String) -> UIViewController {
+        let storyboard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: identifier)
+    }
+
+    public static func instantiate(storyboard: UIStoryboard.Name) -> Self {
+        return instantiate(storyboard: storyboard, identifier: String(describing: self)) as! Self
+    }
+}≈
+
 #endif

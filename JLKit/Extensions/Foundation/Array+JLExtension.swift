@@ -35,4 +35,16 @@ extension Array {
         elements.shuffle()
         return elements
     }
+    
+    public subscript (safe range: ClosedRange<Index>) -> ArraySlice<Element> {
+        let from = Swift.max(startIndex, range.lowerBound)
+        let to = Swift.min(endIndex, range.upperBound)
+        return self[from ..< to]
+    }
+    
+    public subscript (safe range: Range<Index>) -> ArraySlice<Element> {
+        let from = Swift.max(startIndex, range.lowerBound)
+        let to = Swift.min(endIndex, range.upperBound)
+        return self[from ..< to]
+    }
 }

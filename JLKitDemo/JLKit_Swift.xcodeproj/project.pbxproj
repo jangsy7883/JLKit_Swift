@@ -10,6 +10,10 @@
 		2F172B63229E1EBF00E584A4 /* UIColor+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */; };
 		2F1934EB22B9AF7900064CDE /* NumberFormatter+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */; };
 		2F1934ED22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */; };
+		2F9D6E0124A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */; };
+		2F9D6E0324A9B894000D9A5B /* UIImageView+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */; };
+		2F9D6E0524A9B8C1000D9A5B /* Int64+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */; };
+		2F9D6E0724A9B909000D9A5B /* Data+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0624A9B909000D9A5B /* Data+JLExtension.swift */; };
 		3D5B275D20B5270D003FA63A /* JLReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26F920B5270D003FA63A /* JLReusable.swift */; };
 		3D5B275E20B5270D003FA63A /* UIFont+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */; };
 		3D5B275F20B5270D003FA63A /* UIImage+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */; };
@@ -83,6 +87,10 @@
 		2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JLExtension.swift"; sourceTree = "<group>"; };
 		2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+JLExtension.swift"; sourceTree = "<group>"; };
 		2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+JLExtension.swift"; sourceTree = "<group>"; };
+		2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+JLExtension.swift"; sourceTree = "<group>"; };
+		2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+JLExtension.swift"; sourceTree = "<group>"; };
+		2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int64+JLExtension.swift"; sourceTree = "<group>"; };
+		2F9D6E0624A9B909000D9A5B /* Data+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B26F920B5270D003FA63A /* JLReusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLReusable.swift; sourceTree = "<group>"; };
 		3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+JLExtension.swift"; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 				EFEEBE2821707D2200C78C2C /* UISearchBar+JLExtension.swift */,
 				2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */,
 				2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */,
+				2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -247,6 +256,9 @@
 				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
 				EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */,
 				2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */,
+				2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */,
+				2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */,
+				2F9D6E0624A9B909000D9A5B /* Data+JLExtension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -462,6 +474,7 @@
 				2F172B63229E1EBF00E584A4 /* UIColor+JLExtension.swift in Sources */,
 				3D5B279D20B53044003FA63A /* UITableView+JLExtension.swift in Sources */,
 				EFE44992213E0F4A0022B495 /* UIAlertController+JLExtension.swift in Sources */,
+				2F9D6E0724A9B909000D9A5B /* Data+JLExtension.swift in Sources */,
 				3D5B276420B5270D003FA63A /* Array+JLExtension.swift in Sources */,
 				3D5B275E20B5270D003FA63A /* UIFont+JLExtension.swift in Sources */,
 				3D5B276220B5270D003FA63A /* UIMotionEffect+JLExtension.swift in Sources */,
@@ -497,12 +510,14 @@
 				3D5B276320B5270D003FA63A /* UIStoryboard+JLExtension.swift in Sources */,
 				EFA61A4B214B3C4900BE99D6 /* JLLoadNib.swift in Sources */,
 				3D5B278420B5270D003FA63A /* NSArray+JLKit.m in Sources */,
+				2F9D6E0124A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift in Sources */,
 				EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */,
 				EF2EEDC5214204B500DFB32B /* TimeZone+JLExtension.swift in Sources */,
 				3D5B27A720B53DC1003FA63A /* UIApplication+JLExtension.swift in Sources */,
 				3D5B279F20B53053003FA63A /* UICollectionView+JLExtension.swift in Sources */,
 				3D5B277220B5270D003FA63A /* CALayer+JLKit.m in Sources */,
 				EFE44996213E15D20022B495 /* IndexSet+JLExtension.swift in Sources */,
+				2F9D6E0524A9B8C1000D9A5B /* Int64+JLExtension.swift in Sources */,
 				EFE4499A213E189B0022B495 /* Collection+JLExtension.swift in Sources */,
 				EFE4498E213E0E720022B495 /* FileManager+JLExtension.swift in Sources */,
 				3D5B276520B5270D003FA63A /* CLGeocoder+JLExtension.swift in Sources */,
@@ -510,6 +525,7 @@
 				3D5B276620B5270D003FA63A /* NSNumber+JLExtension.swift in Sources */,
 				3D5B276F20B5270D003FA63A /* String+JLExtension.swift in Sources */,
 				EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */,
+				2F9D6E0324A9B894000D9A5B /* UIImageView+JLExtension.swift in Sources */,
 				3D5B276020B5270D003FA63A /* UIBarButtonItem+JLExtension.swift in Sources */,
 				3D5B275D20B5270D003FA63A /* JLReusable.swift in Sources */,
 			);

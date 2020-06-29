@@ -18,12 +18,6 @@ extension NSString {
 }
 
 extension String {
-    public var boolValue: Bool {
-        get {
-            return NSString(string: self).boolValue
-        }
-    }
-    
     public var trimmedString: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -73,6 +67,37 @@ extension String {
         
         return NSRange(location: utf16.distance(from: utf16.startIndex, to: from),
                          length: utf16.distance(from: from, to: to))
+    }
+    
+    
+    #if os(iOS)
+    func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
+        return self.boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
+    }
+    #endif
+
+    public var boolValue: Bool {
+        return ["true", "y", "t", "yes", "1"].contains { self.caseInsensitiveCompare($0) == .orderedSame }
+    }
+
+    public var int: Int? {
+        return Int(self)
+    }
+
+    public var url: URL? {
+        return URL(string: self)
+    }
+
+    public var intValue: Int {
+        return int ?? 0
+    }
+
+    public func color() -> UIColor {
+        return UIColor(hex: self)
+    }
+
+    public func attributedString(attributes: [NSAttributedString.Key: Any]?) -> NSAttributedString {
+        return NSAttributedString(string: self, attributes: attributes)
     }
 }
 
