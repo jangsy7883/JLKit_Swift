@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
     s.homepage      = 'https://github.com/jangsy7883/JLKit_Swift'
     s.license       = { :type => 'MIT', :file => 'LICENSE' }
     s.author        = { 'jangsy' => 'jangsy7883@gmail.com' }
-    s.source        = { :git => 'https://github.com/jangsy7883/JLKit_Swift.git', :tag => s.version.to_s }
+    s.source        = { :git => 'https://github.com/jangsy7883/JLKit_Swift.git', :tag => s.version.to_s, submodules => true }
     s.swift_version = '5.0'
     s.ios.deployment_target = '9.0'
     s.watchos.deployment_target = '5.3'
