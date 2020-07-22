@@ -43,14 +43,25 @@ extension UIImage {
     }
     
     public func withTint(_ color: UIColor) -> UIImage? {
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        color.set()
-        UIRectFill(rect)
-        draw(in: rect, blendMode: .destinationIn, alpha: 1.0)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
+        if #available(iOS 13.0, *) {
+            return withTintColor(color, renderingMode: .alwaysOriginal)
+        } else {
+            /*
+             let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+             UIGraphicsBeginImageContextWithOptions(size, false, scale)
+             color.set()
+             UIRectFill(rect)
+             draw(in: rect, blendMode: .destinationIn, alpha: 1.0)
+             let image = UIGraphicsGetImageFromCurrentImageContext()
+             UIGraphicsEndImageContext()
+             return image
+             */
+            defer { UIGraphicsEndImageContext() }
+            UIGraphicsBeginImageContextWithOptions(size, false, scale)
+            color.set()
+            self.withRenderingMode(.alwaysTemplate).draw(in: CGRect(origin: .zero, size: size))
+            return UIGraphicsGetImageFromCurrentImageContext()
+        }
     }
     
     public func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {

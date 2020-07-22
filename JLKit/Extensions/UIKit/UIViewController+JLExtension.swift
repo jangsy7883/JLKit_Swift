@@ -29,7 +29,7 @@ extension UIStoryboard {
 }
 
 extension UIStoryboard.Name {
-    static var main = UIStoryboard.Name("Main")
+    public static var main = UIStoryboard.Name("Main")
 }
 
 extension UIViewController {
