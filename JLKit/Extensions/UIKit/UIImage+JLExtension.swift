@@ -97,7 +97,7 @@ extension UIImage {
     }
     
     public func cropToSquare() -> UIImage? {
-        let shortest = min(size.width, size.height)
+        let shortest = ceil(min(size.width, size.height))
         return resize(rect: CGRect(x: 0, y: 0, width: shortest, height: shortest))
     }
     
@@ -106,19 +106,19 @@ extension UIImage {
         let horizontalRatio = pixel / size.width
         let verticalRatio = pixel / size.height
         let ratio = min(horizontalRatio, verticalRatio)
-        return resize(rect: CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio))
+        return resize(rect: CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio)))
     }
 
     public func resize(toMinPixel pixel: CGFloat) -> UIImage? {
         let horizontalRatio = pixel / size.width
         let verticalRatio = pixel / size.height
         let ratio = max(horizontalRatio, verticalRatio)
-        return resize(rect: CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio))
+        return resize(rect: CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio)))
     }
     
     public func resize(toSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage? {
         let ratio = resizeMode.aspectRatio(between: toSize, and: size)
-        let rect = CGRect(x: 0, y: 0, width: size.width * ratio, height: size.height * ratio)
+        let rect = CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio))
         
         return resize(rect: rect)
     }
