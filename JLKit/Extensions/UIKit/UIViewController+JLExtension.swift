@@ -33,27 +33,53 @@ extension UIStoryboard.Name {
 }
 
 extension UIViewController {
+    private class var keyRootViewController:UIViewController? {
+        let selector = NSSelectorFromString("sharedApplication")
+        guard let application =  UIApplication.perform(selector)?.takeUnretainedValue() as? UIApplication else { return nil }
     
-    @objc public static func topMostViewController(_ baseViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        if let navigationController = baseViewController as? UINavigationController {
-            return topMostViewController(navigationController.visibleViewController)
+        if let viewController = application.keyWindow?.rootViewController {
+            return viewController
+        }else {
+            return application.windows.filter{ $0.rootViewController != nil }.first { $0.isKeyWindow }?.rootViewController
+        }
+    }
+    
+    @objc open class func topMost() -> UIViewController? {
+        return topMost(self.keyRootViewController)
+    }
+    
+    @objc open class func topMost(_ viewController: UIViewController?) -> UIViewController? {
+        
+        // presented view controller
+        if let presentedViewController = viewController?.presentedViewController {
+            return topMost(presentedViewController)
         }
         
-        if let tabBarViewController = baseViewController as? UITabBarController {
+        // UITabBarController
+        if let tabBarViewController = viewController as? UITabBarController {
             if let topViewController = tabBarViewController.moreNavigationController.topViewController, topViewController.view.window != nil {
-                return topMostViewController(topViewController)
+                return topMost(topViewController)
             } else if let selectedViewController = tabBarViewController.selectedViewController {
-                return topMostViewController(selectedViewController)
+                return topMost(selectedViewController)
             }
         }
-        if let splitViewController = baseViewController as? UISplitViewController, splitViewController.viewControllers.count == 1 {
-            return topMostViewController(splitViewController.viewControllers.first)
-        }
-        if let presentedViewController = baseViewController?.presentedViewController {
-            return topMostViewController(presentedViewController)
+        
+        // UINavigationController
+        if let visibleViewController = (viewController as? UINavigationController)?.visibleViewController {
+            return topMost(visibleViewController)
         }
         
-        return baseViewController
+        // UISplitViewController
+        if let splitViewController = viewController as? UISplitViewController, splitViewController.viewControllers.count == 1 {
+            return topMost(splitViewController.viewControllers.first)
+        }
+
+        // UIPageController
+        if let pageViewController = viewController as? UIPageViewController, pageViewController.viewControllers?.count == 1 {
+          return self.topMost(pageViewController.viewControllers?.first)
+        }
+        
+        return viewController
     }
     
     @objc public var isPresented: Bool {

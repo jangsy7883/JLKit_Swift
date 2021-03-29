@@ -10,23 +10,26 @@
 import UIKit
 
 extension UIApplication {
-    /*
-    private static var sharedApplication: UIApplication? {
-        let selector = NSSelectorFromString("sharedApplication")
-        return UIApplication.perform(selector)?.takeUnretainedValue() as? UIApplication
+    private class var sharedApplication: UIApplication? {
+      let selector = NSSelectorFromString("sharedApplication")
+      return UIApplication.perform(selector)?.takeUnretainedValue() as? UIApplication
     }
-     */
     
     @objc public static var isActive: Bool {
-        return UIApplication.shared.applicationState == .active
+        return UIApplication.sharedApplication?.applicationState == .active
     }
     
     @objc public static func open(_ url: URL, completionHandler completion: ((Bool) -> Swift.Void)? = nil) {
+        guard let application = UIApplication.sharedApplication else {
+            completion?(false)
+            return
+        }
+        
         if #available(iOS 10, *) {
-            UIApplication.shared.open(url, completionHandler: completion)
+            application.open(url, completionHandler: completion)
         }else {
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.openURL(url)
+            if application.canOpenURL(url) {
+                application.openURL(url)
                 completion?(true)
             }else {
                 completion?(false)
