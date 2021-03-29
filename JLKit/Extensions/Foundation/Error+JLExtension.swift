@@ -11,7 +11,7 @@ import Foundation
 extension Error {
     #if os(iOS)
     public func showAlertWithActionTitle(_ title: String!) {
-        guard let viewController = UIViewController.topMostViewController() else { return }
+        guard let viewController = UIViewController.topMost() else { return }
         let alertController = UIAlertController(title: nil, message: localizedDescription, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: title, style: .cancel, handler: nil))
         
