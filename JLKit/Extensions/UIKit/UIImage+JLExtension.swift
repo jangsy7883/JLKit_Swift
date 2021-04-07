@@ -66,7 +66,7 @@ extension UIImage {
 
     public func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {
         guard let cgImage = self.cgImage else { return nil }
-        return UIImage(cgImage: cgImage, scale: scale, orientation: orientation)
+        return UIImage(cgImage: cgImage, scale: scale, orientation: orientation).withRenderingMode(renderingMode)
     }
     
     // MARK:
