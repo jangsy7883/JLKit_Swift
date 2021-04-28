@@ -10,9 +10,8 @@ import UIKit
 
 private var kAssociationKeyMaxLength: Int = 0
 private var kAssociationKeyMaxLengthTextView: Int = 0
-extension UITextField {
-
-    @IBInspectable var maxLength: Int {
+public extension UITextField {
+    @IBInspectable public var maxLength: Int {
         get {
             if let length = objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int {
                 return length
@@ -26,7 +25,7 @@ extension UITextField {
         }
     }
 
-    @objc func checkMaxLength(textField: UITextField) {
+    @objc public func checkMaxLength(textField: UITextField) {
         guard let prospectiveText = self.text,
             prospectiveText.count > maxLength
             else {

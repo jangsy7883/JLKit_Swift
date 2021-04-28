@@ -9,7 +9,7 @@
 import Foundation
 
 extension NumberFormatter {
-    static var decimal:NumberFormatter = {
+    public static var decimal:NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.locale = Locale.current

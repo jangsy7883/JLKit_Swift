@@ -8,8 +8,7 @@
 
 import Foundation
 
-protocol CaseIterableDefaultsLast: Decodable & CaseIterable & RawRepresentable
-where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection { }
+public protocol CaseIterableDefaultsLast: Decodable & CaseIterable & RawRepresentabl where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection { }
 
 extension CaseIterableDefaultsLast {
     init(from decoder: Decoder) throws {
@@ -17,8 +16,7 @@ extension CaseIterableDefaultsLast {
     }
 }
 
-protocol CaseIterableDefaultsFirst: Decodable & CaseIterable & RawRepresentable
-where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection { }
+public protocol CaseIterableDefaultsFirst: Decodable & CaseIterable & RawRepresentable where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection { }
 
 extension CaseIterableDefaultsFirst {
     init(from decoder: Decoder) throws {
