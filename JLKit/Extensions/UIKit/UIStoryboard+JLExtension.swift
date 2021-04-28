@@ -9,6 +9,28 @@
 import UIKit
 
 extension UIStoryboard {
+    public struct Name {
+        public let name: String
+        
+        public init(_ name: String) {
+            self.name = name
+        }
+        
+        public func viewController(identifier: String) -> UIViewController {
+            let storyboard = UIStoryboard(name: self.name, bundle: nil)
+            return storyboard.instantiateViewController(withIdentifier: identifier)
+        }
+
+        public func initialViewController() -> UIViewController? {
+            let storyboard = UIStoryboard(name: self.name, bundle: nil)
+            return storyboard.instantiateInitialViewController()
+        }
+    }
+    
+    public static var main = UIStoryboard.Name("Main")
+}
+
+extension UIStoryboard {
     @objc public convenience init(name: String) {
         self.init(name: name, bundle: nil)
     }

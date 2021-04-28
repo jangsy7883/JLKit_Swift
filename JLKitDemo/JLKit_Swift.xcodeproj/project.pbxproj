@@ -10,6 +10,11 @@
 		2F172B63229E1EBF00E584A4 /* UIColor+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */; };
 		2F1934EB22B9AF7900064CDE /* NumberFormatter+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */; };
 		2F1934ED22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */; };
+		2F3CF4AA2638EC7E00F2DD7E /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4A92638EC7E00F2DD7E /* Data+Extension.swift */; };
+		2F3CF4AE2638EE1F00F2DD7E /* CaseIterable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4AD2638EE1F00F2DD7E /* CaseIterable+Extension.swift */; };
+		2F3CF4B22638EEB400F2DD7E /* UITextField+MaxLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */; };
+		2F3CF4B62638EF8500F2DD7E /* CaseIterableDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4B52638EF8500F2DD7E /* CaseIterableDefaults.swift */; };
+		2F3CF4BD2638F0C400F2DD7E /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4BC2638F0C400F2DD7E /* Maths.swift */; };
 		2F9D6E0124A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */; };
 		2F9D6E0324A9B894000D9A5B /* UIImageView+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */; };
 		2F9D6E0524A9B8C1000D9A5B /* Int64+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */; };
@@ -87,6 +92,11 @@
 		2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JLExtension.swift"; sourceTree = "<group>"; };
 		2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+JLExtension.swift"; sourceTree = "<group>"; };
 		2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+JLExtension.swift"; sourceTree = "<group>"; };
+		2F3CF4A92638EC7E00F2DD7E /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		2F3CF4AD2638EE1F00F2DD7E /* CaseIterable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Extension.swift"; sourceTree = "<group>"; };
+		2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+MaxLimit.swift"; sourceTree = "<group>"; };
+		2F3CF4B52638EF8500F2DD7E /* CaseIterableDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseIterableDefaults.swift; sourceTree = "<group>"; };
+		2F3CF4BC2638F0C400F2DD7E /* Maths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
 		2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+JLExtension.swift"; sourceTree = "<group>"; };
 		2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+JLExtension.swift"; sourceTree = "<group>"; };
 		2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int64+JLExtension.swift"; sourceTree = "<group>"; };
@@ -187,9 +197,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F3CF4BB2638F0A000F2DD7E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2F3CF4BC2638F0C400F2DD7E /* Maths.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		3D5B26F820B5270D003FA63A /* protocols */ = {
 			isa = PBXGroup;
 			children = (
+				2F3CF4B52638EF8500F2DD7E /* CaseIterableDefaults.swift */,
 				3D5B26F920B5270D003FA63A /* JLReusable.swift */,
 				EFA61A4A214B3C4900BE99D6 /* JLLoadNib.swift */,
 			);
@@ -215,19 +234,20 @@
 				3D5B27A220B5359F003FA63A /* UIButton+JLExtension.swift */,
 				3D5B279E20B53053003FA63A /* UICollectionView+JLExtension.swift */,
 				3D5B279A20B52FC6003FA63A /* UICollectionViewCell+JLExtension.swift */,
+				2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */,
+				2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */,
 				3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */,
 				3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */,
+				2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */,
 				3D5B270020B5270D003FA63A /* UIMotionEffect+JLExtension.swift */,
 				EFE44993213E0FF90022B495 /* UINavigationBar+JLExtension.swift */,
+				EFEEBE2821707D2200C78C2C /* UISearchBar+JLExtension.swift */,
 				3D5B270120B5270D003FA63A /* UIStoryboard+JLExtension.swift */,
 				3D5B279C20B53044003FA63A /* UITableView+JLExtension.swift */,
 				3D5B279820B52E42003FA63A /* UITableViewCell+JLExtension.swift */,
+				2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */,
 				3D5B26FF20B5270D003FA63A /* UIView+JLExtension.swift */,
 				EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */,
-				EFEEBE2821707D2200C78C2C /* UISearchBar+JLExtension.swift */,
-				2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */,
-				2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */,
-				2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -237,10 +257,13 @@
 			children = (
 				3D5B270320B5270D003FA63A /* Array+JLExtension.swift */,
 				3D5B270D20B5270D003FA63A /* Bundle+JLExtension.swift */,
+				2F3CF4AD2638EE1F00F2DD7E /* CaseIterable+Extension.swift */,
 				3D5B270420B5270D003FA63A /* CLGeocoder+JLExtension.swift */,
 				3D5B270C20B5270D003FA63A /* CLLocation+JLExtension.swift */,
 				3D5B270820B5270D003FA63A /* CLPlacemark+JLExtension.swift */,
 				EFE44999213E189B0022B495 /* Collection+JLExtension.swift */,
+				2F3CF4A92638EC7E00F2DD7E /* Data+Extension.swift */,
+				2F9D6E0624A9B909000D9A5B /* Data+JLExtension.swift */,
 				3D5B270A20B5270D003FA63A /* Date+JLExtension.swift */,
 				3D5B270920B5270D003FA63A /* Dictionary+JLExtension.swift */,
 				3D5B270B20B5270D003FA63A /* Error+JLExtension.swift */,
@@ -248,17 +271,16 @@
 				3D5B270620B5270D003FA63A /* Float+JLExtension.swift */,
 				EFE44995213E15D20022B495 /* IndexSet+JLExtension.swift */,
 				EFE44997213E16C90022B495 /* Int+JLExtension.swift */,
+				2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */,
 				3D5B279620B52A36003FA63A /* NSAttributedString+JLExtension.swift */,
 				3D5B270520B5270D003FA63A /* NSNumber+JLExtension.swift */,
+				2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */,
+				2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */,
 				EFE4498F213E0F220022B495 /* Range+JLExtension.swift */,
 				3D5B279420B5273A003FA63A /* SKProduct+JLextension.swift */,
 				3D5B270E20B5270D003FA63A /* String+JLExtension.swift */,
-				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
 				EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */,
-				2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */,
-				2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */,
-				2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */,
-				2F9D6E0624A9B909000D9A5B /* Data+JLExtension.swift */,
+				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -314,6 +336,7 @@
 		EF2C6803207AE7A9000C07BA /* JLKit */ = {
 			isa = PBXGroup;
 			children = (
+				2F3CF4BB2638F0A000F2DD7E /* Utils */,
 				3D5B270F20B5270D003FA63A /* Objcs */,
 				3D5B26FA20B5270D003FA63A /* Extensions */,
 				3D5B26F820B5270D003FA63A /* protocols */,
@@ -486,6 +509,7 @@
 				3D5B277620B5270D003FA63A /* UIScreen+JLKit.m in Sources */,
 				3D5B276920B5270D003FA63A /* CLPlacemark+JLExtension.swift in Sources */,
 				2F1934ED22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift in Sources */,
+				2F3CF4AA2638EC7E00F2DD7E /* Data+Extension.swift in Sources */,
 				2F1934EB22B9AF7900064CDE /* NumberFormatter+JLExtension.swift in Sources */,
 				3D5B278D20B5270D003FA63A /* NSDate+JLKit.m in Sources */,
 				3D5B277320B5270D003FA63A /* UIDevice+JLKit.m in Sources */,
@@ -503,6 +527,7 @@
 				3D5B27A120B533BE003FA63A /* UIActivityViewController+JLExtension.swift in Sources */,
 				EFE44998213E16C90022B495 /* Int+JLExtension.swift in Sources */,
 				3D5B276720B5270D003FA63A /* Float+JLExtension.swift in Sources */,
+				2F3CF4BD2638F0C400F2DD7E /* Maths.swift in Sources */,
 				3D5B279920B52E42003FA63A /* UITableViewCell+JLExtension.swift in Sources */,
 				3D5B276A20B5270D003FA63A /* Dictionary+JLExtension.swift in Sources */,
 				3D5B275F20B5270D003FA63A /* UIImage+JLExtension.swift in Sources */,
@@ -513,8 +538,10 @@
 				2F9D6E0124A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift in Sources */,
 				EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */,
 				EF2EEDC5214204B500DFB32B /* TimeZone+JLExtension.swift in Sources */,
+				2F3CF4AE2638EE1F00F2DD7E /* CaseIterable+Extension.swift in Sources */,
 				3D5B27A720B53DC1003FA63A /* UIApplication+JLExtension.swift in Sources */,
 				3D5B279F20B53053003FA63A /* UICollectionView+JLExtension.swift in Sources */,
+				2F3CF4B22638EEB400F2DD7E /* UITextField+MaxLimit.swift in Sources */,
 				3D5B277220B5270D003FA63A /* CALayer+JLKit.m in Sources */,
 				EFE44996213E15D20022B495 /* IndexSet+JLExtension.swift in Sources */,
 				2F9D6E0524A9B8C1000D9A5B /* Int64+JLExtension.swift in Sources */,
@@ -524,6 +551,7 @@
 				3D5B279B20B52FC6003FA63A /* UICollectionViewCell+JLExtension.swift in Sources */,
 				3D5B276620B5270D003FA63A /* NSNumber+JLExtension.swift in Sources */,
 				3D5B276F20B5270D003FA63A /* String+JLExtension.swift in Sources */,
+				2F3CF4B62638EF8500F2DD7E /* CaseIterableDefaults.swift in Sources */,
 				EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */,
 				2F9D6E0324A9B894000D9A5B /* UIImageView+JLExtension.swift in Sources */,
 				3D5B276020B5270D003FA63A /* UIBarButtonItem+JLExtension.swift in Sources */,

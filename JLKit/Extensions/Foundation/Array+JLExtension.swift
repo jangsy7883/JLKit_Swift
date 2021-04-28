@@ -9,6 +9,9 @@
 import Foundation
 
 extension Array {
+    
+    //MARK: - Subscript
+    
     public subscript (safe index: Int) -> Element? {
         get{
             return indices ~= index ? self[index] : nil
@@ -20,6 +23,20 @@ extension Array {
             self[index] = value
         }
     }
+    
+    public subscript (safe range: ClosedRange<Index>) -> ArraySlice<Element> {
+        let from = Swift.max(startIndex, range.lowerBound)
+        let to = Swift.min(endIndex, range.upperBound)
+        return self[from ..< to]
+    }
+    
+    public subscript (safe range: Range<Index>) -> ArraySlice<Element> {
+        let from = Swift.max(startIndex, range.lowerBound)
+        let to = Swift.min(endIndex, range.upperBound)
+        return self[from ..< to]
+    }
+
+    //MARK: - Shuffle
     
     public mutating func shuffle() {
         guard self.count >= 1 else { return }
@@ -35,16 +52,17 @@ extension Array {
         elements.shuffle()
         return elements
     }
+        
+    //MARK: - Sort
     
-    public subscript (safe range: ClosedRange<Index>) -> ArraySlice<Element> {
-        let from = Swift.max(startIndex, range.lowerBound)
-        let to = Swift.min(endIndex, range.upperBound)
-        return self[from ..< to]
+    func sorted<T: Comparable>(by compare: (Element) -> T, asc ascendant: Bool = true) -> Array {
+        return self.sorted {
+            if ascendant {
+                return compare($0) < compare($1)
+            }
+
+            return compare($0) > compare($1)
+        }
     }
-    
-    public subscript (safe range: Range<Index>) -> ArraySlice<Element> {
-        let from = Swift.max(startIndex, range.lowerBound)
-        let to = Swift.min(endIndex, range.upperBound)
-        return self[from ..< to]
-    }
+
 }

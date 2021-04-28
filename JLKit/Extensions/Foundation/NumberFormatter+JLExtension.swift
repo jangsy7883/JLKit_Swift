@@ -8,6 +8,15 @@
 
 import Foundation
 
+extension NumberFormatter {
+    static var decimal:NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale.current
+        return formatter
+    }()
+}
+
 extension NumberFormatter {    
     public static func string(value: Int, numberStyle:NumberFormatter.Style) -> String {
         let formatter = NumberFormatter()
