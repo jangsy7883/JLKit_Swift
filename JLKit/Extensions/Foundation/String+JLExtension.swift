@@ -22,21 +22,23 @@ extension String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    public var image: UIImage? {
-        return UIImage(named: self)
-    }
-
     public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "") -> String {
         return NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
     }
     
-    //MARK :
-    
-    func base64Data(options:Data.Base64DecodingOptions = .ignoreUnknownCharacters) -> Data? {
-        return Data(base64Encoded: self, options: options)
+    public static func random(length: Int = 20) -> String {
+        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var randomString: String = ""
+
+        for _ in 0..<length {
+            let randomValue = arc4random_uniform(UInt32(base.count))
+            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+        }
+        return randomString
     }
     
     //MARK : - Range
+    
     public func regexMatches(pattern: String) -> [NSTextCheckingResult]? {
         let regex = try? NSRegularExpression(pattern: pattern, options: [])
         if let matches = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)) {
@@ -69,12 +71,7 @@ extension String {
                          length: utf16.distance(from: from, to: to))
     }
     
-    
-    #if os(iOS)
-    public func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
-        return self.boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
-    }
-    #endif
+    //MARK : - Convert
 
     public var boolValue: Bool {
         return ["true", "y", "t", "yes", "1"].contains { self.caseInsensitiveCompare($0) == .orderedSame }
@@ -92,12 +89,26 @@ extension String {
         return int ?? 0
     }
 
-    public func color() -> UIColor {
-        return UIColor(hex: self)
-    }
-
+    public var color : UIColor { return UIColor(hex: self) }
+    
+    public var image: UIImage? { return UIImage(named: self) }
+    
     public func attributedString(attributes: [NSAttributedString.Key: Any]?) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: attributes)
     }
+    
+    public func base64Data(options:Data.Base64DecodingOptions = .ignoreUnknownCharacters) -> Data? {
+        return Data(base64Encoded: self, options: options)
+    }
 }
 
+
+extension String {
+
+    #if os(iOS)
+    public func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
+        return self.boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
+    }
+    #endif
+
+}

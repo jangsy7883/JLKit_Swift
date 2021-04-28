@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIColor {
+    
+    //MARK: - Hex
+    
     @nonobjc public convenience init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
@@ -25,5 +28,21 @@ extension UIColor {
             (a, r, g, b) = (255, 0, 0, 0)
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+    }
+    
+    public var hex: String {
+        guard let components = cgColor.components, components.count >= 3 else { return "#000000" }
+        let r = Float(components[0])
+        let g = Float(components[1])
+        let b = Float(components[2])
+
+        if components.count >= 4 {
+            let a = Float(components[3])
+            if a < 1 {
+                return String(format: "#%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
+            }
+        }
+
+        return String(format: "#%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
     }
 }

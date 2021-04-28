@@ -14,3 +14,10 @@ extension Int {
         return Int(UInt32(min) + arc4random_uniform(UInt32(form)))
     }
 }
+
+
+extension Int {
+    public var decimalString: String {
+        return NumberFormatter.decimal.string(from: NSNumber(value: self)) ?? "\(self)"
+    }
+}
