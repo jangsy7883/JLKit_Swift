@@ -11,7 +11,7 @@ import Foundation
 extension Collection {
     
     //MARK:
-    var isNotEmpty: Bool {
+    public var isNotEmpty: Bool {
         return !self.isEmpty
     }
     

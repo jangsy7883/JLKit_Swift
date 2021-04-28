@@ -55,7 +55,7 @@ extension Array {
         
     //MARK: - Sort
     
-    func sorted<T: Comparable>(by compare: (Element) -> T, asc ascendant: Bool = true) -> Array {
+    public func sorted<T: Comparable>(by compare: (Element) -> T, asc ascendant: Bool = true) -> Array {
         return self.sorted {
             if ascendant {
                 return compare($0) < compare($1)
