@@ -8,7 +8,7 @@
 
 import Foundation
 
-func max<T>(_ x: T?, _ y: T?) -> T? where T: Comparable {
+public func max<T>(_ x: T?, _ y: T?) -> T? where T: Comparable {
     if let x = x, let y = y {
         return max(x, y)
     } else {
@@ -16,7 +16,7 @@ func max<T>(_ x: T?, _ y: T?) -> T? where T: Comparable {
     }
 }
 
-func min<T>(_ x: T?, _ y: T?) -> T? where T: Comparable {
+public func min<T>(_ x: T?, _ y: T?) -> T? where T: Comparable {
     if let x = x, let y = y {
         return min(x, y)
     } else {
