@@ -97,7 +97,7 @@ extension String {
         return NSAttributedString(string: self, attributes: attributes)
     }
     
-    public func base64Data(options:Data.Base64DecodingOptions = .ignoreUnknownCharacters) -> Data? {
+    public func base64Data(options:Data.Base64DecodingOptions = []) -> Data? {
         return Data(base64Encoded: self, options: options)
     }
 }
