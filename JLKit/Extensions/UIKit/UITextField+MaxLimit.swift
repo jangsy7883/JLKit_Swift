@@ -10,7 +10,7 @@ import UIKit
 
 private var kAssociationKeyMaxLength: Int = 0
 private var kAssociationKeyMaxLengthTextView: Int = 0
-public extension UITextField {
+extension UITextField {
     @IBInspectable public var maxLength: Int {
         get {
             if let length = objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int {
