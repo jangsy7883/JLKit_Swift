@@ -57,7 +57,6 @@
 		3D5B279F20B53053003FA63A /* UICollectionView+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B279E20B53053003FA63A /* UICollectionView+JLExtension.swift */; };
 		3D5B27A120B533BE003FA63A /* UIActivityViewController+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B27A020B533BE003FA63A /* UIActivityViewController+JLExtension.swift */; };
 		3D5B27A320B5359F003FA63A /* UIButton+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B27A220B5359F003FA63A /* UIButton+JLExtension.swift */; };
-		3D5B27A720B53DC1003FA63A /* UIApplication+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B27A620B53DC1003FA63A /* UIApplication+JLExtension.swift */; };
 		EF2EEDC5214204B500DFB32B /* TimeZone+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */; };
 		EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A1207AE60400857D26 /* AppDelegate.swift */; };
 		EF3BB0A4207AE60400857D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A3207AE60400857D26 /* ViewController.swift */; };
@@ -153,7 +152,6 @@
 		3D5B279E20B53053003FA63A /* UICollectionView+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B27A020B533BE003FA63A /* UIActivityViewController+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityViewController+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B27A220B5359F003FA63A /* UIButton+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+JLExtension.swift"; sourceTree = "<group>"; };
-		3D5B27A620B53DC1003FA63A /* UIApplication+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+JLExtension.swift"; sourceTree = "<group>"; };
 		EF2C682A207AE9BB000C07BA /* JLKit_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JLKit_Swift-Bridging-Header.h"; path = "JLKit_Swift/JLKit_Swift-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+JLExtension.swift"; sourceTree = "<group>"; };
 		EF3BB09E207AE60400857D26 /* JLKit_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLKit_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,7 +227,6 @@
 			children = (
 				3D5B27A020B533BE003FA63A /* UIActivityViewController+JLExtension.swift */,
 				EFE44991213E0F4A0022B495 /* UIAlertController+JLExtension.swift */,
-				3D5B27A620B53DC1003FA63A /* UIApplication+JLExtension.swift */,
 				3D5B26FE20B5270D003FA63A /* UIBarButtonItem+JLExtension.swift */,
 				3D5B27A220B5359F003FA63A /* UIButton+JLExtension.swift */,
 				3D5B279E20B53053003FA63A /* UICollectionView+JLExtension.swift */,
@@ -539,7 +536,6 @@
 				EFE449A4213E60870022B495 /* UIViewController+JLExtension.swift in Sources */,
 				EF2EEDC5214204B500DFB32B /* TimeZone+JLExtension.swift in Sources */,
 				2F3CF4AE2638EE1F00F2DD7E /* CaseIterable+Extension.swift in Sources */,
-				3D5B27A720B53DC1003FA63A /* UIApplication+JLExtension.swift in Sources */,
 				3D5B279F20B53053003FA63A /* UICollectionView+JLExtension.swift in Sources */,
 				2F3CF4B22638EEB400F2DD7E /* UITextField+MaxLimit.swift in Sources */,
 				3D5B277220B5270D003FA63A /* CALayer+JLKit.m in Sources */,
