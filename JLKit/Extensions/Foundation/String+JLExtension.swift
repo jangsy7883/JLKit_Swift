@@ -21,9 +21,18 @@ extension String {
     public var trimmedString: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
+
+    public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "", arguments:[CVarArg] = []) -> String {
+        if !arguments.isEmpty {
+            let format = NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
+            return String(format: format, arguments: arguments)
+        }else {
+            return NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
+        }
+    }
     
-    public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "") -> String {
-        return NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
+    public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "", _ arguments:CVarArg...) -> String {
+        return localized(tableName: tableName, bundle: bundle, comment: comment, arguments: arguments)
     }
     
     public static func random(length: Int = 20) -> String {
@@ -37,29 +46,43 @@ extension String {
         return randomString
     }
     
-    //MARK : - Range
+    //MARK : - Regex
     
     public func regexMatches(pattern: String) -> [NSTextCheckingResult]? {
-        let regex = try? NSRegularExpression(pattern: pattern, options: [])
-        if let matches = regex?.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)) {
-            return matches
-        }
-        return nil
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return nil }
+        return regex.matches(in: self, options: [], range: NSRange(location: 0, length: utf16.count))
     }
     
     public func rangeOfFirstRegexMatch(pattern: String) -> NSRange? {
-        let regex = try? NSRegularExpression(pattern: pattern, options: [])
-        if let range = regex?.rangeOfFirstMatch(in: self, options: [], range: NSRange(location: 0, length: self.count)) {
-            return range
-        }
-        return nil
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return nil }
+        return regex.rangeOfFirstMatch(in: self, options: [], range: NSRange(location: 0, length: utf16.count))
     }
     
     public func isRegexMatch(pattern: String) -> Bool {
-        if let length = rangeOfFirstRegexMatch(pattern: pattern)?.length, length > 0 {
-            return true
-        }
-        return false
+        guard let length = rangeOfFirstRegexMatch(pattern: pattern)?.length else { return false }
+        return length > 0
+    }
+
+    public func stringsMatches(pattern: String) -> [String]? {        
+        return regexMatches(pattern: pattern)?.compactMap({ result in
+            return string(of: result.range)
+        })
+    }
+    
+    public func stringOfFirstRegexMatch(pattern: String) -> String? {
+        guard let nsRange = rangeOfFirstRegexMatch(pattern: pattern) else { return nil }
+        return string(of: nsRange)
+    }
+    
+    //MARK : - Range
+    
+    public func string(of nsRange: NSRange) -> String? {
+        guard let range = Range(nsRange, in: self) else { return nil }
+        return String(self[range])
+    }
+    
+    public func range(of range: NSRange) -> Range<Index>? {
+        return Range(range, in: self)
     }
     
     public func nsRange(of text: String) -> NSRange? {
@@ -82,7 +105,15 @@ extension String {
     }
 
     public var url: URL? {
-        return URL(string: self)
+        if let url = URL(string: self) {
+          return url
+        }
+        var set = CharacterSet()
+        set.formUnion(.urlHostAllowed)
+        set.formUnion(.urlPathAllowed)
+        set.formUnion(.urlQueryAllowed)
+        set.formUnion(.urlFragmentAllowed)
+        return self.addingPercentEncoding(withAllowedCharacters: set).flatMap { URL(string: $0) }
     }
 
     public var intValue: Int {
