@@ -9,12 +9,6 @@
 import UIKit
 
 extension UIView {
-    @objc public static var className: String {
-        get {
-            return String(describing: self.self)
-        }
-    }
-
     @objc public var superViewController : UIViewController? {
         var parentResponder: UIResponder? = self
         while let responder = parentResponder {
