@@ -31,18 +31,24 @@ extension UIColor {
     }
     
     public var hex: String {
-        guard let components = cgColor.components, components.count >= 3 else { return "#000000" }
-        let r = Float(components[0])
-        let g = Float(components[1])
-        let b = Float(components[2])
+        let cgColorInRGB = cgColor.converted(to: CGColorSpace(name: CGColorSpace.sRGB)!, intent: .defaultIntent, options: nil)!
+        let colorRef = cgColorInRGB.components
+        let r = colorRef?[0] ?? 0
+        let g = colorRef?[1] ?? 0
+        let b = ((colorRef?.count ?? 0) > 2 ? colorRef?[2] : g) ?? 0
+        let a = cgColor.alpha
 
-        if components.count >= 4 {
-            let a = Float(components[3])
-            if a < 1 {
-                return String(format: "#%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
-            }
+        let color = String(
+            format: "%02lX%02lX%02lX",
+            lroundf(Float(r * 255)),
+            lroundf(Float(g * 255)),
+            lroundf(Float(b * 255))
+        )
+
+        if a < 1 {
+            return "#\(String(format: "%02lX", lroundf(Float(a * 255))))\(color)"
+        } else {
+            return "#\(color)"
         }
-
-        return String(format: "#%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
     }
 }

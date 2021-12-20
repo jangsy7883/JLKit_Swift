@@ -55,73 +55,6 @@ extension Date {
         return [.year, .month, .day, .weekOfYear, .hour, .minute, .second, .weekday, .weekdayOrdinal, .weekOfYear]
     }
     
-    //MARK : Init
-    
-    /*
-    public func compare(_ comparison: DateComparisonType) -> Bool {
-        switch comparison {
-        case .isToday:
-            return compare(.isSameDay(as: Date()))
-        case .isTomorrow:
-            let comparison = Date().adjust(.day, offset: 1)
-            return compare(.isSameDay(as: comparison))
-        case .isYesterday:
-            let comparison = Date().adjust(.day, offset: -1)
-            return compare(.isSameDay(as: comparison))
-        case .isSameDay(let date):
-            return component(.year) == date.component(.year)
-                && component(.month) == date.component(.month)
-                && component(.day) == date.component(.day)
-        case .isThisWeek:
-            return self.compare(.isSameWeek(as: Date()))
-        case .isNextWeek:
-            let comparison = Date().adjust(.week, offset: 1)
-            return compare(.isSameWeek(as: comparison))
-        case .isLastWeek:
-            let comparison = Date().adjust(.week, offset: -1)
-            return compare(.isSameWeek(as: comparison))
-        case .isSameWeek(let date):
-            if component(.week) != date.component(.week) {
-                return false
-            }
-            // Ensure time interval is under 1 week
-            return abs(self.timeIntervalSince(date)) < Date.weekInSeconds
-        case .isThisMonth:
-            return self.compare(.isSameMonth(as: Date()))
-        case .isNextMonth:
-            let comparison = Date().adjust(.month, offset: 1)
-            return compare(.isSameMonth(as: comparison))
-        case .isLastMonth:
-            let comparison = Date().adjust(.month, offset: -1)
-            return compare(.isSameMonth(as: comparison))
-        case .isSameMonth(let date):
-            return component(.year) == date.component(.year) && component(.month) == date.component(.month)
-        case .isThisYear:
-            return self.compare(.isSameYear(as: Date()))
-        case .isNextYear:
-            let comparison = Date().adjust(.year, offset: 1)
-            return compare(.isSameYear(as: comparison))
-        case .isLastYear:
-            let comparison = Date().adjust(.year, offset: -1)
-            return compare(.isSameYear(as: comparison))
-        case .isSameYear(let date):
-            return component(.year) == date.component(.year)
-        case .isInTheFuture:
-            return self.compare(.isLater(than: Date()))
-        case .isInThePast:
-            return self.compare(.isEarlier(than: Date()))
-        case .isEarlier(let date):
-            return (self as NSDate).earlierDate(date) == self
-        case .isLater(let date):
-            return (self as NSDate).laterDate(date) == self
-        case .isWeekday:
-            return !compare(.isWeekend)
-        case .isWeekend:
-            let range = Calendar.current.maximumRange(of: Calendar.Component.weekday)!
-            return (component(.weekday) == range.lowerBound || component(.weekday) == range.upperBound - range.lowerBound)
-        }
-    }
-    */
     public func adjust(_ component: DateComponentType, offset: Int) -> Date {
         var dateComp = DateComponents()
         switch component {
@@ -194,40 +127,5 @@ extension Date {
             return components.year
         }
     }
-    
-    //MARK : Init
-/*
-    public init?(from value: String, format: String, timeZone: TimeZone? = TimeZone.UTC) {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.timeZone = timeZone
-        formatter.dateFormat = format
-        
-        if let date =  formatter.date(from: value) {
-            self.init(timeIntervalSince1970: date.timeIntervalSince1970)
-        } else {
-            return nil
-        }
-    }
-    
-    //MARK : String format
-    
-    public func string(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, timeZone: TimeZone? = TimeZone.UTC) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.timeZone = timeZone
-        formatter.dateStyle = dateStyle
-        formatter.dateStyle = timeStyle
-        return formatter.string(from: self)
-    }
-    
-    public func string(format: String, timeZone: TimeZone? = TimeZone.UTC) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.timeZone = timeZone
-        formatter.dateFormat = format
-        return formatter.string(from: self)
-    }
- */
 }
 
