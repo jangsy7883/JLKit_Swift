@@ -90,7 +90,6 @@ extension UIImage {
     }
     
     // MARK: Crop
-    
     public func crop(bounds: CGRect) -> UIImage? {
         return UIImage(cgImage: (self.cgImage?.cropping(to: bounds)!)!,
                        scale: 0.0, orientation: self.imageOrientation)
@@ -133,5 +132,23 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return resultImage
+    }
+}
+
+public extension UIImage {
+    enum ImageFormat {
+        case JPEG(compressionQuality: CGFloat)
+        case PNG
+    }
+
+    func data(_ format: ImageFormat) -> Data? {
+        return autoreleasepool { () -> Data? in
+            let data: Data?
+            switch format {
+            case .PNG: data = pngData()
+            case .JPEG(let compressionQuality): data = jpegData(compressionQuality: compressionQuality)
+            }
+            return data
+        }
     }
 }
