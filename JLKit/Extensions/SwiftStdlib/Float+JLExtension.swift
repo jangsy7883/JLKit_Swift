@@ -19,7 +19,7 @@ public extension Float {
         return Double(self)
     }
     
-    #if canImport(UIKit)
+    #if canImport(UIKit) && os(iOS)
     static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
         return value/UIScreen.main.scale
     }
@@ -36,11 +36,11 @@ public extension Float {
 }
 
 public extension CGFloat {
-    #if canImport(UIKit)
+    #if canImport(UIKit) && os(iOS)
     static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
         return value/UIScreen.main.scale
     }
-#endif
+    #endif
     var int: Int {
         return Int(self)
     }
