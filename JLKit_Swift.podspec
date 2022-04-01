@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name          = 'JLKit_Swift'
-    s.version       = '0.0.64'
+    s.version       = '0.0.65'
     s.summary       = 'JLKit'
     s.homepage      = 'https://github.com/jangsy7883/JLKit_Swift'
     s.license       = { :type => 'MIT', :file => 'LICENSE' }
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
     s.default_subspec = 'Core'
 
     s.subspec 'Core' do |sp|
-        sp.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Protocols/', 'JLKit/Utils/'
+        sp.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Extensions/SwiftStdlib/', 'JLKit/Protocols/', 'JLKit/Utils/'
         sp.ios.frameworks = 'Photos'
     end
 

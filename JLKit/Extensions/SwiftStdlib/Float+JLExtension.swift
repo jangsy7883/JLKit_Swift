@@ -6,6 +6,10 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+#if canImport(UIKit)
+import UIKit
+#endif
+
 public extension Float {
     var int: Int {
         return Int(self)
@@ -15,9 +19,11 @@ public extension Float {
         return Double(self)
     }
     
+    #if canImport(UIKit)
     static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
         return value/UIScreen.main.scale
     }
+    #endif
 }
 
 #if canImport(CoreGraphics)
@@ -30,10 +36,11 @@ public extension Float {
 }
 
 public extension CGFloat {
+    #if canImport(UIKit)
     static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
         return value/UIScreen.main.scale
     }
-    
+#endif
     var int: Int {
         return Int(self)
     }
