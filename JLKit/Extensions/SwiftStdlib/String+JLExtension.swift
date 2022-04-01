@@ -17,8 +17,8 @@ extension NSString {
     }
 }
 
-extension String {
-    public var trimmed: String {
+public extension String {
+    var trimmed: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
@@ -27,7 +27,7 @@ extension String {
         return self
     }
     
-    public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "", arguments:[CVarArg] = []) -> String {
+    func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "", arguments:[CVarArg] = []) -> String {
         if !arguments.isEmpty {
             let format = NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
             return String(format: format, arguments: arguments)
@@ -36,11 +36,11 @@ extension String {
         }
     }
     
-    public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "", _ arguments:CVarArg...) -> String {
+    func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "", _ arguments:CVarArg...) -> String {
         return localized(tableName: tableName, bundle: bundle, comment: comment, arguments: arguments)
     }
     
-    public static func random(length: Int = 20) -> String {
+    static func random(length: Int = 20) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""
 
@@ -53,44 +53,44 @@ extension String {
     
     //MARK : - Regex
     
-    public func regexMatches(pattern: String) -> [NSTextCheckingResult]? {
+    func regexMatches(pattern: String) -> [NSTextCheckingResult]? {
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return nil }
         return regex.matches(in: self, options: [], range: NSRange(location: 0, length: utf16.count))
     }
     
-    public func rangeOfFirstRegexMatch(pattern: String) -> NSRange? {
+    func rangeOfFirstRegexMatch(pattern: String) -> NSRange? {
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return nil }
         return regex.rangeOfFirstMatch(in: self, options: [], range: NSRange(location: 0, length: utf16.count))
     }
     
-    public func isRegexMatch(pattern: String) -> Bool {
+    func isRegexMatch(pattern: String) -> Bool {
         guard let length = rangeOfFirstRegexMatch(pattern: pattern)?.length else { return false }
         return length > 0
     }
 
-    public func stringsMatches(pattern: String) -> [String]? {        
+    func stringsMatches(pattern: String) -> [String]? {
         return regexMatches(pattern: pattern)?.compactMap({ result in
             return string(of: result.range)
         })
     }
     
-    public func stringOfFirstRegexMatch(pattern: String) -> String? {
+    func stringOfFirstRegexMatch(pattern: String) -> String? {
         guard let nsRange = rangeOfFirstRegexMatch(pattern: pattern) else { return nil }
         return string(of: nsRange)
     }
     
     //MARK : - Range
     
-    public func string(of nsRange: NSRange) -> String? {
+    func string(of nsRange: NSRange) -> String? {
         guard let range = Range(nsRange, in: self) else { return nil }
         return String(self[range])
     }
     
-    public func range(of range: NSRange) -> Range<Index>? {
+    func range(of range: NSRange) -> Range<Index>? {
         return Range(range, in: self)
     }
     
-    public func nsRange(of text: String) -> NSRange? {
+    func nsRange(of text: String) -> NSRange? {
         guard let range = range(of: text),
             let from = range.lowerBound.samePosition(in: utf16),
             let to = range.upperBound.samePosition(in: utf16) else { return nil }        
@@ -101,7 +101,7 @@ extension String {
     
     
     
-    public func attributedString(attributes: [NSAttributedString.Key: Any]?) -> NSAttributedString {
+    func attributedString(attributes: [NSAttributedString.Key: Any]?) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: attributes)
     }
 }

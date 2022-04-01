@@ -10,8 +10,8 @@ import Foundation
 import CoreLocation
 import Contacts
 
-extension CLPlacemark {
-    @objc public var formattedAddress: String? {
+public extension CLPlacemark {
+    @objc var formattedAddress: String? {
         var value: String?
 
         if let postalAddress = postalAddress {

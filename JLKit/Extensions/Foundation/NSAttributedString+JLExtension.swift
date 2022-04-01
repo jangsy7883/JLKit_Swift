@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension NSMutableAttributedString {
-    @objc public func addAttributes(_ attrs: [NSAttributedString.Key: Any], text: String) {
+public extension NSMutableAttributedString {
+    @objc func addAttributes(_ attrs: [NSAttributedString.Key: Any], text: String) {
         guard let range = string.nsRange(of: text) else { return }        
         addAttributes(attrs, range: range)
     }
     
-    @objc public func appendString(_ text:String, attributes:[NSAttributedString.Key:Any]) {
+    @objc func appendString(_ text:String, attributes:[NSAttributedString.Key:Any]) {
         guard text.isEmpty == false, attributes.isEmpty == false else { return }
         append(NSAttributedString(string: text, attributes: attributes))
     }
