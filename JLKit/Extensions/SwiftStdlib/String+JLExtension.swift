@@ -8,8 +8,8 @@
 import UIKit
 import Foundation
 
-extension NSString {
-    public static func nameFormClass(_ class_: Any) -> String? {
+public extension NSString {
+    static func nameFormClass(_ class_: Any) -> String? {
         let name = String(describing: class_.self)
         let words = name.components(separatedBy: ".")
         
@@ -43,7 +43,7 @@ public extension String {
     static func random(length: Int = 20) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""
-
+        
         for _ in 0..<length {
             let randomValue = arc4random_uniform(UInt32(base.count))
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
@@ -67,7 +67,7 @@ public extension String {
         guard let length = rangeOfFirstRegexMatch(pattern: pattern)?.length else { return false }
         return length > 0
     }
-
+    
     func stringsMatches(pattern: String) -> [String]? {
         return regexMatches(pattern: pattern)?.compactMap({ result in
             return string(of: result.range)
@@ -92,11 +92,11 @@ public extension String {
     
     func nsRange(of text: String) -> NSRange? {
         guard let range = range(of: text),
-            let from = range.lowerBound.samePosition(in: utf16),
-            let to = range.upperBound.samePosition(in: utf16) else { return nil }        
+              let from = range.lowerBound.samePosition(in: utf16),
+              let to = range.upperBound.samePosition(in: utf16) else { return nil }        
         
         return NSRange(location: utf16.distance(from: utf16.startIndex, to: from),
-                         length: utf16.distance(from: from, to: to))
+                       length: utf16.distance(from: from, to: to))
     }
     
     
@@ -112,15 +112,15 @@ public extension String {
     var boolValue: Bool {
         return ["true", "y", "t", "yes", "1"].contains { self.caseInsensitiveCompare($0) == .orderedSame }
     }
-
+    
     var int: Int? {
         return Int(self)
     }
-
+    
     var intValue: Int {
         return int ?? 0
     }
-
+    
     var color : UIColor {
         return UIColor(hex: self)
     }
@@ -131,19 +131,19 @@ public extension String {
 }
 
 public extension String {
-    #if os(iOS)
+#if os(iOS)
     func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
         return self.boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
     }
-    #endif
+#endif
     
     func copyToPasteboard() {
-        #if os(iOS)
+#if os(iOS)
         UIPasteboard.general.string = self
-        #elseif os(macOS)
+#elseif os(macOS)
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(self, forType: .string)
-        #endif
+#endif
     }
 }
 

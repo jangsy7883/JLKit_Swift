@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
     s.default_subspec = 'Core'
 
     s.subspec 'Core' do |sp|
-        sp.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Protocols/', 'JLKit/Utils/'
+        sp.source_files = 'JLKit/Extensions/Foundation/','JLKit/Extensions/UIKit/', 'JLKit/Extensions/SwiftStdlib/', 'JLKit/Protocols/', 'JLKit/Utils/'
         sp.ios.frameworks = 'Photos'
     end
 
