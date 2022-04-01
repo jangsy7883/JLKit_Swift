@@ -6,28 +6,18 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+#if canImport(Foundation)
 import Foundation
 
-extension URL {
-    public func createDirectory() -> URL? {
-        let manager = FileManager.default
-        if manager.fileExists(atPath: path) == false {
-            do {
-                try manager.createDirectory(at: self, withIntermediateDirectories: true, attributes: nil)
-            }
-            catch {
-                return nil
-            }
+public extension FileManager {
+    func jsonFromFile(
+        atPath path: String,
+        readingOptions: JSONSerialization.ReadingOptions = .allowFragments) throws -> [String: Any]? {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let json = try JSONSerialization.jsonObject(with: data, options: readingOptions)
+            
+            return json as? [String: Any]
         }
-        return self
-    }
-    
-    public func vaildFileURL() -> URL? {
-        if FileManager.default.fileExists(atPath: self.path) {
-            return self
-        }
-        return nil
-    }
 }
 
 extension FileManager {
@@ -91,3 +81,4 @@ extension FileManager {
         return nil
     }
 }
+#endif

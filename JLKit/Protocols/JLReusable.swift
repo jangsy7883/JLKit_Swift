@@ -69,11 +69,11 @@ extension UICollectionView {
         register(nib, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
-    public func register<T: UICollectionReusableView & JLReusable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle? = nil) {
+    public func register<T: UICollectionReusableView & JLReusable>(_: T.Type, forSupplementaryViewOfKind elementKind: String = T.reuseIdentifier, bundle: Bundle? = nil) {
         register(T.self, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
     
-    public func register<T: UICollectionReusableView & JLReusable & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle? = nil) {
+    public func register<T: UICollectionReusableView & JLReusable & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String = T.reuseIdentifier, bundle: Bundle? = nil) {
         guard let nib = T.nib(bundle: bundle) else { return }
         register(nib, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }

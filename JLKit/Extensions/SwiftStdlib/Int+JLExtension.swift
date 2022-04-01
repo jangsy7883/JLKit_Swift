@@ -6,7 +6,9 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
-import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 
 extension Int {    
     public static func random(min:Int, max:Int) -> Int {
@@ -15,9 +17,26 @@ extension Int {
     }
 }
 
-
-extension Int {
-    public var decimalString: String {
+public extension Int {
+    var decimalString: String {
         return NumberFormatter.decimal.string(from: NSNumber(value: self)) ?? "\(self)"
     }
+    
+    var uInt: UInt {
+         return UInt(self)
+     }
+
+     var double: Double {
+         return Double(self)
+     }
+
+    var float: Float {
+         return Float(self)
+     }
+
+     #if canImport(CoreGraphics)
+     var cgFloat: CGFloat {
+         return CGFloat(self)
+     }
+     #endif
 }

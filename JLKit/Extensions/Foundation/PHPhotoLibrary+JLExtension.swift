@@ -9,8 +9,8 @@
 #if canImport(Photos)
 import Photos
 
-extension PHPhotoLibrary {
-    public static func authorizationStatus(_ handler: @escaping (PHAuthorizationStatus) -> Void) {
+public extension PHPhotoLibrary {
+    static func authorizationStatus(_ handler: @escaping (PHAuthorizationStatus) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus()
         if status == .notDetermined {
             PHPhotoLibrary.requestAuthorization { (status) in

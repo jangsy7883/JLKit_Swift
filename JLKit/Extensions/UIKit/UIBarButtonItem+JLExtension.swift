@@ -8,6 +8,12 @@
 #if os(iOS)
 import UIKit
 
+public extension UIBarButtonItem {
+    static var flexibleSpace: UIBarButtonItem {
+        return UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    }
+}
+
 extension UIBarButtonItem {
 
     @objc public convenience init(customImage: UIImage?, highlightedImage: UIImage? = nil, contentEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3), target: Any?, action: Selector?) {

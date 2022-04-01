@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |s|
     s.name          = 'JLKit_Swift'
-    s.version       = '0.0.62'
+    s.version       = '0.0.64'
     s.summary       = 'JLKit'
     s.homepage      = 'https://github.com/jangsy7883/JLKit_Swift'
     s.license       = { :type => 'MIT', :file => 'LICENSE' }
     s.author        = { 'jangsy' => 'jangsy7883@gmail.com' }
     s.source        = { :git => 'https://github.com/jangsy7883/JLKit_Swift.git', :tag => s.version.to_s }
     s.swift_version = '5.0'
-    s.ios.deployment_target = '9.0'
+    s.ios.deployment_target = '13.0'
     s.watchos.deployment_target = '5.3'
 
     s.default_subspec = 'Core'

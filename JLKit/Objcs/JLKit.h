@@ -11,7 +11,6 @@
 
 //Foundation
 #import "NSArray+JLKit.h"
-#import "NSDate+JLKit.h"
 #import "NSDictionary+JLKit.h"
 #import "NSString+JLKit.h"
 #import "NSThread+JLKit.h"
@@ -20,8 +19,6 @@
 #import "CGGeometryExtension.h"
 
 //UIKit
-#import "CALayer+JLKit.h"
 #import "UIColor+JLKit.h"
 #import "UIDevice+JLKit.h"
 #import "UIImage+JLKit.h"
-#import "UIScreen+JLKit.h"
