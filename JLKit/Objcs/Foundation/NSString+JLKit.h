@@ -40,7 +40,6 @@
 
 - (NSString *)stringByReplacingPattern:(NSString *)pattern withTemplate:(NSString *)templ;
 
-@property (nonatomic, readonly, copy) NSString *MD5;
 @property (nonatomic, readonly, copy) NSString *UTF8Encoding;
 
 + (NSString*)UUID;
