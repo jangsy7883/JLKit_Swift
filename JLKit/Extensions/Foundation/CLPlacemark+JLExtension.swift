@@ -14,11 +14,9 @@ extension CLPlacemark {
     @objc public var formattedAddress: String? {
         var value: String?
 
-        if #available(iOS 11.0, *), let postalAddress = postalAddress {
+        if let postalAddress = postalAddress {
             let address = CNPostalAddressFormatter.string(from: postalAddress, style: .mailingAddress)
-            value = address.replacingOccurrences(of: "\n", with: " ").trimmedString
-        } else if let formattedAddressLines = addressDictionary?["FormattedAddressLines"] as? [String], let address = formattedAddressLines.first {            
-            value = address.trimmedString
+            value = address.replacingOccurrences(of: "\n", with: " ").trimmed
         }
 
         if let code = postalCode {

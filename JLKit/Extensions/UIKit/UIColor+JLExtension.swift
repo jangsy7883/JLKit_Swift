@@ -6,6 +6,8 @@
 //  Copyright © 2019 Woody. All rights reserved.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 extension UIColor {
@@ -14,9 +16,9 @@ extension UIColor {
     
     @nonobjc public convenience init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt32()
-        Scanner(string: hex).scanHexInt32(&int)
-        let a, r, g, b: UInt32
+        var int = UInt64()
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
         switch hex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
@@ -52,3 +54,25 @@ extension UIColor {
         }
     }
 }
+
+public extension UIColor {
+    func lighten(by percentage: CGFloat = 0.2) -> UIColor {
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return UIColor(red: min(red + percentage, 1.0),
+                       green: min(green + percentage, 1.0),
+                       blue: min(blue + percentage, 1.0),
+                       alpha: alpha)
+    }
+    
+    func darken(by percentage: CGFloat = 0.2) -> UIColor {
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return UIColor(red: max(red - percentage, 0),
+                       green: max(green - percentage, 0),
+                       blue: max(blue - percentage, 0),
+                       alpha: alpha)
+    }
+}
+
+#endif

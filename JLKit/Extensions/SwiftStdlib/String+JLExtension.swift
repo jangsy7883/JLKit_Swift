@@ -18,10 +18,15 @@ extension NSString {
 }
 
 extension String {
-    public var trimmedString: String {
+    public var trimmed: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-
+    
+    @discardableResult mutating func trim() -> String {
+        self = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        return self
+    }
+    
     public func localized(tableName: String? = nil, bundle : Bundle = Bundle.main, comment: String = "", arguments:[CVarArg] = []) -> String {
         if !arguments.isEmpty {
             let format = NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
@@ -94,19 +99,60 @@ extension String {
                          length: utf16.distance(from: from, to: to))
     }
     
-    //MARK : - Convert
+    
+    
+    public func attributedString(attributes: [NSAttributedString.Key: Any]?) -> NSAttributedString {
+        return NSAttributedString(string: self, attributes: attributes)
+    }
+}
 
-    public var boolValue: Bool {
+//MARK : - Convert
+
+public extension String {
+    var boolValue: Bool {
         return ["true", "y", "t", "yes", "1"].contains { self.caseInsensitiveCompare($0) == .orderedSame }
     }
 
-    public var int: Int? {
+    var int: Int? {
         return Int(self)
     }
 
-    public var url: URL? {
+    var intValue: Int {
+        return int ?? 0
+    }
+
+    var color : UIColor {
+        return UIColor(hex: self)
+    }
+    
+    var image: UIImage? {
+        return UIImage(named: self)
+    }
+}
+
+public extension String {
+    #if os(iOS)
+    func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
+        return self.boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
+    }
+    #endif
+    
+    func copyToPasteboard() {
+        #if os(iOS)
+        UIPasteboard.general.string = self
+        #elseif os(macOS)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(self, forType: .string)
+        #endif
+    }
+}
+
+//MARK: - URL
+
+public extension String {
+    var url: URL? {
         if let url = URL(string: self) {
-          return url
+            return url
         }
         var set = CharacterSet()
         set.formUnion(.urlHostAllowed)
@@ -115,31 +161,74 @@ extension String {
         set.formUnion(.urlFragmentAllowed)
         return self.addingPercentEncoding(withAllowedCharacters: set).flatMap { URL(string: $0) }
     }
-
-    public var intValue: Int {
-        return int ?? 0
-    }
-
-    public var color : UIColor { return UIColor(hex: self) }
     
-    public var image: UIImage? { return UIImage(named: self) }
-    
-    public func attributedString(attributes: [NSAttributedString.Key: Any]?) -> NSAttributedString {
-        return NSAttributedString(string: self, attributes: attributes)
+    var urlDecoded: String {
+        return removingPercentEncoding ?? self
     }
     
-    public func base64Data(options:Data.Base64DecodingOptions = []) -> Data? {
-        return Data(base64Encoded: self, options: options)
+    @discardableResult mutating func urlDecode() -> String {
+        if let decoded = removingPercentEncoding {
+            self = decoded
+        }
+        return self
+    }
+    
+    var urlEncoded: String {
+        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    }
+    
+    @discardableResult mutating func urlEncode() -> String {
+        if let encoded = addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            self = encoded
+        }
+        return self
     }
 }
 
+//MARK: - Words
 
-extension String {
-
-    #if os(iOS)
-    public func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
-        return self.boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
+public extension String {
+    var words: [String] {
+        let chararacterSet = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters)
+        let comps = components(separatedBy: chararacterSet)
+        return comps.filter { !$0.isEmpty }
     }
-    #endif
+    
+    var wordCount: Int {
+        return words.count
+    }
+}
 
+//MARK: - Data
+
+public extension String {
+    
+    init?(base64: String) {
+        guard let decodedData = Data(base64Encoded: base64) else { return nil }
+        guard let str = String(data: decodedData, encoding: .utf8) else { return nil }
+        self.init(str)
+    }
+    
+    func base64Data(options:Data.Base64DecodingOptions = []) -> Data? {
+        return Data(base64Encoded: self, options: options)
+    }
+    
+    var base64Decoded: String? {
+        if let data = Data(base64Encoded: self,
+                           options: .ignoreUnknownCharacters) {
+            return String(data: data, encoding: .utf8)
+        }
+        
+        let remainder = count % 4
+        
+        var padding = ""
+        if remainder > 0 {
+            padding = String(repeating: "=", count: 4 - remainder)
+        }
+        
+        guard let data = Data(base64Encoded: self + padding,
+                              options: .ignoreUnknownCharacters) else { return nil }
+        
+        return String(data: data, encoding: .utf8)
+    }
 }

@@ -9,17 +9,38 @@
 import Foundation
 
 extension URL {
-    public var parameters: [String: String]? {
-        guard let components = NSURLComponents(url: self, resolvingAgainstBaseURL: false) else { return nil }
-        guard let items = components.queryItems, items.isEmpty == false else { return nil }
-
-        var parameters = [String: String]()
-        for item in items {
-            if let value = item.value {
-                parameters[item.name] = value
+    public func createDirectory() -> URL? {
+        let manager = FileManager.default
+        if manager.fileExists(atPath: path) == false {
+            do {
+                try manager.createDirectory(at: self, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch {
+                return nil
             }
         }
-        return parameters
+        return self
+    }
+    
+    public func vaildFileURL() -> URL? {
+        if FileManager.default.fileExists(atPath: self.path) {
+            return self
+        }
+        return nil
+    }
+}
+
+extension URL {
+    public var parameters: [String: String]? {
+        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false),
+              let queryItems = components.queryItems else { return nil }
+        
+        var items: [String: String] = [:]
+        
+        for queryItem in queryItems {
+            items[queryItem.name] = queryItem.value
+        }
+        return items
     }
 
     public func withParameters(parameters: [String: Any]) -> Foundation.URL {
@@ -36,6 +57,13 @@ extension URL {
         var components = URLComponents(url: self, resolvingAgainstBaseURL: false)//URLComponents(string:self.absoluteString)
         components?.queryItems = queryItems
         return components?.url ?? self
+    }
+    
+    func parameterValue(for key: String) -> String? {
+        return URLComponents(string: absoluteString)?
+            .queryItems?
+            .first(where: { $0.name == key })?
+            .value
     }
 }
 

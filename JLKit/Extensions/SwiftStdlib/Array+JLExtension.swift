@@ -73,3 +73,14 @@ extension Array {
         }
     }
 }
+
+public extension Array where Element: Equatable {
+    mutating func removeDuplicates() -> [Element] {
+        self = reduce(into: [Element]()) {
+            if !$0.contains($1) {
+                $0.append($1)
+            }
+        }
+        return self
+    }
+}
