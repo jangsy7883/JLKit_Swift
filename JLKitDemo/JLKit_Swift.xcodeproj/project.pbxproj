@@ -178,7 +178,7 @@
 		EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFE449A0213E4C770022B495 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+JLExtension.swift"; sourceTree = "<group>"; };
-		EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JLKit_Swift.podspec; path = ../JLKit_Swift.podspec; sourceTree = "<group>"; };
+		EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JLKit_Swift.podspec; path = ../JLKit_Swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EFEEBE2821707D2200C78C2C /* UISearchBar+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+JLExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -725,6 +725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.68;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
@@ -747,6 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.68;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
