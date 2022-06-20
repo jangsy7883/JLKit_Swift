@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension ClosedRange where Element == Int {
+public extension ClosedRange where Element == Int {
     var values: [Element] {
         return compactMap { $0 }
     }

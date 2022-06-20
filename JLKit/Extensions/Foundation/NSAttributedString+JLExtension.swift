@@ -8,6 +8,12 @@
 
 import Foundation
 
+public extension NSAttributedString {
+    var isEmpty: Bool {
+        return string.isEmpty
+    }
+}
+
 public extension NSMutableAttributedString {
     @objc func addAttributes(_ attrs: [NSAttributedString.Key: Any], text: String) {
         guard let range = string.nsRange(of: text) else { return }        

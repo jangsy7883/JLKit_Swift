@@ -8,7 +8,7 @@
 #if canImport(SafariServices)
 import SafariServices
 
-extension SFSafariViewController {
+public extension SFSafariViewController {
     func show(in viewController: UIViewController? = UIViewController.topMost(), animated: Bool = true) {
         let navigationController = UINavigationController(rootViewController: self)
         navigationController.isNavigationBarHidden = true

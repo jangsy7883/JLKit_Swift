@@ -14,6 +14,8 @@
 		2F3CF4B22638EEB400F2DD7E /* UITextField+MaxLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */; };
 		2F3CF4B62638EF8500F2DD7E /* CaseIterableDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4B52638EF8500F2DD7E /* CaseIterableDefaults.swift */; };
 		2F3CF4BD2638F0C400F2DD7E /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4BC2638F0C400F2DD7E /* Maths.swift */; };
+		2F76C6D828600210001C36A1 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76C6D728600210001C36A1 /* TimeInterval+Extension.swift */; };
+		2F76C6DA2860024C001C36A1 /* DiffableDataSource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76C6D92860024C001C36A1 /* DiffableDataSource+Extension.swift */; };
 		2F87DD0827F6832200228D82 /* UISwitchExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87DD0727F6832200228D82 /* UISwitchExtensions.swift */; };
 		2F87DD0A27F6839000228D82 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87DD0927F6839000228D82 /* UIApplicationExtensions.swift */; };
 		2F87DD0C27F685B700228D82 /* UIEdgeInsetsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87DD0B27F685B700228D82 /* UIEdgeInsetsExtensions.swift */; };
@@ -97,6 +99,8 @@
 		2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+MaxLimit.swift"; sourceTree = "<group>"; };
 		2F3CF4B52638EF8500F2DD7E /* CaseIterableDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseIterableDefaults.swift; sourceTree = "<group>"; };
 		2F3CF4BC2638F0C400F2DD7E /* Maths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
+		2F76C6D728600210001C36A1 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
+		2F76C6D92860024C001C36A1 /* DiffableDataSource+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DiffableDataSource+Extension.swift"; sourceTree = "<group>"; };
 		2F87DD0727F6832200228D82 /* UISwitchExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitchExtensions.swift; sourceTree = "<group>"; };
 		2F87DD0927F6839000228D82 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		2F87DD0B27F685B700228D82 /* UIEdgeInsetsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtensions.swift; sourceTree = "<group>"; };
@@ -174,7 +178,7 @@
 		EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFE449A0213E4C770022B495 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+JLExtension.swift"; sourceTree = "<group>"; };
-		EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JLKit_Swift.podspec; path = ../JLKit_Swift.podspec; sourceTree = "<group>"; };
+		EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JLKit_Swift.podspec; path = ../JLKit_Swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EFEEBE2821707D2200C78C2C /* UISearchBar+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+JLExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +220,7 @@
 				2F87DD0F27F68FC100228D82 /* BoolExtensions.swift */,
 				2F87DD1327F699DD00228D82 /* Range+Extension.swift */,
 				3D5B270E20B5270D003FA63A /* String+JLExtension.swift */,
+				2F76C6D728600210001C36A1 /* TimeInterval+Extension.swift */,
 			);
 			path = SwiftStdlib;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				3D5B27A220B5359F003FA63A /* UIButton+JLExtension.swift */,
 				3D5B279E20B53053003FA63A /* UICollectionView+JLExtension.swift */,
 				3D5B279A20B52FC6003FA63A /* UICollectionViewCell+JLExtension.swift */,
+				2F76C6D92860024C001C36A1 /* DiffableDataSource+Extension.swift */,
 				2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */,
 				2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */,
 				3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */,
@@ -520,6 +526,7 @@
 				EFEEBE2921707D2200C78C2C /* UISearchBar+JLExtension.swift in Sources */,
 				3D5B279520B5273A003FA63A /* SKProduct+JLextension.swift in Sources */,
 				3D5B276C20B5270D003FA63A /* Error+JLExtension.swift in Sources */,
+				2F76C6D828600210001C36A1 /* TimeInterval+Extension.swift in Sources */,
 				3D5B278920B5270D003FA63A /* NSDate+JLAge.m in Sources */,
 				3D5B279720B52A36003FA63A /* NSAttributedString+JLExtension.swift in Sources */,
 				3D5B27A320B5359F003FA63A /* UIButton+JLExtension.swift in Sources */,
@@ -530,6 +537,7 @@
 				3D5B276D20B5270D003FA63A /* CLLocation+JLExtension.swift in Sources */,
 				EF3BB0A4207AE60400857D26 /* ViewController.swift in Sources */,
 				2F87DD0C27F685B700228D82 /* UIEdgeInsetsExtensions.swift in Sources */,
+				2F76C6DA2860024C001C36A1 /* DiffableDataSource+Extension.swift in Sources */,
 				3D5B27A120B533BE003FA63A /* UIActivityViewController+JLExtension.swift in Sources */,
 				EFE44998213E16C90022B495 /* Int+JLExtension.swift in Sources */,
 				2F87DD0827F6832200228D82 /* UISwitchExtensions.swift in Sources */,
@@ -717,6 +725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.68;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
@@ -739,6 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.68;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";

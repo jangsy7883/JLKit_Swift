@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension Int64 {
-    public var intValue: Int? {
+public extension Int64 {
+    var intValue: Int? {
         return Int(exactly: self)
     }
 
-    public var string: String {
+    var string: String {
         return String(self)
     }
 }

@@ -6,15 +6,25 @@
 //  Copyright © 2019 Woody. All rights reserved.
 //
 
+#if canImport(CoreImage)
+import CoreImage
+
+public extension UIColor {
+    var redValue: CGFloat { return CIColor(color: self).red }
+    var greenValue: CGFloat { return CIColor(color: self).green }
+    var blueValue: CGFloat { return CIColor(color: self).blue }
+    var alphaValue: CGFloat { return CIColor(color: self).alpha }
+}
+
+#endif
 #if canImport(UIKit)
 
 import UIKit
 
-extension UIColor {
-    
+public extension UIColor {
     //MARK: - Hex
     
-    @nonobjc public convenience init(hex: String) {
+    @nonobjc convenience init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
         Scanner(string: hex).scanHexInt64(&int)
@@ -32,7 +42,7 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
-    public var hex: String {
+    var hex: String {
         let cgColorInRGB = cgColor.converted(to: CGColorSpace(name: CGColorSpace.sRGB)!, intent: .defaultIntent, options: nil)!
         let colorRef = cgColorInRGB.components
         let r = colorRef?[0] ?? 0
@@ -72,6 +82,31 @@ public extension UIColor {
                        green: max(green - percentage, 0),
                        blue: max(blue - percentage, 0),
                        alpha: alpha)
+    }
+}
+
+public extension UIColor {
+    static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
+        #if os(watchOS)
+        return dark
+        #else
+        return UIColor { $0.userInterfaceStyle == .dark ? dark : light }
+        #endif
+    }
+
+    #if os(iOS)
+    func resolvedColor(userInterfaceStyle: UIUserInterfaceStyle) -> UIColor {
+        let traitCollection = UITraitCollection(userInterfaceStyle: userInterfaceStyle)
+        return resolvedColor(with: traitCollection)
+    }
+    #endif
+
+    var isDynamic: Bool {
+        #if os(iOS)
+        return self.resolvedColor(userInterfaceStyle: .light) != self.resolvedColor(userInterfaceStyle: .dark)
+        #else
+        return false
+        #endif
     }
 }
 
