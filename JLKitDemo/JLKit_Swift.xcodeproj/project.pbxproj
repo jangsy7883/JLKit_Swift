@@ -26,6 +26,7 @@
 		2F9D6E0324A9B894000D9A5B /* UIImageView+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */; };
 		2F9D6E0524A9B8C1000D9A5B /* Int64+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */; };
 		2F9D6E0724A9B909000D9A5B /* Data+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D6E0624A9B909000D9A5B /* Data+JLExtension.swift */; };
+		2FEFDB3B28602E8B00256CB4 /* Task+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEFDB3A28602E8B00256CB4 /* Task+Extension.swift */; };
 		3D5B275D20B5270D003FA63A /* JLReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26F920B5270D003FA63A /* JLReusable.swift */; };
 		3D5B275E20B5270D003FA63A /* UIFont+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */; };
 		3D5B275F20B5270D003FA63A /* UIImage+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */; };
@@ -111,6 +112,7 @@
 		2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+JLExtension.swift"; sourceTree = "<group>"; };
 		2F9D6E0424A9B8C1000D9A5B /* Int64+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int64+JLExtension.swift"; sourceTree = "<group>"; };
 		2F9D6E0624A9B909000D9A5B /* Data+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JLExtension.swift"; sourceTree = "<group>"; };
+		2FEFDB3A28602E8B00256CB4 /* Task+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extension.swift"; sourceTree = "<group>"; };
 		3D5B26F920B5270D003FA63A /* JLReusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLReusable.swift; sourceTree = "<group>"; };
 		3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+JLExtension.swift"; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				3D5B279420B5273A003FA63A /* SKProduct+JLextension.swift */,
 				EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */,
 				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
+				2FEFDB3A28602E8B00256CB4 /* Task+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				3D5B275E20B5270D003FA63A /* UIFont+JLExtension.swift in Sources */,
 				3D5B276220B5270D003FA63A /* UIMotionEffect+JLExtension.swift in Sources */,
 				3D5B279020B5270D003FA63A /* NSString+JLKit.m in Sources */,
+				2FEFDB3B28602E8B00256CB4 /* Task+Extension.swift in Sources */,
 				3D5B276120B5270D003FA63A /* UIView+JLExtension.swift in Sources */,
 				2F87DD1227F699A400228D82 /* SFSafariViewControllerExtension.swift in Sources */,
 				EFE44990213E0F230022B495 /* Range+JLExtension.swift in Sources */,
@@ -725,7 +729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.68;
+				MARKETING_VERSION = 0.0.69;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
@@ -748,7 +752,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.68;
+				MARKETING_VERSION = 0.0.69;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
