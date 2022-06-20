@@ -8,6 +8,18 @@
 
 import Foundation
 
+public extension URL {
+    var domain: String? {
+        guard let scheme = scheme else { return nil }
+        guard let host = host else { return nil }
+        if let port = port {
+            return "\(scheme)://\(host):\(port)"
+        } else {
+            return "\(scheme)://\(host)"
+        }
+    }
+}
+
 extension URL {
     public func createDirectory() -> URL? {
         let manager = FileManager.default
