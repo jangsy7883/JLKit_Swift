@@ -75,13 +75,26 @@ extension Array {
 }
 
 public extension Array where Element: Equatable {
-    mutating func removeDuplicates() -> [Element] {
-        self = reduce(into: [Element]()) {
+    func removeDuplicates() -> [Element] {
+        return reduce(into: [Element]()) {
             if !$0.contains($1) {
                 $0.append($1)
             }
         }
-        return self
+    }
+    
+    func filterDuplicates(includeElement: (_ lhs:Element, _ rhs:Element) -> Bool) -> [Element] {
+        var results = [Element]()
+        
+        forEach { (element) in
+            let existingElements = results.filter {
+                return includeElement(element, $0)
+            }
+            if existingElements.count == 0 {
+                results.append(element)
+            }
+        }
+        return results
     }
     
     mutating func move(_ element: Element, to newIndex: Index) {
