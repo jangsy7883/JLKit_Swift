@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name          = 'JLKit_Swift'
-    s.version       = '0.0.71'
+    s.version       = '0.0.72'
     s.summary       = 'JLKit'
     s.homepage      = 'https://github.com/jangsy7883/JLKit_Swift'
     s.license       = { :type => 'MIT', :file => 'LICENSE' }
@@ -17,7 +17,8 @@ Pod::Spec.new do |s|
     s.swift_version = '5.0'
     s.ios.deployment_target = '13.0'
     s.watchos.deployment_target = '6.0'
-
+    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.default_subspec = 'Core'
 
     s.subspec 'Core' do |sp|
