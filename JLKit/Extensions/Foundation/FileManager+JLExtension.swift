@@ -24,10 +24,14 @@ extension FileManager {
 
     //MARK : - Directory Path
     
-    public func fileURL(for directory: FileManager.SearchPathDirectory, paths: [String]) -> URL? {
+    public func fileURL(for directory: FileManager.SearchPathDirectory, paths: [String]? = nil) -> URL? {
         guard let documentsPath = urls(for: directory, in: .userDomainMask).first else { return nil }
-        let path = paths.joined(separator: "/")
-        return documentsPath.appendingPathComponent(path)
+        if let paths = paths, !paths.isEmpty {
+            let path = paths.joined(separator: "/")
+            return documentsPath.appendingPathComponent(path)
+        }else {
+            return documentsPath
+        }
     }
     
     public func directoryPath(for directory: FileManager.SearchPathDirectory, path: String? = nil, filename: String? = nil) -> URL? {
