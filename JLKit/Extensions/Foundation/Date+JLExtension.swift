@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 public enum DateComponentType {
     case second, minute, hour, day, weekday, weekdayOrdinal, week, month, year
 }
@@ -53,4 +53,18 @@ extension Date {
         }
     }
      
+}
+*/
+
+extension Date {
+    static private var relativeFormatter: RelativeDateTimeFormatter = {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.dateTimeStyle = .named
+        formatter.unitsStyle = .full
+        return formatter
+    }()
+
+    func toLocalizedRelative(to date: Date = Date()) -> String {
+        Date.relativeFormatter.localizedString(for: self, relativeTo: Date())
+    }
 }

@@ -8,9 +8,6 @@
 
 import Foundation
 
-extension TimeZone {
-    
-    public static var UTC: TimeZone? {
-        return TimeZone(abbreviation: "UTC")
-    }
+extension TimeZone {    
+    public static var UTC: TimeZone? { TimeZone(abbreviation: "UTC") }
 }
