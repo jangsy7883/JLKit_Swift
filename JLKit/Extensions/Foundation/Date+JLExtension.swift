@@ -7,7 +7,7 @@
 //
 
 import Foundation
-/*
+
 public enum DateComponentType {
     case second, minute, hour, day, weekday, weekdayOrdinal, week, month, year
 }
@@ -54,7 +54,6 @@ extension Date {
     }
      
 }
-*/
 
 extension Date {
     static private var relativeFormatter: RelativeDateTimeFormatter = {
