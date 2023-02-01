@@ -64,7 +64,7 @@ extension Date {
         return formatter
     }()
 
-    func toLocalizedRelative(to date: Date = Date()) -> String {
+    public func toLocalizedRelative(to date: Date = Date()) -> String {
         Date.relativeFormatter.localizedString(for: self, relativeTo: Date())
     }
 }
