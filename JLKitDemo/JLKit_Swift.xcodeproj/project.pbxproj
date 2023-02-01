@@ -298,9 +298,9 @@
 				2F9D6E0024A9B7E4000D9A5B /* PHPhotoLibrary+JLExtension.swift */,
 				EFE4498F213E0F220022B495 /* Range+JLExtension.swift */,
 				3D5B279420B5273A003FA63A /* SKProduct+JLextension.swift */,
+				2FEFDB3A28602E8B00256CB4 /* Task+Extension.swift */,
 				EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */,
 				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
-				2FEFDB3A28602E8B00256CB4 /* Task+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
