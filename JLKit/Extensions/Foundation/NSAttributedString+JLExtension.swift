@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public extension NSAttributedString {
     var isEmpty: Bool {
