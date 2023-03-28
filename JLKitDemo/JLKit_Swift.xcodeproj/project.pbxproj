@@ -729,7 +729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.77;
+				MARKETING_VERSION = 0.0.78;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
@@ -752,7 +752,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.77;
+				MARKETING_VERSION = 0.0.78;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
