@@ -42,8 +42,19 @@ extension URL {
     }
 }
 
-extension URL {
-    public var parameters: [String: String]? {
+public extension URL {
+    func appendingParameters(_ parameters: [String: String]) -> URL {
+        var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true)!
+        urlComponents.queryItems = (urlComponents.queryItems ?? []) + parameters
+            .map { URLQueryItem(name: $0, value: $1) }
+        return urlComponents.url!
+    }
+
+    mutating func appendParameters(_ parameters: [String: String]) {
+        self = appendingParameters(parameters)
+    }
+    
+    var parameters: [String: String]? {
         guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false),
               let queryItems = components.queryItems else { return nil }
         
@@ -55,7 +66,7 @@ extension URL {
         return items
     }
 
-    public func withParameters(parameters: [String: Any]) -> Foundation.URL {
+    func withParameters(parameters: [String: Any]) -> URL {
         guard parameters.isEmpty == false else {return self}
 
         var queryItems = [URLQueryItem]()
