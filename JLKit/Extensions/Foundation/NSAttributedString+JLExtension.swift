@@ -21,17 +21,31 @@ public extension NSAttributedString {
 }
 
 public extension NSAttributedString {
-    func fonted(with font: UIFont) -> NSAttributedString {
+    func font(_ font: UIFont) -> NSAttributedString {
         return applying(attributes: [.font: font])
     }
     
-    func colored(with color: UIColor) -> NSAttributedString {
+    func color(_ color: UIColor) -> NSAttributedString {
         return applying(attributes: [.foregroundColor: color])
+    }
+
+    func paragraphStyle(_ paragraphStyle: NSMutableParagraphStyle) -> NSAttributedString {
+        return applying(attributes: [.paragraphStyle: paragraphStyle])
+    }
+    
+    func lineBreakStrategy(_ lineBreakStrategy: NSParagraphStyle.LineBreakStrategy) -> NSAttributedString {
+        let paragraphStyle = attributes[.paragraphStyle] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
+        paragraphStyle.lineBreakStrategy = lineBreakStrategy
+        return applying(attributes: [.paragraphStyle: paragraphStyle])
+    }
+    
+    func lineBreakMode(_ lineBreakMode: NSLineBreakMode) -> NSAttributedString {
+        let paragraphStyle = attributes[.paragraphStyle] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = lineBreakMode
+        return applying(attributes: [.paragraphStyle: paragraphStyle])
     }
     
     func applying(attributes: [Key: Any]) -> NSAttributedString {
-        guard !string.isEmpty else { return self }
-
         let copy = NSMutableAttributedString(attributedString: self)
         copy.addAttributes(attributes, range: NSRange(0..<length))
         return copy
