@@ -198,8 +198,6 @@ public extension UIImage {
     #endif
 }
 
-#endif
-
 public extension UIImage {
     static func dynamicImage(withLight light: @autoclosure () -> UIImage?,
                              dark: @autoclosure () -> UIImage?) -> UIImage? {
@@ -227,4 +225,4 @@ public extension UIImage {
     }
 }
 
-
+#endif
