@@ -199,6 +199,7 @@ public extension UIImage {
 }
 
 public extension UIImage {
+    #if os(iOS)
     static func dynamicImage(withLight light: @autoclosure () -> UIImage?,
                              dark: @autoclosure () -> UIImage?) -> UIImage? {
         if #available(iOS 13.0, *) {
@@ -223,6 +224,7 @@ public extension UIImage {
             return light()
         }
     }
+    #endif
 }
 
 #endif
