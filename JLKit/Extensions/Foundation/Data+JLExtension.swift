@@ -25,7 +25,12 @@ public extension Data {
     func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> Any {
         return try JSONSerialization.jsonObject(with: self, options: options)
     }
-    
+}
+
+#endif
+
+#if canImport(UIKit)
+public extension Data {
     func image() -> UIImage? {
         UIImage(data: self)
     }
@@ -34,5 +39,4 @@ public extension Data {
         UIImage(data: self, scale: scale)
     }
 }
-
 #endif
