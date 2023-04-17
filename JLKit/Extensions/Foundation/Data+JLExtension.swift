@@ -30,6 +30,8 @@ public extension Data {
 #endif
 
 #if canImport(UIKit)
+import UIKit
+
 public extension Data {
     func image() -> UIImage? {
         UIImage(data: self)
