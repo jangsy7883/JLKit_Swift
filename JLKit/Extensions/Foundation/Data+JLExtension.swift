@@ -29,6 +29,7 @@ public extension Data {
 
 #if canImport(UIKit)
 import UIKit
+import Foundation
 
 public extension Data {
     func image() -> UIImage? {
