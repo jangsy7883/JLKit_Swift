@@ -108,6 +108,16 @@ public extension UIColor {
         return false
         #endif
     }
+    
+    func image(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
+        if isDynamic,
+           let dark = UIImage(color: self.resolvedColor(userInterfaceStyle: .dark)),
+           let light = UIImage(color: self.resolvedColor(userInterfaceStyle: .light)) {
+            return UIImage.dynamicImage(withLight: light, dark: dark)
+        }else {
+            return UIImage(color: self, size:size)
+        }
+    }
 }
 
 #endif

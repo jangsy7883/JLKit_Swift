@@ -25,6 +25,14 @@ public extension Data {
     func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> Any {
         return try JSONSerialization.jsonObject(with: self, options: options)
     }
+    
+    func image() -> UIImage? {
+        UIImage(data: self)
+    }
+    
+    func image(scale: CGFloat) -> UIImage? {
+        UIImage(data: self, scale: scale)
+    }
 }
 
 #endif

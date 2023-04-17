@@ -199,3 +199,32 @@ public extension UIImage {
 }
 
 #endif
+
+public extension UIImage {
+    static func dynamicImage(withLight light: @autoclosure () -> UIImage?,
+                             dark: @autoclosure () -> UIImage?) -> UIImage? {
+        if #available(iOS 13.0, *) {
+            let lightTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .light)])
+            let darkTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .dark)])
+            
+            var lightImage:UIImage?
+            var darkImage:UIImage?
+            
+            lightTC.performAsCurrent {
+                lightImage = light()
+            }
+            darkTC.performAsCurrent {
+                darkImage = dark()
+            }
+            
+            if let darkImage {
+                lightImage?.imageAsset?.register(darkImage, with: UITraitCollection(userInterfaceStyle: .dark))
+            }
+            return lightImage
+        } else {
+            return light()
+        }
+    }
+}
+
+
