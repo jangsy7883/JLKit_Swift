@@ -27,8 +27,6 @@ public extension Data {
     }
 }
 
-#endif
-
 #if canImport(UIKit)
 import UIKit
 
@@ -41,4 +39,6 @@ public extension Data {
         UIImage(data: self, scale: scale)
     }
 }
+#endif
+
 #endif
