@@ -100,16 +100,9 @@ public extension UIColor {
         return resolvedColor(with: traitCollection)
     }
     #endif
-
-    var isDynamic: Bool {
-        #if os(iOS)
-        return self.resolvedColor(userInterfaceStyle: .light) != self.resolvedColor(userInterfaceStyle: .dark)
-        #else
-        return false
-        #endif
-    }
     
     func image(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
+        #if os(iOS)
         if isDynamic,
            let dark = UIImage(color: self.resolvedColor(userInterfaceStyle: .dark)),
            let light = UIImage(color: self.resolvedColor(userInterfaceStyle: .light)) {
@@ -117,6 +110,18 @@ public extension UIColor {
         }else {
             return UIImage(color: self, size:size)
         }
+        #else
+        return UIImage(color: self, size:size)
+        #endif
+    }
+    
+
+    var isDynamic: Bool {
+        #if os(iOS)
+        return self.resolvedColor(userInterfaceStyle: .light) != self.resolvedColor(userInterfaceStyle: .dark)
+        #else
+        return false
+        #endif
     }
 }
 
