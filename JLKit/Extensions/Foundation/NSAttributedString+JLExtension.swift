@@ -22,15 +22,15 @@ public extension NSAttributedString {
 
 public extension NSAttributedString {
     func font(_ font: UIFont) -> NSAttributedString {
-        return applying(attributes: [.font: font])
+        applying(attributes: [.font: font])
     }
     
     func color(_ color: UIColor) -> NSAttributedString {
-        return applying(attributes: [.foregroundColor: color])
+        applying(attributes: [.foregroundColor: color])
     }
 
     func paragraphStyle(_ paragraphStyle: NSMutableParagraphStyle) -> NSAttributedString {
-        return applying(attributes: [.paragraphStyle: paragraphStyle])
+        applying(attributes: [.paragraphStyle: paragraphStyle])
     }
     
     func lineBreakStrategy(_ lineBreakStrategy: NSParagraphStyle.LineBreakStrategy) -> NSAttributedString {
@@ -44,6 +44,14 @@ public extension NSAttributedString {
         paragraphStyle.lineBreakMode = lineBreakMode
         return applying(attributes: [.paragraphStyle: paragraphStyle])
     }
+    
+    
+    func alignment(_ alignment: NSTextAlignment) -> NSAttributedString {
+        let paragraphStyle = attributes(at: 0, effectiveRange: nil)[.paragraphStyle] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
+        paragraphStyle.alignment = alignment
+        return applying(attributes: [.paragraphStyle: paragraphStyle])
+    }
+
     
     func applying(attributes: [Key: Any]) -> NSAttributedString {
         let copy = NSMutableAttributedString(attributedString: self)
@@ -61,6 +69,28 @@ public extension NSMutableAttributedString {
     @objc func appendString(_ text:String, attributes:[NSAttributedString.Key:Any]) {
         guard text.isEmpty == false, attributes.isEmpty == false else { return }
         append(NSAttributedString(string: text, attributes: attributes))
+    }
+}
+
+public typealias AttributedKeyValues = [NSAttributedString.Key: Any]
+
+public extension AttributedKeyValues {
+    func color(_ color: UIColor) -> AttributedKeyValues {
+        var attributes = self
+        attributes[.foregroundColor] = color
+        return attributes
+    }
+    
+    func font(_ font: UIFont) -> AttributedKeyValues {
+        var attributes = self
+        attributes[.font] = font
+        return attributes
+    }
+    
+    func paragraphStyle(_ paragraphStyle: NSParagraphStyle) -> AttributedKeyValues {
+        var attributes = self
+        attributes[.paragraphStyle] = paragraphStyle
+        return attributes
     }
 }
 
