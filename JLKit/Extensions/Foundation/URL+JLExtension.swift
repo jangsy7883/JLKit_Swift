@@ -21,11 +21,11 @@ public extension URL {
 }
 
 extension URL {
-    public func createDirectory() -> URL? {
+    public func createDirectory(withIntermediateDirectories createIntermediates: Bool = true, attributes: [FileAttributeKey : Any]? = nil) -> URL? {
         let manager = FileManager.default
         if manager.fileExists(atPath: path) == false {
             do {
-                try manager.createDirectory(at: self, withIntermediateDirectories: true, attributes: nil)
+                try manager.createDirectory(at: self, withIntermediateDirectories: createIntermediates, attributes: attributes)
             }
             catch {
                 return nil
@@ -35,7 +35,7 @@ extension URL {
     }
     
     public func vaildFileURL() -> URL? {
-        if FileManager.default.fileExists(atPath: self.path) {
+        if FileManager.default.fileExists(atPath: path) {
             return self
         }
         return nil
