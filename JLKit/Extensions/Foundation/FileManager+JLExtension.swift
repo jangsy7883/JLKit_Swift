@@ -21,10 +21,19 @@ public extension FileManager {
 }
 
 extension FileManager {
-
+    public struct CreateConfig {
+        public let createIntermediateDirectories: Bool
+        public let attributes: [FileAttributeKey : Any]?
+        
+        public init(createIntermediateDirectories: Bool = true, attributes: [FileAttributeKey : Any]? = nil) {
+            self.createIntermediateDirectories = createIntermediateDirectories
+            self.attributes = attributes
+        }
+    }
+    
     //MARK : - Directory Path
     
-    public func fileURL(for directory: FileManager.SearchPathDirectory, paths: [String]? = nil) -> URL? {
+    public func directoryURL(for directory: FileManager.SearchPathDirectory, paths: [String]? = nil) -> URL? {
         guard let documentsPath = urls(for: directory, in: .userDomainMask).first else { return nil }
         if let paths = paths, !paths.isEmpty {
             let path = paths.joined(separator: "/")
@@ -51,14 +60,14 @@ extension FileManager {
         }
         return nil
     }
-    
-    public func containerURL(for groupIdentifier: String, paths: [String], createDirectory isCreate:Bool = true) -> URL? {
+
+    public func containerURL(for groupIdentifier: String, paths: [String], createDirectory createConfig:CreateConfig? = CreateConfig()) -> URL? {
         guard let documentsPath = containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)  else { return nil }
         let path = paths.joined(separator: "/")
         let result = documentsPath.appendingPathComponent(path)
         
-        if isCreate, fileExists(atPath: documentsPath.path) == false {
-            try? createDirectory(at: result, withIntermediateDirectories: true, attributes: nil)
+        if let config = createConfig, fileExists(atPath: documentsPath.path) == false {
+            try? createDirectory(at: result, withIntermediateDirectories: config.createIntermediateDirectories, attributes: config.attributes)
         }
         
         return result
