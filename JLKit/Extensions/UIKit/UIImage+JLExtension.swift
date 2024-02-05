@@ -7,6 +7,7 @@
 //
 #if canImport(UIKit)
 import UIKit
+import Foundation
 
 /*
  참고 : https://github.com/melvitax/ImageHelper
@@ -97,37 +98,37 @@ extension UIImage {
                        scale: 0.0, orientation: self.imageOrientation)
     }
     
-    public func cropToSquare() -> UIImage? {
+    public func cropToSquare() -> UIImage {
         let shortest = ceil(min(size.width, size.height))
-        return resize(rect: CGRect(x: 0, y: 0, width: shortest, height: shortest))
+        return resize(to: CGRect(x: 0, y: 0, width: shortest, height: shortest))
     }
     
     // MARK: Resize
-    public func resize(toMaxPixel pixel: CGFloat) -> UIImage? {
+    public func resize(toMaxPixel pixel: CGFloat) -> UIImage {
         let hScale = pixel / size.width
         let vScale = pixel / size.height
         let scale = min(hScale, vScale)
         return resize(to: size, scale: scale)
     }
 
-    public func resize(toMinPixel pixel: CGFloat) -> UIImage? {
+    public func resize(toMinPixel pixel: CGFloat) -> UIImage {
         let hScale = pixel / size.width
         let vScale = pixel / size.height
         let scale = max(hScale, vScale)
         return resize(to: size, scale: scale)
     }
     
-    public func resize(to targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage? {
+    public func resize(to targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage {
         let scale = resizeMode.aspectRatio(to: targetSize, original: self.size)
         return resize(to: targetSize, scale: scale)
     }
     
-    public func resize(to targetSize: CGSize, scale:CGFloat) -> UIImage? {
+    public func resize(to targetSize: CGSize, scale:CGFloat) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: ceil(targetSize.width * scale), height: ceil(targetSize.height * scale))
-        return resize(rect: rect)
+        return resize(to: rect)
     }
     
-    public func resize(rect: CGRect) -> UIImage? {
+    public func resize(to rect: CGRect) -> UIImage {
         #if os(iOS)
         return UIGraphicsImageRenderer(size: rect.size).image { _ in
             self.draw(in: rect)
