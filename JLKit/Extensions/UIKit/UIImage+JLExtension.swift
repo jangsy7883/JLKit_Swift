@@ -136,11 +136,10 @@ extension UIImage {
         #else
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
         self.draw(in: rect)
-        guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else { return resultImage }
-        resultImage = resizedImage
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return self }
         UIGraphicsEndImageContext()
         
-        return resultImage
+        return image
         #endif
     }
 }
