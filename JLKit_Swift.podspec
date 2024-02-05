@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     s.author        = { 'jangsy' => 'jangsy7883@gmail.com' }
     s.source        = { :git => 'https://github.com/jangsy7883/JLKit_Swift.git', :tag => s.version.to_s }
     s.swift_version = '5.0'
-    s.ios.deployment_target = '13.0'
+    s.ios.deployment_target = '15.0'
     s.watchos.deployment_target = '6.0'
     s.default_subspec = 'Core'
 
