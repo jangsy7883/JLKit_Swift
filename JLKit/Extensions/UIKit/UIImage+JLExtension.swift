@@ -128,10 +128,11 @@ extension UIImage {
     }
     
     public func resize(rect: CGRect) -> UIImage? {
+        #if os(iOS)
         return UIGraphicsImageRenderer(size: rect.size).image { _ in
             self.draw(in: rect)
         }
-        /*
+        #else
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
         self.draw(in: rect)
         guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else { return resultImage }
@@ -139,7 +140,7 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return resultImage
-         */
+        #endif
     }
 }
 
