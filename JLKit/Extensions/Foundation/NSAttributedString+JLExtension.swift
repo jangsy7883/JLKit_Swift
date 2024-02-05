@@ -45,14 +45,12 @@ public extension NSAttributedString {
         return applying(attributes: [.paragraphStyle: paragraphStyle])
     }
     
-    
     func alignment(_ alignment: NSTextAlignment) -> NSAttributedString {
-        let paragraphStyle = attributes(at: 0, effectiveRange: nil)[.paragraphStyle] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
+        let paragraphStyle = attributes[.paragraphStyle] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
         paragraphStyle.alignment = alignment
         return applying(attributes: [.paragraphStyle: paragraphStyle])
     }
 
-    
     func applying(attributes: [Key: Any]) -> NSAttributedString {
         let copy = NSMutableAttributedString(attributedString: self)
         copy.addAttributes(attributes, range: NSRange(0..<length))
