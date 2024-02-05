@@ -17,9 +17,9 @@ extension UIImage {
         case aspectFit
         case aspectFill
         
-        func aspectRatio(between size: CGSize, and otherSize: CGSize) -> CGFloat {
-            let aspectWidth  = size.width/otherSize.width
-            let aspectHeight = size.height/otherSize.height
+        func aspectRatio(to size: CGSize, original originalSize: CGSize) -> CGFloat {
+            let aspectWidth  = size.width/originalSize.width
+            let aspectHeight = size.height/originalSize.height
             
             switch self {
             case .aspectFill:
@@ -42,6 +42,7 @@ extension UIImage {
         return imageWithInsets
     }
     
+    /*
     public func withTint(_ color: UIColor) -> UIImage? {
         if #available(iOS 13.0, watchOS 6.0, *) {
             return withTintColor(color, renderingMode: .alwaysOriginal)
@@ -63,7 +64,8 @@ extension UIImage {
             return UIGraphicsGetImageFromCurrentImageContext()
         }
     }
-
+     */
+    
     public func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {
         guard let cgImage = self.cgImage else { return nil }
         return UIImage(cgImage: cgImage, scale: scale, orientation: orientation).withRenderingMode(renderingMode)
@@ -102,29 +104,34 @@ extension UIImage {
     
     // MARK: Resize
     public func resize(toMaxPixel pixel: CGFloat) -> UIImage? {
-        let horizontalRatio = pixel / size.width
-        let verticalRatio = pixel / size.height
-        let ratio = min(horizontalRatio, verticalRatio)
-        return resize(rect: CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio)))
+        let hScale = pixel / size.width
+        let vScale = pixel / size.height
+        let scale = min(hScale, vScale)
+        return resize(to: size, scale: scale)
     }
 
     public func resize(toMinPixel pixel: CGFloat) -> UIImage? {
-        let horizontalRatio = pixel / size.width
-        let verticalRatio = pixel / size.height
-        let ratio = max(horizontalRatio, verticalRatio)
-        return resize(rect: CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio)))
+        let hScale = pixel / size.width
+        let vScale = pixel / size.height
+        let scale = max(hScale, vScale)
+        return resize(to: size, scale: scale)
     }
     
-    public func resize(toSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage? {
-        let ratio = resizeMode.aspectRatio(between: toSize, and: size)
-        let rect = CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio))
-        
+    public func resize(to targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage? {
+        let scale = resizeMode.aspectRatio(to: targetSize, original: self.size)
+        return resize(to: targetSize, scale: scale)
+    }
+    
+    public func resize(to targetSize: CGSize, scale:CGFloat) -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: ceil(targetSize.width * scale), height: ceil(targetSize.height * scale))
         return resize(rect: rect)
     }
     
     public func resize(rect: CGRect) -> UIImage? {
-        var resultImage = self
-        
+        return UIGraphicsImageRenderer(size: rect.size).image { _ in
+            self.draw(in: rect)
+        }
+        /*
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
         self.draw(in: rect)
         guard let resizedImage = UIGraphicsGetImageFromCurrentImageContext() else { return resultImage }
@@ -132,6 +139,7 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return resultImage
+         */
     }
 }
 
