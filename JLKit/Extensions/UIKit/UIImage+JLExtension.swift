@@ -108,23 +108,23 @@ extension UIImage {
         let hScale = pixel / size.width
         let vScale = pixel / size.height
         let scale = min(hScale, vScale)
-        return resize(to: size, scale: scale)
+        return resize(scale: scale)
     }
 
     public func resize(toMinPixel pixel: CGFloat) -> UIImage {
         let hScale = pixel / size.width
         let vScale = pixel / size.height
         let scale = max(hScale, vScale)
-        return resize(to: size, scale: scale)
+        return resize(scale: scale)
     }
     
     public func resize(to targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage {
-        let scale = resizeMode.aspectRatio(to: targetSize, original: self.size)
-        return resize(to: targetSize, scale: scale)
+        let scale = resizeMode.aspectRatio(to: targetSize, original: size)
+        return resize(scale: scale)
     }
     
-    public func resize(to targetSize: CGSize, scale:CGFloat) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: ceil(targetSize.width * scale), height: ceil(targetSize.height * scale))
+    public func resize(scale:CGFloat) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: ceil(size.width * scale), height: ceil(size.height * scale))
         return resize(to: rect)
     }
     
