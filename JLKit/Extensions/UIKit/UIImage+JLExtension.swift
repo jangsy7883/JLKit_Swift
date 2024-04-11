@@ -130,7 +130,10 @@ extension UIImage {
     
     public func resize(to rect: CGRect) -> UIImage {
         #if os(iOS)
-        return UIGraphicsImageRenderer(size: rect.size).image { _ in
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        
+        return UIGraphicsImageRenderer(size: rect.size, format: format).image { _ in
             self.draw(in: rect)
         }
         #else
