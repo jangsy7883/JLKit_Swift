@@ -98,46 +98,46 @@ extension UIImage {
                        scale: 0.0, orientation: self.imageOrientation)
     }
     
-    public func cropToSquare() -> UIImage {
+    public func cropToSquare(scale:CGFloat = 1) -> UIImage {
         let shortest = ceil(min(size.width, size.height))
-        return resize(to: CGRect(x: 0, y: 0, width: shortest, height: shortest))
+        return resize(to: CGRect(x: 0, y: 0, width: shortest, height: shortest), scale:scale)
     }
     
     // MARK: Resize
-    public func resize(toMaxPixel pixel: CGFloat) -> UIImage {
-        let hScale = pixel / size.width
-        let vScale = pixel / size.height
-        let scale = min(hScale, vScale)
-        return resize(scale: scale)
+    public func resize(toMaxPixel pixel: CGFloat, scale:CGFloat = 1) -> UIImage {
+        let hRatio = pixel / size.width
+        let vRatio = pixel / size.height
+        let ratio = min(hRatio, vRatio)
+        return resize(ratio: ratio, scale:scale)
     }
 
-    public func resize(toMinPixel pixel: CGFloat) -> UIImage {
-        let hScale = pixel / size.width
-        let vScale = pixel / size.height
-        let scale = max(hScale, vScale)
-        return resize(scale: scale)
+    public func resize(toMinPixel pixel: CGFloat, scale:CGFloat = 1) -> UIImage {
+        let hRatio = pixel / size.width
+        let vRatio = pixel / size.height
+        let ratio = max(hRatio, vRatio)
+        return resize(ratio: ratio, scale:scale)
     }
     
-    public func resize(to targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill) -> UIImage {
-        let scale = resizeMode.aspectRatio(to: targetSize, original: size)
-        return resize(scale: scale)
+    public func resize(_ targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill, scale:CGFloat = 1) -> UIImage {
+        let ratio = resizeMode.aspectRatio(to: targetSize, original: size)
+        return resize(ratio: ratio, scale:scale)
     }
     
-    public func resize(scale:CGFloat) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: ceil(size.width * scale), height: ceil(size.height * scale))
-        return resize(to: rect)
+    public func resize(ratio:CGFloat, scale:CGFloat = 1) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio))
+        return resize(to: rect, scale:scale)
     }
     
-    public func resize(to rect: CGRect) -> UIImage {
+    public func resize(to rect: CGRect, scale:CGFloat = 1) -> UIImage {
         #if os(iOS)
         let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
+        format.scale = scale
         
         return UIGraphicsImageRenderer(size: rect.size, format: format).image { _ in
             self.draw(in: rect)
         }
         #else
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, scale)
         self.draw(in: rect)
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return self }
         UIGraphicsEndImageContext()
