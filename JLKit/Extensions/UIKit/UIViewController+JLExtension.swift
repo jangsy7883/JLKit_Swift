@@ -13,11 +13,19 @@ extension UIViewController {
         let selector = NSSelectorFromString("sharedApplication")
         guard let application =  UIApplication.perform(selector)?.takeUnretainedValue() as? UIApplication else { return nil }
     
+        let window = application.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap { $0.windows }
+                .last { $0.isKeyWindow }
+        
+        return window?.rootViewController
+        /*
         if let viewController = application.keyWindow?.rootViewController {
             return viewController
         }else {
             return application.windows.filter{ $0.rootViewController != nil }.first { $0.isKeyWindow }?.rootViewController
         }
+         */
     }
     
     @objc open class func topMost() -> UIViewController? {

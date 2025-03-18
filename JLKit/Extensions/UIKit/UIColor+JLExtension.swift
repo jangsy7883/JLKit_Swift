@@ -42,8 +42,20 @@ public extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
-    var hex: String {
-        let cgColorInRGB = cgColor.converted(to: CGColorSpace(name: CGColorSpace.sRGB)!, intent: .defaultIntent, options: nil)!
+    enum JLColorSpace {
+        case sRGB
+        case displayP3
+         
+        var colorSpace: CGColorSpace {
+            switch self {
+            case .sRGB:         return CGColorSpace(name: CGColorSpace.sRGB)!
+            case .displayP3:    return CGColorSpace(name: CGColorSpace.displayP3)!
+            }
+        }
+    }
+    
+    func hex(_ colorSpace: JLColorSpace) -> String {
+        let cgColorInRGB = cgColor.converted(to: colorSpace.colorSpace, intent: .defaultIntent, options: nil)!
         let colorRef = cgColorInRGB.components
         let r = colorRef?[0] ?? 0
         let g = colorRef?[1] ?? 0
@@ -62,6 +74,10 @@ public extension UIColor {
         } else {
             return "#\(color)"
         }
+    }
+    
+    var hex: String {
+        hex(.displayP3)
     }
 }
 
