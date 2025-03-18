@@ -23,8 +23,19 @@ import UIKit
 
 public extension UIColor {
     //MARK: - Hex
+    enum JLColorSpace {
+        case sRGB
+        case displayP3
+         
+        var colorSpace: CGColorSpace {
+            switch self {
+            case .sRGB:         return CGColorSpace(name: CGColorSpace.sRGB)!
+            case .displayP3:    return CGColorSpace(name: CGColorSpace.displayP3)!
+            }
+        }
+    }
     
-    @nonobjc convenience init(hex: String) {
+    @nonobjc convenience init(hex: String, colorSpace:JLColorSpace = .displayP3) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
         Scanner(string: hex).scanHexInt64(&int)
@@ -39,22 +50,15 @@ public extension UIColor {
         default:
             (a, r, g, b) = (255, 0, 0, 0)
         }
-        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
-    }
-    
-    enum JLColorSpace {
-        case sRGB
-        case displayP3
-         
-        var colorSpace: CGColorSpace {
-            switch self {
-            case .sRGB:         return CGColorSpace(name: CGColorSpace.sRGB)!
-            case .displayP3:    return CGColorSpace(name: CGColorSpace.displayP3)!
-            }
+        switch colorSpace {
+        case .sRGB:
+            self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+        case .displayP3:
+            self.init(displayP3Red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
         }
     }
     
-    func hex(_ colorSpace: JLColorSpace) -> String {
+    func hex(_ colorSpace: JLColorSpace = .displayP3) -> String {
         let cgColorInRGB = cgColor.converted(to: colorSpace.colorSpace, intent: .defaultIntent, options: nil)!
         let colorRef = cgColorInRGB.components
         let r = colorRef?[0] ?? 0
