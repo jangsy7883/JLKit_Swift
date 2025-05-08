@@ -23,6 +23,12 @@ import UIKit
 
 public extension UIColor {
     //MARK: - Hex
+    enum JLHexFormat {
+        case argb   // AARRGGBB
+        case rgba   // RRGGBBAA
+        case auto
+    }
+
     enum JLColorSpace {
         case sRGB
         case displayP3
@@ -35,7 +41,7 @@ public extension UIColor {
         }
     }
     
-    @nonobjc convenience init(hex: String, colorSpace:JLColorSpace = .displayP3) {
+    @nonobjc convenience init(hex: String, format: JLHexFormat = .auto, colorSpace:JLColorSpace = .displayP3) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
         Scanner(string: hex).scanHexInt64(&int)
@@ -45,6 +51,8 @@ public extension UIColor {
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
         case 6: // RGB (24-bit)
             (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8 where format == .rgba: // RGBA (32-bit)
+            (r, g, b, a) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         case 8: // ARGB (32-bit)
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
