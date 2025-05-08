@@ -20,5 +20,4 @@
 
 //UIKit
 #import "UIColor+JLKit.h"
-#import "UIDevice+JLKit.h"
 #import "UIImage+JLKit.h"
