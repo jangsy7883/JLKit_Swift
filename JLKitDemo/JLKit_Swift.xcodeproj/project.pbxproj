@@ -47,7 +47,6 @@
 		3D5B276E20B5270D003FA63A /* Bundle+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270D20B5270D003FA63A /* Bundle+JLExtension.swift */; };
 		3D5B276F20B5270D003FA63A /* String+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270E20B5270D003FA63A /* String+JLExtension.swift */; };
 		3D5B277120B5270D003FA63A /* UIColor+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B271720B5270D003FA63A /* UIColor+JLKit.m */; };
-		3D5B277320B5270D003FA63A /* UIDevice+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B271920B5270D003FA63A /* UIDevice+JLKit.m */; };
 		3D5B278020B5270D003FA63A /* UIImage+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B272C20B5270D003FA63A /* UIImage+JLKit.m */; };
 		3D5B278420B5270D003FA63A /* NSArray+JLKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B273920B5270D003FA63A /* NSArray+JLKit.m */; };
 		3D5B278920B5270D003FA63A /* NSDate+JLAge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B274220B5270D003FA63A /* NSDate+JLAge.m */; };
@@ -133,11 +132,9 @@
 		3D5B270D20B5270D003FA63A /* Bundle+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B270E20B5270D003FA63A /* String+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B271720B5270D003FA63A /* UIColor+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JLKit.m"; sourceTree = "<group>"; };
-		3D5B271920B5270D003FA63A /* UIDevice+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JLKit.m"; sourceTree = "<group>"; };
 		3D5B271F20B5270D003FA63A /* UIImage+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JLKit.h"; sourceTree = "<group>"; };
 		3D5B272720B5270D003FA63A /* UIColor+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JLKit.h"; sourceTree = "<group>"; };
 		3D5B272C20B5270D003FA63A /* UIImage+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JLKit.m"; sourceTree = "<group>"; };
-		3D5B273220B5270D003FA63A /* UIDevice+JLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JLKit.h"; sourceTree = "<group>"; };
 		3D5B273920B5270D003FA63A /* NSArray+JLKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JLKit.m"; sourceTree = "<group>"; };
 		3D5B273A20B5270D003FA63A /* CGGeometryExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGGeometryExtension.h; sourceTree = "<group>"; };
 		3D5B274220B5270D003FA63A /* NSDate+JLAge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JLAge.m"; sourceTree = "<group>"; };
@@ -321,8 +318,6 @@
 			children = (
 				3D5B272720B5270D003FA63A /* UIColor+JLKit.h */,
 				3D5B271720B5270D003FA63A /* UIColor+JLKit.m */,
-				3D5B273220B5270D003FA63A /* UIDevice+JLKit.h */,
-				3D5B271920B5270D003FA63A /* UIDevice+JLKit.m */,
 				3D5B271F20B5270D003FA63A /* UIImage+JLKit.h */,
 				3D5B272C20B5270D003FA63A /* UIImage+JLKit.m */,
 			);
@@ -526,7 +521,6 @@
 				3D5B276920B5270D003FA63A /* CLPlacemark+JLExtension.swift in Sources */,
 				2F1934ED22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift in Sources */,
 				2F1934EB22B9AF7900064CDE /* NumberFormatter+JLExtension.swift in Sources */,
-				3D5B277320B5270D003FA63A /* UIDevice+JLKit.m in Sources */,
 				EFEEBE2921707D2200C78C2C /* UISearchBar+JLExtension.swift in Sources */,
 				3D5B279520B5273A003FA63A /* SKProduct+JLextension.swift in Sources */,
 				3D5B276C20B5270D003FA63A /* Error+JLExtension.swift in Sources */,
@@ -729,7 +723,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.95;
+				MARKETING_VERSION = 0.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
@@ -752,7 +746,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.95;
+				MARKETING_VERSION = 0.0.96;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
