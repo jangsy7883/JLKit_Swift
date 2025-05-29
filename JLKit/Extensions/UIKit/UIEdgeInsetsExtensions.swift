@@ -28,7 +28,7 @@ public extension UIEdgeInsets {
     init(horizontal: CGFloat, vertical: CGFloat) {
         self.init(top: vertical / 2, left: horizontal / 2, bottom: vertical / 2, right: horizontal / 2)
     }
-     */µ
+     */
 
     func insetBy(top: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: self.top + top, left: left, bottom: bottom, right: right)
