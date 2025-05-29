@@ -21,13 +21,14 @@ public extension UIEdgeInsets {
 
 public extension UIEdgeInsets {
 
-    init(inset: CGFloat) {
-        self.init(top: inset, left: inset, bottom: inset, right: inset)
+    static func all(_ value: CGFloat) -> UIEdgeInsets {
+        UIEdgeInsets(top: value, left: value, bottom: value, right: value)
     }
-    
+    /*
     init(horizontal: CGFloat, vertical: CGFloat) {
         self.init(top: vertical / 2, left: horizontal / 2, bottom: vertical / 2, right: horizontal / 2)
     }
+     */µ
 
     func insetBy(top: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: self.top + top, left: left, bottom: bottom, right: right)
