@@ -247,15 +247,18 @@
 		3D5B26FB20B5270D003FA63A /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				2F76C6D92860024C001C36A1 /* DiffableDataSource+Extension.swift */,
+				2F87DD1127F699A400228D82 /* SFSafariViewControllerExtension.swift */,
 				3D5B27A020B533BE003FA63A /* UIActivityViewController+JLExtension.swift */,
 				EFE44991213E0F4A0022B495 /* UIAlertController+JLExtension.swift */,
+				2F87DD0927F6839000228D82 /* UIApplicationExtensions.swift */,
 				3D5B26FE20B5270D003FA63A /* UIBarButtonItem+JLExtension.swift */,
 				3D5B27A220B5359F003FA63A /* UIButton+JLExtension.swift */,
 				3D5B279E20B53053003FA63A /* UICollectionView+JLExtension.swift */,
 				3D5B279A20B52FC6003FA63A /* UICollectionViewCell+JLExtension.swift */,
-				2F76C6D92860024C001C36A1 /* DiffableDataSource+Extension.swift */,
 				2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */,
 				2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */,
+				2F87DD0B27F685B700228D82 /* UIEdgeInsetsExtensions.swift */,
 				3D5B26FC20B5270D003FA63A /* UIFont+JLExtension.swift */,
 				3D5B26FD20B5270D003FA63A /* UIImage+JLExtension.swift */,
 				2F9D6E0224A9B894000D9A5B /* UIImageView+JLExtension.swift */,
@@ -263,15 +266,12 @@
 				EFE44993213E0FF90022B495 /* UINavigationBar+JLExtension.swift */,
 				EFEEBE2821707D2200C78C2C /* UISearchBar+JLExtension.swift */,
 				3D5B270120B5270D003FA63A /* UIStoryboard+JLExtension.swift */,
+				2F87DD0727F6832200228D82 /* UISwitchExtensions.swift */,
 				3D5B279C20B53044003FA63A /* UITableView+JLExtension.swift */,
 				3D5B279820B52E42003FA63A /* UITableViewCell+JLExtension.swift */,
 				2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */,
 				3D5B26FF20B5270D003FA63A /* UIView+JLExtension.swift */,
 				EFE449A3213E60870022B495 /* UIViewController+JLExtension.swift */,
-				2F87DD0727F6832200228D82 /* UISwitchExtensions.swift */,
-				2F87DD0927F6839000228D82 /* UIApplicationExtensions.swift */,
-				2F87DD0B27F685B700228D82 /* UIEdgeInsetsExtensions.swift */,
-				2F87DD1127F699A400228D82 /* SFSafariViewControllerExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
