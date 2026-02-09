@@ -93,6 +93,20 @@ public extension UIColor {
     }
 }
 
+
+public extension UIColor {
+    static var random: UIColor {
+        UIColor.random()
+    }
+    
+    static func random(alpha:CGFloat = 1.0) -> UIColor {
+        return UIColor(red: CGFloat.random(in: 0...1),
+                       green: CGFloat.random(in: 0...1),
+                       blue: CGFloat.random(in: 0...1),
+                       alpha: 1.0)
+    }
+}
+
 public extension UIColor {
     func lighten(by percentage: CGFloat = 0.2) -> UIColor {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0

@@ -10,6 +10,7 @@
 		2F172B63229E1EBF00E584A4 /* UIColor+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */; };
 		2F1934EB22B9AF7900064CDE /* NumberFormatter+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */; };
 		2F1934ED22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */; };
+		2F1E1BE32F3977940095744B /* URLExtension+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1E1BE22F3977940095744B /* URLExtension+FilePath.swift */; };
 		2F3CF4AE2638EE1F00F2DD7E /* CaseIterable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4AD2638EE1F00F2DD7E /* CaseIterable+Extension.swift */; };
 		2F3CF4B22638EEB400F2DD7E /* UITextField+MaxLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */; };
 		2F3CF4B62638EF8500F2DD7E /* CaseIterableDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3CF4B52638EF8500F2DD7E /* CaseIterableDefaults.swift */; };
@@ -38,7 +39,7 @@
 		3D5B276520B5270D003FA63A /* CLGeocoder+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270420B5270D003FA63A /* CLGeocoder+JLExtension.swift */; };
 		3D5B276620B5270D003FA63A /* NSNumber+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270520B5270D003FA63A /* NSNumber+JLExtension.swift */; };
 		3D5B276720B5270D003FA63A /* Float+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270620B5270D003FA63A /* Float+JLExtension.swift */; };
-		3D5B276820B5270D003FA63A /* URL+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270720B5270D003FA63A /* URL+JLExtension.swift */; };
+		3D5B276820B5270D003FA63A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270720B5270D003FA63A /* URLExtension.swift */; };
 		3D5B276920B5270D003FA63A /* CLPlacemark+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270820B5270D003FA63A /* CLPlacemark+JLExtension.swift */; };
 		3D5B276A20B5270D003FA63A /* Dictionary+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270920B5270D003FA63A /* Dictionary+JLExtension.swift */; };
 		3D5B276B20B5270D003FA63A /* Date+JLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B270A20B5270D003FA63A /* Date+JLExtension.swift */; };
@@ -95,6 +96,7 @@
 		2F172B62229E1EBF00E584A4 /* UIColor+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+JLExtension.swift"; sourceTree = "<group>"; };
 		2F1934EA22B9AF7900064CDE /* NumberFormatter+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+JLExtension.swift"; sourceTree = "<group>"; };
 		2F1934EC22B9AFFE00064CDE /* UIEdgeInsets+JLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+JLExtension.swift"; sourceTree = "<group>"; };
+		2F1E1BE22F3977940095744B /* URLExtension+FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLExtension+FilePath.swift"; sourceTree = "<group>"; };
 		2F3CF4AD2638EE1F00F2DD7E /* CaseIterable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Extension.swift"; sourceTree = "<group>"; };
 		2F3CF4B12638EEB400F2DD7E /* UITextField+MaxLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+MaxLimit.swift"; sourceTree = "<group>"; };
 		2F3CF4B52638EF8500F2DD7E /* CaseIterableDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseIterableDefaults.swift; sourceTree = "<group>"; };
@@ -123,7 +125,7 @@
 		3D5B270420B5270D003FA63A /* CLGeocoder+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLGeocoder+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B270520B5270D003FA63A /* NSNumber+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B270620B5270D003FA63A /* Float+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+JLExtension.swift"; sourceTree = "<group>"; };
-		3D5B270720B5270D003FA63A /* URL+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+JLExtension.swift"; sourceTree = "<group>"; };
+		3D5B270720B5270D003FA63A /* URLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		3D5B270820B5270D003FA63A /* CLPlacemark+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLPlacemark+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B270920B5270D003FA63A /* Dictionary+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+JLExtension.swift"; sourceTree = "<group>"; };
 		3D5B270A20B5270D003FA63A /* Date+JLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+JLExtension.swift"; sourceTree = "<group>"; };
@@ -297,7 +299,8 @@
 				3D5B279420B5273A003FA63A /* SKProduct+JLextension.swift */,
 				2FEFDB3A28602E8B00256CB4 /* Task+Extension.swift */,
 				EF2EEDC4214204B500DFB32B /* TimeZone+JLExtension.swift */,
-				3D5B270720B5270D003FA63A /* URL+JLExtension.swift */,
+				3D5B270720B5270D003FA63A /* URLExtension.swift */,
+				2F1E1BE22F3977940095744B /* URLExtension+FilePath.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -528,7 +531,7 @@
 				3D5B278920B5270D003FA63A /* NSDate+JLAge.m in Sources */,
 				3D5B279720B52A36003FA63A /* NSAttributedString+JLExtension.swift in Sources */,
 				3D5B27A320B5359F003FA63A /* UIButton+JLExtension.swift in Sources */,
-				3D5B276820B5270D003FA63A /* URL+JLExtension.swift in Sources */,
+				3D5B276820B5270D003FA63A /* URLExtension.swift in Sources */,
 				2F87DD1027F68FC100228D82 /* BoolExtensions.swift in Sources */,
 				3D5B278C20B5270D003FA63A /* NSThread+JLKit.m in Sources */,
 				3D5B279220B5270D003FA63A /* NSDictionary+JLKit.m in Sources */,
@@ -542,6 +545,7 @@
 				3D5B276720B5270D003FA63A /* Float+JLExtension.swift in Sources */,
 				2F3CF4BD2638F0C400F2DD7E /* Maths.swift in Sources */,
 				3D5B279920B52E42003FA63A /* UITableViewCell+JLExtension.swift in Sources */,
+				2F1E1BE32F3977940095744B /* URLExtension+FilePath.swift in Sources */,
 				3D5B276A20B5270D003FA63A /* Dictionary+JLExtension.swift in Sources */,
 				3D5B275F20B5270D003FA63A /* UIImage+JLExtension.swift in Sources */,
 				3D5B277120B5270D003FA63A /* UIColor+JLKit.m in Sources */,
