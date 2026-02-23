@@ -10,10 +10,18 @@
 import CoreImage
 
 public extension UIColor {
-    var redValue: CGFloat { return CIColor(color: self).red }
-    var greenValue: CGFloat { return CIColor(color: self).green }
-    var blueValue: CGFloat { return CIColor(color: self).blue }
-    var alphaValue: CGFloat { return CIColor(color: self).alpha }
+    // MARK: - RGBA Components (CoreImage)
+
+    /// RGBA 컴포넌트를 한 번의 CIColor 생성으로 반환합니다.
+    var rgbaComponents: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        let ci = CIColor(color: self)
+        return (ci.red, ci.green, ci.blue, ci.alpha)
+    }
+
+    var redValue: CGFloat   { CIColor(color: self).red }
+    var greenValue: CGFloat { CIColor(color: self).green }
+    var blueValue: CGFloat  { CIColor(color: self).blue }
+    var alphaValue: CGFloat { CIColor(color: self).alpha }
 }
 
 #endif
@@ -22,26 +30,26 @@ public extension UIColor {
 import UIKit
 
 public extension UIColor {
-    //MARK: - Hex
+    // MARK: - Hex
+
     enum JLHexFormat {
         case argb   // AARRGGBB
         case rgba   // RRGGBBAA
-        case auto
     }
 
     enum JLColorSpace {
         case sRGB
         case displayP3
-         
+
         var colorSpace: CGColorSpace {
             switch self {
-            case .sRGB:         return CGColorSpace(name: CGColorSpace.sRGB)!
-            case .displayP3:    return CGColorSpace(name: CGColorSpace.displayP3)!
+            case .sRGB:      return CGColorSpace(name: CGColorSpace.sRGB)!
+            case .displayP3: return CGColorSpace(name: CGColorSpace.displayP3)!
             }
         }
     }
-    
-    @nonobjc convenience init(hex: String, format: JLHexFormat = .auto, colorSpace:JLColorSpace = .displayP3) {
+
+    @nonobjc convenience init(hex: String, format: JLHexFormat = .argb, colorSpace: JLColorSpace = .displayP3) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
         Scanner(string: hex).scanHexInt64(&int)
@@ -65,49 +73,56 @@ public extension UIColor {
             self.init(displayP3Red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
         }
     }
-    
-    func hex(_ colorSpace: JLColorSpace = .displayP3) -> String {
-        let cgColorInRGB = cgColor.converted(to: colorSpace.colorSpace, intent: .defaultIntent, options: nil)!
+
+    /// UIColor를 hex 문자열로 반환합니다.
+    /// - Parameters:
+    ///   - colorSpace: 변환에 사용할 색상 공간 (기본값: displayP3)
+    ///   - format: alpha 포함 시 출력 포맷 (기본값: .argb → #AARRGGBB)
+    func hex(_ colorSpace: JLColorSpace = .displayP3, format: JLHexFormat = .argb) -> String {
+        guard let cgColorInRGB = cgColor.converted(to: colorSpace.colorSpace, intent: .defaultIntent, options: nil) else {
+            return "#000000"
+        }
         let colorRef = cgColorInRGB.components
         let r = colorRef?[0] ?? 0
         let g = colorRef?[1] ?? 0
         let b = ((colorRef?.count ?? 0) > 2 ? colorRef?[2] : g) ?? 0
-        let a = cgColor.alpha
+        let a = cgColorInRGB.alpha
 
-        let color = String(
+        let rgb = String(
             format: "%02lX%02lX%02lX",
             lroundf(Float(r * 255)),
             lroundf(Float(g * 255)),
             lroundf(Float(b * 255))
         )
 
-        if a < 1 {
-            return "#\(String(format: "%02lX", lroundf(Float(a * 255))))\(color)"
-        } else {
-            return "#\(color)"
+        guard a < 1 else { return "#\(rgb)" }
+
+        let alphaHex = String(format: "%02lX", lroundf(Float(a * 255)))
+        switch format {
+        case .rgba:
+            return "#\(rgb)\(alphaHex)"
+        case .argb:
+            return "#\(alphaHex)\(rgb)"
         }
     }
-    
-    var hex: String {
-        hex(.displayP3)
-    }
-}
 
+    var hex: String { hex() }
 
-public extension UIColor {
+    // MARK: - Random
+
     static var random: UIColor {
         UIColor.random()
     }
-    
-    static func random(alpha:CGFloat = 1.0) -> UIColor {
+
+    static func random(alpha: CGFloat = 1.0) -> UIColor {
         return UIColor(red: CGFloat.random(in: 0...1),
                        green: CGFloat.random(in: 0...1),
                        blue: CGFloat.random(in: 0...1),
-                       alpha: 1.0)
+                       alpha: alpha)
     }
-}
 
-public extension UIColor {
+    // MARK: - Lighten / Darken
+
     func lighten(by percentage: CGFloat = 0.2) -> UIColor {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
@@ -116,7 +131,7 @@ public extension UIColor {
                        blue: min(blue + percentage, 1.0),
                        alpha: alpha)
     }
-    
+
     func darken(by percentage: CGFloat = 0.2) -> UIColor {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
@@ -125,9 +140,9 @@ public extension UIColor {
                        blue: max(blue - percentage, 0),
                        alpha: alpha)
     }
-}
 
-public extension UIColor {
+    // MARK: - Dynamic Color
+
     static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
         #if os(watchOS)
         return dark
@@ -142,6 +157,16 @@ public extension UIColor {
         return resolvedColor(with: traitCollection)
     }
     #endif
+
+    var isDynamic: Bool {
+        #if os(iOS)
+        return self.resolvedColor(userInterfaceStyle: .light) != self.resolvedColor(userInterfaceStyle: .dark)
+        #else
+        return false
+        #endif
+    }
+    
+    // MARK: - Image
     
     func image(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
         #if os(iOS)
@@ -149,20 +174,11 @@ public extension UIColor {
            let dark = UIImage(color: self.resolvedColor(userInterfaceStyle: .dark)),
            let light = UIImage(color: self.resolvedColor(userInterfaceStyle: .light)) {
             return UIImage.dynamicImage(withLight: light, dark: dark)
-        }else {
-            return UIImage(color: self, size:size)
+        } else {
+            return UIImage(color: self, size: size)
         }
         #else
-        return UIImage(color: self, size:size)
-        #endif
-    }
-    
-
-    var isDynamic: Bool {
-        #if os(iOS)
-        return self.resolvedColor(userInterfaceStyle: .light) != self.resolvedColor(userInterfaceStyle: .dark)
-        #else
-        return false
+        return UIImage(color: self, size: size)
         #endif
     }
 }
