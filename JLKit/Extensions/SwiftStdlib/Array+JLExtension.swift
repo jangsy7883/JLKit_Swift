@@ -37,7 +37,7 @@ extension Array {
     }
 
     //MARK: - Shuffle
-    
+    /*
     public mutating func shuffle() {
         guard self.count >= 1 else { return }
         
@@ -52,7 +52,8 @@ extension Array {
         elements.shuffle()
         return elements
     }
-        
+    */
+    
     //MARK: - Sort
     
     public func sorted<T: Comparable>(by compare: (Element) -> T, asc ascendant: Bool = true) -> Array {

@@ -20,13 +20,11 @@ extension UIView {
         return nil
     }
     
-    @objc public func screenShot(afterScreenUpdates:Bool = true) -> UIImage? {
-        let size = CGSize(width: floor(bounds.size.width), height: floor(bounds.size.width))
-        UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.main.scale)
-        drawHierarchy(in: self.bounds, afterScreenUpdates: afterScreenUpdates)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
+    @objc public func screenShot(afterScreenUpdates: Bool = true) -> UIImage? {
+        let size = CGSize(width: floor(bounds.size.width), height: floor(bounds.size.height))
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            drawHierarchy(in: self.bounds, afterScreenUpdates: afterScreenUpdates)
+        }
     }
     
     @objc public func rotate(angle: CGFloat) {

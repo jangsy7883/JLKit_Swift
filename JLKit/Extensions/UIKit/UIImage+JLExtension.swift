@@ -6,22 +6,21 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 #if canImport(UIKit)
-import UIKit
 import Foundation
+import UIKit
 
 /*
  참고 : https://github.com/melvitax/ImageHelper
  */
-extension UIImage {
-    
-    public enum UIImageResizeMode {
+public extension UIImage {
+    enum UIImageResizeMode {
         case aspectFit
         case aspectFill
-        
+
         func aspectRatio(to size: CGSize, original originalSize: CGSize) -> CGFloat {
-            let aspectWidth  = size.width/originalSize.width
-            let aspectHeight = size.height/originalSize.height
-            
+            let aspectWidth = size.width / originalSize.width
+            let aspectHeight = size.height / originalSize.height
+
             switch self {
             case .aspectFill:
                 return max(aspectWidth, aspectHeight)
@@ -30,19 +29,18 @@ extension UIImage {
             }
         }
     }
-    
+
     // MARK:
-    
-    public func withInsets(_ insets: UIEdgeInsets) -> UIImage? {
+
+    func withInsets(_ insets: UIEdgeInsets) -> UIImage? {
         let size = CGSize(width: self.size.width + insets.left + insets.right, height: self.size.height + insets.top + insets.bottom)
-        UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
-        UIGraphicsGetCurrentContext()
-        draw(at: CGPoint(x: insets.left, y: insets.top))
-        let imageWithInsets = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return imageWithInsets
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = scale
+        return UIGraphicsImageRenderer(size: size, format: format).image { _ in
+            draw(at: CGPoint(x: insets.left, y: insets.top))
+        }
     }
-    
+
     /*
     public func withTint(_ color: UIColor) -> UIImage? {
         if #available(iOS 13.0, watchOS 6.0, *) {
@@ -66,82 +64,80 @@ extension UIImage {
         }
     }
      */
-    
-    public func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {
-        guard let cgImage = self.cgImage else { return nil }
+
+    func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {
+        guard let cgImage = cgImage else { return nil }
+
         return UIImage(cgImage: cgImage, scale: scale, orientation: orientation).withRenderingMode(renderingMode)
     }
-    
+
     // MARK:
-    
-    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
-        var image: UIImage?
-        #if os(iOS)
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        #else
-        UIGraphicsBeginImageContextWithOptions(size, false, 1)
-        #endif
-        if let context = UIGraphicsGetCurrentContext() {
-            context.setFillColor(color.cgColor)
-            context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
-            image = UIGraphicsGetImageFromCurrentImageContext()
+
+    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let image = UIGraphicsImageRenderer(size: size).image { context in
+            color.setFill()
+            context.fill(CGRect(origin: .zero, size: size))
         }
-        UIGraphicsEndImageContext()
-        guard let cgImage = image?.cgImage else {return nil}
-        
+        guard let cgImage = image.cgImage else { return nil }
+
         self.init(cgImage: cgImage)
     }
-    
+
     // MARK: Crop
-    public func crop(bounds: CGRect) -> UIImage? {
-        return UIImage(cgImage: (self.cgImage?.cropping(to: bounds)!)!,
-                       scale: 0.0, orientation: self.imageOrientation)
+
+    func crop(bounds: CGRect) -> UIImage? {
+        guard let cgImage else { return nil }
+        guard let cropping = cgImage.cropping(to: bounds) else { return nil }
+
+        return UIImage(cgImage: cropping, scale: 0.0, orientation: imageOrientation)
     }
-    
-    public func cropToSquare(scale:CGFloat = 1) -> UIImage {
+
+    func cropToSquare(scale: CGFloat = 1) -> UIImage {
         let shortest = ceil(min(size.width, size.height))
-        return resize(to: CGRect(x: 0, y: 0, width: shortest, height: shortest), scale:scale)
+        return resize(to: CGRect(x: 0, y: 0, width: shortest, height: shortest), scale: scale)
     }
-    
+
     // MARK: Resize
-    public func resize(toMaxPixel pixel: CGFloat, scale:CGFloat = 1) -> UIImage {
+
+    func resize(toMaxPixel pixel: CGFloat, scale: CGFloat = 1) -> UIImage {
         let hRatio = pixel / size.width
         let vRatio = pixel / size.height
         let ratio = min(hRatio, vRatio)
-        return resize(ratio: ratio, scale:scale)
+        return resize(ratio: ratio, scale: scale)
     }
 
-    public func resize(toMinPixel pixel: CGFloat, scale:CGFloat = 1) -> UIImage {
+    func resize(toMinPixel pixel: CGFloat, scale: CGFloat = 1) -> UIImage {
         let hRatio = pixel / size.width
         let vRatio = pixel / size.height
         let ratio = max(hRatio, vRatio)
-        return resize(ratio: ratio, scale:scale)
+        return resize(ratio: ratio, scale: scale)
     }
-    
-    public func resize(_ targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill, scale:CGFloat = 1) -> UIImage {
+
+    func resize(_ targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill, scale: CGFloat = 1) -> UIImage {
         let ratio = resizeMode.aspectRatio(to: targetSize, original: size)
-        return resize(ratio: ratio, scale:scale)
+        return resize(ratio: ratio, scale: scale)
     }
-    
-    public func resize(ratio:CGFloat, scale:CGFloat = 1) -> UIImage {
+
+    func resize(ratio: CGFloat, scale: CGFloat = 1) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: ceil(size.width * ratio), height: ceil(size.height * ratio))
-        return resize(to: rect, scale:scale)
+        return resize(to: rect, scale: scale)
     }
-    
-    public func resize(to rect: CGRect, scale:CGFloat = 1) -> UIImage {
+
+    func resize(to rect: CGRect, scale: CGFloat = 1) -> UIImage {
         #if os(iOS)
         let format = UIGraphicsImageRendererFormat()
         format.scale = scale
-        
+
         return UIGraphicsImageRenderer(size: rect.size, format: format).image { _ in
             self.draw(in: rect)
         }
         #else
         UIGraphicsBeginImageContextWithOptions(rect.size, false, scale)
-        self.draw(in: rect)
+        draw(in: rect)
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return self }
+
         UIGraphicsEndImageContext()
-        
+
         return image
         #endif
     }
@@ -153,7 +149,7 @@ public extension UIImage {
     }
 
     var kilobytesSize: Int {
-        return (jpegData(compressionQuality: 1)?.count ?? 0) / 1024
+        return bytesSize / 1024
     }
 
     enum ImageFormat {
@@ -166,7 +162,7 @@ public extension UIImage {
             let data: Data?
             switch format {
             case .PNG: data = pngData()
-            case .JPEG(let compressionQuality): data = jpegData(compressionQuality: compressionQuality)
+            case let .JPEG(compressionQuality): data = jpegData(compressionQuality: compressionQuality)
             }
             return data
         }
@@ -174,10 +170,10 @@ public extension UIImage {
 }
 
 public extension UIImage {
-
     var original: UIImage {
         return withRenderingMode(.alwaysOriginal)
     }
+
     var template: UIImage {
         return withRenderingMode(.alwaysTemplate)
     }
@@ -217,17 +213,17 @@ public extension UIImage {
         if #available(iOS 13.0, *) {
             let lightTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .light)])
             let darkTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .dark)])
-            
-            var lightImage:UIImage?
-            var darkImage:UIImage?
-            
+
+            var lightImage: UIImage?
+            var darkImage: UIImage?
+
             lightTC.performAsCurrent {
                 lightImage = light()
             }
             darkTC.performAsCurrent {
                 darkImage = dark()
             }
-            
+
             if let darkImage {
                 lightImage?.imageAsset?.register(darkImage, with: UITraitCollection(userInterfaceStyle: .dark))
             }
