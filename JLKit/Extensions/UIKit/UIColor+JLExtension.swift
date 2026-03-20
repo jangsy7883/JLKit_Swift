@@ -22,10 +22,10 @@ public extension UIColor {
         return (ci.red, ci.green, ci.blue, ci.alpha)
     }
 
-    var redValue: CGFloat   { CIColor(color: self).red }
-    var greenValue: CGFloat { CIColor(color: self).green }
-    var blueValue: CGFloat  { CIColor(color: self).blue }
-    var alphaValue: CGFloat { CIColor(color: self).alpha }
+    var redValue: CGFloat   { rgbaComponents.red }
+    var greenValue: CGFloat { rgbaComponents.green }
+    var blueValue: CGFloat  { rgbaComponents.blue }
+    var alphaValue: CGFloat { rgbaComponents.alpha }
 }
 
 #endif
