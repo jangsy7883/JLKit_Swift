@@ -6,18 +6,14 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
-#if canImport(CoreGraphics)
-import CoreGraphics
-#endif
+import Foundation
 
-public extension Int {    
+public extension Int {
     static func random(min:Int, max:Int) -> Int {
         let form = max - min + 1
         return Int(UInt32(min) + arc4random_uniform(UInt32(form)))
     }
-}
-
-public extension Int {
+    
     var decimalString: String {
         return NumberFormatter.decimal.string(from: NSNumber(value: self)) ?? "\(self)"
     }
@@ -33,10 +29,15 @@ public extension Int {
     var float: Float {
          return Float(self)
      }
-
-     #if canImport(CoreGraphics)
-     var cgFloat: CGFloat {
-         return CGFloat(self)
-     }
-     #endif
 }
+
+#if canImport(CoreGraphics)
+import CoreGraphics
+
+public extension Int {
+    var cgFloat: CGFloat {
+        return CGFloat(self)
+    }
+}
+
+#endif
