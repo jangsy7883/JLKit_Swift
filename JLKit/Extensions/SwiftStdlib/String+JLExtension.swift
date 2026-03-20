@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 public extension NSString {
-    static func nameFormClass(_ class_: Any) -> String? {
+    static func nameFromClass(_ class_: Any) -> String? {
         let name = String(describing: class_.self)
         let words = name.components(separatedBy: ".")
         
@@ -42,13 +42,7 @@ public extension String {
     
     static func random(length: Int = 20) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        var randomString: String = ""
-        
-        for _ in 0..<length {
-            let randomValue = arc4random_uniform(UInt32(base.count))
-            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
-        }
-        return randomString
+        return (0..<length).compactMap { _ in base.randomElement().map(String.init) }.joined()
     }
     
     //MARK : - Regex
@@ -174,7 +168,7 @@ public extension String {
     }
     
     var urlEncoded: String {
-        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? self
     }
     
     @discardableResult mutating func urlEncode() -> String {

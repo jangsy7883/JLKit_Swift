@@ -1,0 +1,27 @@
+--swiftversion 6
+
+# disable Rules
+
+--disable indent
+--disable unusedArguments
+--disable wrapMultilineStatementBraces	
+
+# enable Rules 
+
+--enable markTypes
+--enable blankLineAfterSwitchCase
+--enable blankLinesAfterGuardStatements
+--enable isEmpty
+
+# options 
+
+--wrap-parameters after-first
+--wrap-collections before-first
+--wrap-conditions after-first
+--trailing-commas never
+
+
+# exclude files
+
+--exclude Pods
+--exclude TheDayBefore/OpenSources
