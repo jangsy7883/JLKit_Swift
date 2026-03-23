@@ -6,9 +6,9 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 #if os(iOS)
-import Foundation
-import CoreLocation
 import Contacts
+import CoreLocation
+import Foundation
 
 public extension CLPlacemark {
     @objc var formattedAddress: String? {
@@ -20,9 +20,9 @@ public extension CLPlacemark {
         }
 
         if let code = postalCode {
-            value =  value?.replacingOccurrences(of: code, with: "")
+            value = value?.replacingOccurrences(of: code, with: "")
         }
-        
+
         return value
     }
 }

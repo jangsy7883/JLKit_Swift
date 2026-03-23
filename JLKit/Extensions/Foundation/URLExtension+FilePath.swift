@@ -1,5 +1,5 @@
 //
-//  URL+JLExtension.swift
+//  URLExtension+FilePath.swift
 //  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 2. 19..
@@ -8,21 +8,20 @@
 
 import Foundation
 
-extension URL {
-    public func createDirectory(withIntermediateDirectories createIntermediates: Bool = true, attributes: [FileAttributeKey : Any]? = nil) -> URL? {
+public extension URL {
+    func createDirectory(withIntermediateDirectories createIntermediates: Bool = true, attributes: [FileAttributeKey: Any]? = nil) -> URL? {
         let manager = FileManager.default
         if manager.fileExists(atPath: path) == false {
             do {
                 try manager.createDirectory(at: self, withIntermediateDirectories: createIntermediates, attributes: attributes)
-            }
-            catch {
+            } catch {
                 return nil
             }
         }
         return self
     }
-    
-    public func validFileURL() -> URL? {
+
+    func validFileURL() -> URL? {
         if FileManager.default.fileExists(atPath: path) {
             return self
         }
@@ -30,8 +29,8 @@ extension URL {
     }
 }
 
-extension URL {
-    public var attributes: [FileAttributeKey: Any]? {
+public extension URL {
+    var attributes: [FileAttributeKey: Any]? {
         do {
             return try FileManager.default.attributesOfItem(atPath: path)
         } catch let error as NSError {
@@ -40,15 +39,15 @@ extension URL {
         return nil
     }
 
-    public var fileSize: UInt64 {
+    var fileSize: UInt64 {
         return attributes?[.size] as? UInt64 ?? UInt64(0)
     }
 
-    public var fileSizeString: String {
+    var fileSizeString: String {
         return ByteCountFormatter.string(fromByteCount: Int64(fileSize), countStyle: .file)
     }
 
-    public var creationDate: Date? {
+    var creationDate: Date? {
         return attributes?[.creationDate] as? Date
     }
 }

@@ -5,19 +5,19 @@
 //  Created by Jangsy on 2018. 9. 4..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
 extension UIViewController {
-    private class var keyRootViewController:UIViewController? {
+    private class var keyRootViewController: UIViewController? {
         let selector = NSSelectorFromString("sharedApplication")
-        guard let application =  UIApplication.perform(selector)?.takeUnretainedValue() as? UIApplication else { return nil }
-    
+        guard let application = UIApplication.perform(selector)?.takeUnretainedValue() as? UIApplication else { return nil }
+
         let window = application.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .flatMap { $0.windows }
                 .last { $0.isKeyWindow }
-        
+
         return window?.rootViewController
         /*
         if let viewController = application.keyWindow?.rootViewController {
@@ -27,18 +27,17 @@ extension UIViewController {
         }
          */
     }
-    
+
     @objc open class func topMost() -> UIViewController? {
-        return topMost(self.keyRootViewController)
+        return topMost(keyRootViewController)
     }
-    
+
     @objc open class func topMost(_ viewController: UIViewController?) -> UIViewController? {
-        
         // presented view controller
         if let presentedViewController = viewController?.presentedViewController {
             return topMost(presentedViewController)
         }
-        
+
         // UITabBarController
         if let tabBarViewController = viewController as? UITabBarController {
             if let topViewController = tabBarViewController.moreNavigationController.topViewController, topViewController.view.window != nil {
@@ -47,12 +46,12 @@ extension UIViewController {
                 return topMost(selectedViewController)
             }
         }
-        
+
         // UINavigationController
         if let visibleViewController = (viewController as? UINavigationController)?.visibleViewController {
             return topMost(visibleViewController)
         }
-        
+
         // UISplitViewController
         if let splitViewController = viewController as? UISplitViewController, splitViewController.viewControllers.count == 1 {
             return topMost(splitViewController.viewControllers.first)
@@ -60,18 +59,18 @@ extension UIViewController {
 
         // UIPageController
         if let pageViewController = viewController as? UIPageViewController, pageViewController.viewControllers?.count == 1 {
-          return self.topMost(pageViewController.viewControllers?.first)
+          return topMost(pageViewController.viewControllers?.first)
         }
-        
+
         return viewController
     }
-    
+
     @objc public var isPresented: Bool {
         if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
             return false
         } else if presentingViewController != nil {
             return true
-        } else if navigationController?.presentingViewController?.presentedViewController == navigationController  {
+        } else if navigationController?.presentingViewController?.presentedViewController == navigationController {
             return true
         } else if tabBarController?.presentingViewController is UITabBarController {
             return true

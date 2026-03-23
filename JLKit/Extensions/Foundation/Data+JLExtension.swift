@@ -14,14 +14,14 @@ public extension Data {
         let bcf = ByteCountFormatter()
         bcf.allowedUnits = units
         bcf.countStyle = .file
-        
+
         return bcf.string(fromByteCount: Int64(count))
     }
 
     func string(encoding: String.Encoding = .utf8) -> String? {
         return String(data: self, encoding: encoding)
     }
-    
+
     func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> Any {
         return try JSONSerialization.jsonObject(with: self, options: options)
     }
@@ -29,13 +29,12 @@ public extension Data {
 
 #if canImport(UIKit)
 import UIKit
-import Foundation
 
 public extension Data {
     func image() -> UIImage? {
         UIImage(data: self)
     }
-    
+
     func image(scale: CGFloat) -> UIImage? {
         UIImage(data: self, scale: scale)
     }

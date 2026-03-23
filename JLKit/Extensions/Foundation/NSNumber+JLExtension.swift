@@ -8,12 +8,12 @@
 
 import Foundation
 
-extension NSNumber {
-    @objc public func localizedString(numberStyle:NumberFormatter.Style) -> String {
+public extension NSNumber {
+    @objc func localizedString(numberStyle: NumberFormatter.Style) -> String {
         return NumberFormatter.localizedString(from: self, number: numberStyle)
     }
 
-    @objc public func stringBy(roundingMode: NumberFormatter.RoundingMode, maximumFractionDigits: Int) -> String? {
+    @objc func stringBy(roundingMode: NumberFormatter.RoundingMode, maximumFractionDigits: Int) -> String? {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = maximumFractionDigits
         formatter.roundingMode = roundingMode

@@ -5,17 +5,15 @@
 //  Created by Jangsy on 12/10/2018.
 //  Copyright © 2018 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
-extension UISearchBar {
-
-    @objc public var textField:UITextField? {
-        
-        func findTextField(in view:UIView?) -> UITextField? {
+public extension UISearchBar {
+    @objc var textField: UITextField? {
+        func findTextField(in view: UIView?) -> UITextField? {
             if let textField = view as? UITextField {
                 return textField
-            
+
             } else if let views = view?.subviews {
                 for view in views {
                     if let textField = findTextField(in: view) {

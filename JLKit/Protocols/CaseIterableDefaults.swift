@@ -1,5 +1,5 @@
 //
-//  CaseIterableDefaultsLast.swift
+//  CaseIterableDefaults.swift
 //  TheDayCouple
 //
 //  Created by 장석용 on 2020/03/27.
@@ -8,18 +8,22 @@
 
 import Foundation
 
-public protocol CaseIterableDefaultsLast: Decodable & CaseIterable & RawRepresentable where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection { }
+// MARK: - CaseIterableDefaultsLast
 
-extension CaseIterableDefaultsLast {
-    public init(from decoder: Decoder) throws {
+public protocol CaseIterableDefaultsLast: Decodable & CaseIterable & RawRepresentable where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection {}
+
+public extension CaseIterableDefaultsLast {
+    init(from decoder: Decoder) throws {
         self = try Self(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? Self.allCases.last!
     }
 }
 
-public protocol CaseIterableDefaultsFirst: Decodable & CaseIterable & RawRepresentable where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection { }
+// MARK: - CaseIterableDefaultsFirst
 
-extension CaseIterableDefaultsFirst {
-    public init(from decoder: Decoder) throws {
+public protocol CaseIterableDefaultsFirst: Decodable & CaseIterable & RawRepresentable where Self.RawValue: Decodable, Self.AllCases: BidirectionalCollection {}
+
+public extension CaseIterableDefaultsFirst {
+    init(from decoder: Decoder) throws {
         self = try Self(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? Self.allCases.first!
     }
 }

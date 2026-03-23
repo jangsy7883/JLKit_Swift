@@ -6,7 +6,6 @@
 //  Copyright © 2022 Woody. All rights reserved.
 //
 
-
 public extension Bool {
     var int: Int {
         return self ? 1 : 0

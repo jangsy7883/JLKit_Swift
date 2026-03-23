@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 //
 //  UIEdgeInsets+JLExtension.swift
 //  JLKit_Swift
@@ -8,21 +9,22 @@
 #if os(iOS)
 import UIKit
 
-extension UIEdgeInsets {
-    public enum Position {
+public extension UIEdgeInsets {
+    enum Position {
         case top
         case bottom
         case left
         case right
     }
-    
-    public func insetsBySet(_ set: [Position: CGFloat]) -> UIEdgeInsets {
+
+    func insetsBySet(_ set: [Position: CGFloat]) -> UIEdgeInsets {
         var inset: UIEdgeInsets = .zero
-        inset.top = set[.top] ?? self.top
-        inset.bottom = set[.bottom] ?? self.bottom
-        inset.left = set[.left] ?? self.left
-        inset.right = set[.right] ?? self.right
+        inset.top = set[.top] ?? top
+        inset.bottom = set[.bottom] ?? bottom
+        inset.left = set[.left] ?? left
+        inset.right = set[.right] ?? right
         return inset
     }
 }
+#endif
 #endif

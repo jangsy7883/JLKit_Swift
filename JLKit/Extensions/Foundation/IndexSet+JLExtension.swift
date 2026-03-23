@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension IndexSet {
-    public var array: [Int] {
-        return self.map { return $0 }
+public extension IndexSet {
+    var array: [Int] {
+        return map { $0 }
     }
 }

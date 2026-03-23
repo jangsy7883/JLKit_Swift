@@ -14,9 +14,10 @@ public extension SFSafariViewController {
         navigationController.isNavigationBarHidden = true
         viewController?.present(navigationController, animated: animated, completion: nil)
     }
-    
+
     @MainActor func show(in viewController: UIViewController? = nil, animated: Bool = true) async {
         guard let controller = viewController ?? UIViewController.topMost() else { return }
+
         await withCheckedContinuation { continuation in
             let navigationController = UINavigationController(rootViewController: self)
             navigationController.isNavigationBarHidden = true

@@ -12,12 +12,12 @@ import UIKit
 public extension UIFont {
     func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         guard let descriptor = fontDescriptor.withSymbolicTraits(traits) else { return self }
+
         return UIFont(descriptor: descriptor, size: 0)
     }
 }
 
 public extension UIFont {
-
     var bold: UIFont {
         return UIFont(descriptor: fontDescriptor.withSymbolicTraits(.traitBold)!, size: 0)
     }
