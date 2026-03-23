@@ -5,7 +5,7 @@
 //  Created by jangsy on 2018. 5. 23..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension UICollectionViewCell {

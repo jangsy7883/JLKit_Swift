@@ -5,7 +5,7 @@
 //  Created by Jangsy on 2018. 1. 18..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension UIView {

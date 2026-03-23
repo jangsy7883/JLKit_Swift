@@ -5,7 +5,7 @@
 //  Created by Jangsy on 12/10/2018.
 //  Copyright © 2018 Dalkomm. All rights reserved.
 //
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension UISearchBar {

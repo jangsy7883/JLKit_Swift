@@ -5,7 +5,7 @@
 //  Created by 장석용 on 2022/04/01.
 //  Copyright © 2022 Woody. All rights reserved.
 //
-#if canImport(SafariServices)
+#if canImport(SafariServices) && !os(watchOS)
 import SafariServices
 
 public extension SFSafariViewController {

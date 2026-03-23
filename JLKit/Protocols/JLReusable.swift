@@ -5,7 +5,7 @@
 //  Created by jangsy on 2018. 3. 12..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import Foundation
 import UIKit
 

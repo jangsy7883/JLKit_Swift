@@ -6,7 +6,7 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import UIKit
 

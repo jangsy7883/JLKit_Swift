@@ -5,7 +5,7 @@
 //  Created by 장석용 on 2020/06/29.
 //  Copyright © 2020 Woody. All rights reserved.
 //
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension UIImageView {

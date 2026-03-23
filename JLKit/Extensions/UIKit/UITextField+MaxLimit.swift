@@ -5,7 +5,7 @@
 //  Created by 장석용 on 2020/07/08.
 //  Copyright © 2020 장석용. All rights reserved.
 //
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 private var kAssociationKeyMaxLength: Int = 0
