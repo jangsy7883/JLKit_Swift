@@ -18,6 +18,7 @@ let package = Package(
             name: "JLKit_Swift",
             dependencies: [],
             path: "JLKit",
+            exclude: ["Objcs"],
             sources: [
                 "Extensions/Foundation",
                 "Extensions/UIKit",
@@ -25,7 +26,6 @@ let package = Package(
                 "Protocols",
                 "Utils"
             ],
-            exclude: ["Objcs"],
             linkerSettings: [
                 .linkedFramework("Photos", .when(platforms: [.iOS]))
             ]
