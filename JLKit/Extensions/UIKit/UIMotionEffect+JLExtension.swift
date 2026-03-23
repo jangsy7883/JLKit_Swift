@@ -5,11 +5,11 @@
 //  Created by Jangsy on 2018. 1. 26..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
-extension UIMotionEffect {
-    @objc public static func twoAxesShift(strength: Float) -> UIMotionEffect {
+public extension UIMotionEffect {
+    @objc static func twoAxesShift(strength: Float) -> UIMotionEffect {
         func motion(type: UIInterpolatingMotionEffect.EffectType) -> UIInterpolatingMotionEffect {
             let keyPath = type == .tiltAlongHorizontalAxis ? "center.x" : "center.y"
             let motion = UIInterpolatingMotionEffect(keyPath: keyPath, type: type)

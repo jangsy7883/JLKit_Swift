@@ -8,56 +8,56 @@
 
 import Foundation
 
-extension Array {
-    
-    //MARK: - Subscript
-    
-    public subscript (safe index: Int) -> Element? {
-        get{
+public extension Array {
+    // MARK: - Subscript
+
+    subscript(safe index: Int) -> Element? {
+        get {
             return indices ~= index ? self[index] : nil
         }
         set {
             guard let value = newValue else { return }
             guard indices ~= index else { return }
-            
+
             self[index] = value
         }
     }
-    
-    public subscript (safe range: ClosedRange<Index>) -> ArraySlice<Element> {
-        let from = Swift.max(startIndex, range.lowerBound)
-        let to = Swift.min(endIndex, range.upperBound)
-        return self[from ..< to]
-    }
-    
-    public subscript (safe range: Range<Index>) -> ArraySlice<Element> {
+
+    subscript(safe range: ClosedRange<Index>) -> ArraySlice<Element> {
         let from = Swift.max(startIndex, range.lowerBound)
         let to = Swift.min(endIndex, range.upperBound)
         return self[from ..< to]
     }
 
-    //MARK: - Shuffle
+    subscript(safe range: Range<Index>) -> ArraySlice<Element> {
+        let from = Swift.max(startIndex, range.lowerBound)
+        let to = Swift.min(endIndex, range.upperBound)
+        return self[from ..< to]
+    }
+
+    // MARK: - Shuffle
+
     /*
     public mutating func shuffle() {
         guard self.count >= 1 else { return }
-        
+
         for i in (1..<self.count).reversed() {
             let j = (0...i).randomElement()!
             self.swapAt(j, i)
         }
     }
-    
+
     public var shuffled: [Element] {
         var elements = self
         elements.shuffle()
         return elements
     }
     */
-    
-    //MARK: - Sort
-    
-    public func sorted<T: Comparable>(by compare: (Element) -> T, asc ascendant: Bool = true) -> Array {
-        return self.sorted {
+
+    // MARK: - Sort
+
+    func sorted<T: Comparable>(by compare: (Element) -> T, asc ascendant: Bool = true) -> Array {
+        return sorted {
             if ascendant {
                 return compare($0) < compare($1)
             }
@@ -66,9 +66,9 @@ extension Array {
         }
     }
 
-    //MARK: -  Division
-    
-    public func division(length: Int) -> [[Element]] {
+    // MARK: -  Division
+
+    func division(length: Int) -> [[Element]] {
         return stride(from: 0, to: count, by: length).map {
             Array(self[$0 ..< Swift.min($0 + length, count)])
         }
@@ -83,30 +83,30 @@ public extension Array where Element: Equatable {
             }
         }
     }
-    
-    func filterDuplicates(includeElement: (_ lhs:Element, _ rhs:Element) -> Bool) -> [Element] {
+
+    func filterDuplicates(includeElement: (_ lhs: Element, _ rhs: Element) -> Bool) -> [Element] {
         var results = [Element]()
-        
-        forEach { (element) in
+
+        forEach { element in
             let existingElements = results.filter {
-                return includeElement(element, $0)
+                includeElement(element, $0)
             }
-            if existingElements.count == 0 {
+            if existingElements.isEmpty {
                 results.append(element)
             }
         }
         return results
     }
-    
+
     mutating func move(_ element: Element, to newIndex: Index) {
-        if let oldIndex: Int = self.firstIndex(of: element) { self.move(from: oldIndex, to: newIndex) }
+        if let oldIndex: Int = firstIndex(of: element) { move(from: oldIndex, to: newIndex) }
     }
 
     mutating func move(from oldIndex: Index, to newIndex: Index) {
         // Don't work for free and use swap when indices are next to each other - this
         // won't rebuild array and will be super efficient.
         if oldIndex == newIndex { return }
-        if abs(newIndex - oldIndex) == 1 { return self.swapAt(oldIndex, newIndex) }
-        self.insert(self.remove(at: oldIndex), at: newIndex)
+        if abs(newIndex - oldIndex) == 1 { return swapAt(oldIndex, newIndex) }
+        insert(remove(at: oldIndex), at: newIndex)
     }
 }

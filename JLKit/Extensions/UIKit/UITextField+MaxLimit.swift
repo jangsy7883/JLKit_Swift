@@ -5,13 +5,13 @@
 //  Created by 장석용 on 2020/07/08.
 //  Copyright © 2020 장석용. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
 private var kAssociationKeyMaxLength: Int = 0
 private var kAssociationKeyMaxLengthTextView: Int = 0
-extension UITextField {
-    @IBInspectable public var maxLength: Int {
+public extension UITextField {
+    @IBInspectable var maxLength: Int {
         get {
             if let length = objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int {
                 return length
@@ -25,10 +25,10 @@ extension UITextField {
         }
     }
 
-    @objc public func checkMaxLength(textField: UITextField) {
-        guard let prospectiveText = self.text,
-            prospectiveText.count > maxLength
-            else {
+    @objc func checkMaxLength(textField: UITextField) {
+        guard let prospectiveText = text,
+              prospectiveText.count > maxLength
+              else {
                 return
         }
 

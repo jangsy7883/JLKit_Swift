@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension NumberFormatter {
-    public static var decimal:NumberFormatter = {
+public extension NumberFormatter {
+    static var decimal: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.locale = Locale.current
@@ -17,12 +17,11 @@ extension NumberFormatter {
     }()
 }
 
-extension NumberFormatter {    
-    public static func string(value: Int, numberStyle:NumberFormatter.Style) -> String {
+public extension NumberFormatter {
+    static func string(value: Int, numberStyle: NumberFormatter.Style) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = numberStyle
         formatter.locale = Locale.current
         return formatter.string(from: NSNumber(value: value)) ?? ""
     }
 }
-

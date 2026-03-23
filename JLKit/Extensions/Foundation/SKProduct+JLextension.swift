@@ -9,13 +9,13 @@
 import Foundation
 import StoreKit
 
-extension SKProduct {
-    @objc public var currencyPrice :String? {
+public extension SKProduct {
+    @objc var currencyPrice: String? {
         let formatter = NumberFormatter()
         formatter.formatterBehavior = .behavior10_4
         formatter.numberStyle = .currency
         formatter.locale = priceLocale
-        
+
         return formatter.string(from: price)
     }
 }

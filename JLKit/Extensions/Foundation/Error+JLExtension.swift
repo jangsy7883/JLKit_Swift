@@ -6,16 +6,18 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
-extension Error {
-    #if os(iOS)
-    public func showAlertWithActionTitle(_ title: String!) {
+public extension Error {
+    func showAlertWithActionTitle(_ title: String!) {
         guard let viewController = UIViewController.topMost() else { return }
+
         let alertController = UIAlertController(title: nil, message: localizedDescription, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: title, style: .cancel, handler: nil))
-        
+
         viewController.present(alertController, animated: true, completion: nil)
     }
-    #endif
 }
+#endif

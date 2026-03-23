@@ -1,5 +1,5 @@
 //
-//  CGFloat+JLExtension.swift
+//  Float+JLExtension.swift
 //  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 1. 12..
@@ -14,14 +14,14 @@ public extension Float {
     var int: Int {
         return Int(self)
     }
-    
+
     var double: Double {
         return Double(self)
     }
-    
+
     #if canImport(UIKit) && os(iOS)
     static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
-        return value/UIScreen.main.scale
+        return value / UIScreen.main.scale
     }
     #endif
 }
@@ -38,13 +38,13 @@ public extension Float {
 public extension CGFloat {
     #if canImport(UIKit) && os(iOS)
     static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
-        return value/UIScreen.main.scale
+        return value / UIScreen.main.scale
     }
     #endif
     var int: Int {
         return Int(self)
     }
-    
+
     var double: Double {
         return Double(self)
     }

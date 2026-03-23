@@ -9,15 +9,15 @@
 import Foundation
 
 public extension Int {
-    static func random(min:Int, max:Int) -> Int {
+    static func random(min: Int, max: Int) -> Int {
         let form = max - min + 1
         return Int(UInt32(min) + arc4random_uniform(UInt32(form)))
     }
-    
+
     var decimalString: String {
         return NumberFormatter.decimal.string(from: NSNumber(value: self)) ?? "\(self)"
     }
-    
+
     var uInt: UInt {
          return UInt(self)
      }

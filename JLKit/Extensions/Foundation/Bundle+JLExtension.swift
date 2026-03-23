@@ -1,5 +1,5 @@
 //
-//  Bundle.swift
+//  Bundle+JLExtension.swift
 //  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 2. 14..
@@ -8,30 +8,30 @@
 
 import Foundation
 
-extension Bundle {
+public extension Bundle {
+    @objc var appVersion: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String ?? nil
+    }
 
-    @objc public var appVersion: String? {
-        return self.infoDictionary?["CFBundleShortVersionString"] as? String ?? nil
+    @objc var buildVersion: String? {
+        return infoDictionary?[kCFBundleVersionKey as String] as? String ?? nil
     }
-    @objc public var buildVersion: String? {
-        return self.infoDictionary?[kCFBundleVersionKey as String] as? String ?? nil
-    }
- 
-    public func compareVersion(_ target: String!) -> ComparisonResult {
+
+    func compareVersion(_ target: String!) -> ComparisonResult {
         var result: ComparisonResult = .orderedSame
-        guard let version = self.appVersion else { return result }
+        guard let version = appVersion else { return result }
 
-        var versionComponents: [String] = version.split(separator: ".").map {String($0)}
-        var targetComponents: [String] = target.split(separator: ".").map {String($0)}
+        var versionComponents: [String] = version.split(separator: ".").map { String($0) }
+        var targetComponents: [String] = target.split(separator: ".").map { String($0) }
 
         if versionComponents.count != targetComponents.count {
             let maxCount = max(versionComponents.count, targetComponents.count)
 
             if versionComponents.count < maxCount {
-                let elements = [String](repeatElement("0", count: maxCount-versionComponents.count))
+                let elements = [String](repeatElement("0", count: maxCount - versionComponents.count))
                 versionComponents.append(contentsOf: elements)
             } else {
-                let elements = [String](repeatElement("0", count: maxCount-targetComponents.count))
+                let elements = [String](repeatElement("0", count: maxCount - targetComponents.count))
                 targetComponents.append(contentsOf: elements)
             }
 

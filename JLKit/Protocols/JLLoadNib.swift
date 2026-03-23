@@ -5,18 +5,18 @@
 //  Created by Jangsy on 2018. 9. 14..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
-public protocol JLLoadNib { }
+public protocol JLLoadNib {}
 
 extension UIView: JLLoadNib {}
 
-extension JLLoadNib where Self: UIView {
-    public static func loadNib(_ name: String? = nil, bundle: Bundle = Bundle.main) -> Self? {
+public extension JLLoadNib where Self: UIView {
+    static func loadNib(_ name: String? = nil, bundle: Bundle = Bundle.main) -> Self? {
         guard let views = bundle.loadNibNamed(name ?? String(describing: self.self), owner: self, options: nil) else { return nil }
+
         for view in views {
-            
             if let view = view as? Self {
                 return view
             }
@@ -25,11 +25,10 @@ extension JLLoadNib where Self: UIView {
     }
 }
 
-
 extension UIViewController: JLLoadNib {}
 
-extension JLLoadNib where Self: UIViewController {
-    public static func loadNib(bundle: Bundle? = nil) -> Self? {
+public extension JLLoadNib where Self: UIViewController {
+    static func loadNib(bundle: Bundle? = nil) -> Self? {
         return Self(nibName: String(describing: self.self), bundle: bundle)
     }
 }

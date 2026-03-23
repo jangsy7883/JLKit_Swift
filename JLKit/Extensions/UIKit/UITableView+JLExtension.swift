@@ -5,12 +5,11 @@
 //  Created by jangsy on 2018. 5. 23..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
-extension UITableView {
-    
-    @objc public func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
+public extension UITableView {
+    @objc func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
         if indexPath.section >= numberOfSections {
             return false
         } else if indexPath.row >= numberOfRows(inSection: indexPath.section) {
@@ -18,8 +17,8 @@ extension UITableView {
         }
         return true
     }
-    
-    @objc public func indexPath(forCellContainingView:UIView?) -> IndexPath? {
+
+    @objc func indexPath(forCellContainingView: UIView?) -> IndexPath? {
         var view = forCellContainingView
         while view != nil {
             if let cell = view as? UITableViewCell {
@@ -30,12 +29,12 @@ extension UITableView {
         }
         return nil
     }
-    
-    @objc public func isLastRowOfSection(in indexPath: IndexPath) -> Bool {
+
+    @objc func isLastRowOfSection(in indexPath: IndexPath) -> Bool {
         return numberOfRows(inSection: indexPath.section) - 1 == indexPath.row
     }
-    
-    @objc public func isLastSection(for indexPath: IndexPath) -> Bool {
+
+    @objc func isLastSection(for indexPath: IndexPath) -> Bool {
         return numberOfSections - 1 == indexPath.section
     }
 }

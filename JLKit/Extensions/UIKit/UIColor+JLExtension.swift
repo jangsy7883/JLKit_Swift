@@ -22,21 +22,20 @@ public extension UIColor {
         return (ci.red, ci.green, ci.blue, ci.alpha)
     }
 
-    var redValue: CGFloat   { rgbaComponents.red }
+    var redValue: CGFloat { rgbaComponents.red }
     var greenValue: CGFloat { rgbaComponents.green }
-    var blueValue: CGFloat  { rgbaComponents.blue }
+    var blueValue: CGFloat { rgbaComponents.blue }
     var alphaValue: CGFloat { rgbaComponents.alpha }
 }
 
 #endif
 
-
 public extension UIColor {
     // MARK: - Hex
 
     enum JLHexFormat {
-        case argb   // AARRGGBB
-        case rgba   // RRGGBBAA
+        case argb // AARRGGBB
+        case rgba // RRGGBBAA
     }
 
     enum JLColorSpace {
@@ -45,7 +44,7 @@ public extension UIColor {
 
         var colorSpace: CGColorSpace? {
             switch self {
-            case .sRGB:      return CGColorSpace(name: CGColorSpace.sRGB)
+            case .sRGB: return CGColorSpace(name: CGColorSpace.sRGB)
             case .displayP3: return CGColorSpace(name: CGColorSpace.displayP3)
             }
         }
@@ -59,12 +58,16 @@ public extension UIColor {
         switch hex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+
         case 6: // RGB (24-bit)
             (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+
         case 8 where format == .rgba: // RGBA (32-bit)
             (r, g, b, a) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+
         case 8: // ARGB (32-bit)
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+
         default:
             (a, r, g, b) = (255, 0, 0, 0)
         }
@@ -85,6 +88,7 @@ public extension UIColor {
               let cgColorInRGB = cgColor.converted(to: cgColorSpace, intent: .defaultIntent, options: nil) else {
             return "#000000"
         }
+
         let colorRef = cgColorInRGB.components
         let r = colorRef?[0] ?? 0
         let g = colorRef?[1] ?? 0
@@ -118,9 +122,9 @@ public extension UIColor {
     }
 
     static func random(alpha: CGFloat = 1.0, colorSpace: JLColorSpace = .displayP3) -> UIColor {
-        let r = CGFloat.random(in: 0...1)
-        let g = CGFloat.random(in: 0...1)
-        let b = CGFloat.random(in: 0...1)
+        let r = CGFloat.random(in: 0 ... 1)
+        let g = CGFloat.random(in: 0 ... 1)
+        let b = CGFloat.random(in: 0 ... 1)
         switch colorSpace {
         case .sRGB:
             return UIColor(red: r, green: g, blue: b, alpha: alpha)
@@ -135,9 +139,9 @@ public extension UIColor {
         if cgColor.colorSpace?.name == CGColorSpace.displayP3,
            let c = cgColor.components, c.count >= 3 {
             return UIColor(displayP3Red: min(c[0] + percentage, 1.0),
-                           green:        min(c[1] + percentage, 1.0),
-                           blue:         min(c[2] + percentage, 1.0),
-                           alpha:        c.count >= 4 ? c[3] : cgColor.alpha)
+                           green: min(c[1] + percentage, 1.0),
+                           blue: min(c[2] + percentage, 1.0),
+                           alpha: c.count >= 4 ? c[3] : cgColor.alpha)
         } else {
             var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
             getRed(&red, green: &green, blue: &blue, alpha: &alpha)
@@ -152,9 +156,9 @@ public extension UIColor {
         if cgColor.colorSpace?.name == CGColorSpace.displayP3,
            let c = cgColor.components, c.count >= 3 {
             return UIColor(displayP3Red: max(c[0] - percentage, 0),
-                           green:        max(c[1] - percentage, 0),
-                           blue:         max(c[2] - percentage, 0),
-                           alpha:        c.count >= 4 ? c[3] : cgColor.alpha)
+                           green: max(c[1] - percentage, 0),
+                           blue: max(c[2] - percentage, 0),
+                           alpha: c.count >= 4 ? c[3] : cgColor.alpha)
         } else {
             var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
             getRed(&red, green: &green, blue: &blue, alpha: &alpha)
@@ -184,19 +188,19 @@ public extension UIColor {
 
     var isDynamic: Bool {
         #if os(iOS)
-        return self.resolvedColor(userInterfaceStyle: .light) != self.resolvedColor(userInterfaceStyle: .dark)
+        return resolvedColor(userInterfaceStyle: .light) != resolvedColor(userInterfaceStyle: .dark)
         #else
         return false
         #endif
     }
-    
+
     // MARK: - Image
-    
+
     func image(size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
         #if os(iOS)
         if isDynamic,
-           let dark = UIImage(color: self.resolvedColor(userInterfaceStyle: .dark), size: size),
-           let light = UIImage(color: self.resolvedColor(userInterfaceStyle: .light), size: size) {
+           let dark = UIImage(color: resolvedColor(userInterfaceStyle: .dark), size: size),
+           let light = UIImage(color: resolvedColor(userInterfaceStyle: .light), size: size) {
             return UIImage.dynamicImage(withLight: light, dark: dark)
         } else {
             return UIImage(color: self, size: size)

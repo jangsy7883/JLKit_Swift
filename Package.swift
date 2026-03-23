@@ -25,6 +25,7 @@ let package = Package(
                 "Protocols",
                 "Utils"
             ],
+            exclude: ["Objcs"],
             linkerSettings: [
                 .linkedFramework("Photos", .when(platforms: [.iOS]))
             ]

@@ -6,16 +6,17 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
-extension CLGeocoder {
-    @objc public static func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D, completion: ((CLPlacemark?, Error?) -> Void)? = nil) {
+public extension CLGeocoder {
+    @objc static func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D, completion: ((CLPlacemark?, Error?) -> Void)? = nil) {
         guard CLLocationCoordinate2DIsValid(coordinate) == true else { return }
+
         let location = CLLocation(coordinate: coordinate)
 
         let goecoder = CLGeocoder()
-        goecoder.reverseGeocodeLocation(location) { (pacemarks, error) in
+        goecoder.reverseGeocodeLocation(location) { pacemarks, error in
             completion?(pacemarks?.first, error)
         }
     }

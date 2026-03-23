@@ -5,11 +5,11 @@
 //  Created by Jangsy on 2018. 1. 18..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
-extension UIView {
-    @objc public var superViewController : UIViewController? {
+public extension UIView {
+    @objc var superViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while let responder = parentResponder {
             parentResponder = responder.next
@@ -19,15 +19,15 @@ extension UIView {
         }
         return nil
     }
-    
-    @objc public func screenShot(afterScreenUpdates: Bool = true) -> UIImage? {
+
+    @objc func screenShot(afterScreenUpdates: Bool = true) -> UIImage? {
         let size = CGSize(width: floor(bounds.size.width), height: floor(bounds.size.height))
         return UIGraphicsImageRenderer(size: size).image { _ in
             drawHierarchy(in: self.bounds, afterScreenUpdates: afterScreenUpdates)
         }
     }
-    
-    @objc public func rotate(angle: CGFloat) {
+
+    @objc func rotate(angle: CGFloat) {
         transform = CGAffineTransform.identity
 
         let radians = angle / 180.0 * CGFloat(Double.pi)
@@ -35,43 +35,43 @@ extension UIView {
         transform = rotation
     }
 
-    @objc public func roundingCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+    @objc func roundingCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
-        self.layer.mask = mask
+        layer.mask = mask
     }
 
-    @objc public func mask(withRect rect: CGRect, inverse: Bool = false) {
+    @objc func mask(withRect rect: CGRect, inverse: Bool = false) {
         let path = UIBezierPath(rect: rect)
         let maskLayer = CAShapeLayer()
 
         if inverse {
-            path.append(UIBezierPath(rect: self.bounds))
+            path.append(UIBezierPath(rect: bounds))
             maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         }
 
         maskLayer.path = path.cgPath
-        self.layer.mask = maskLayer
+        layer.mask = maskLayer
     }
 
-    @objc public func clearMask() {
-        self.layer.mask = nil
+    @objc func clearMask() {
+        layer.mask = nil
     }
-    
-    @objc @discardableResult public func add(to view:UIView?) -> Self {
+
+    @objc @discardableResult func add(to view: UIView?) -> Self {
         view?.addSubview(self)
         return self
     }
-    
-    @objc public static func animate(withDuration duration: TimeInterval,
-                                     fromView view: UIView,
-                                     constraints: @escaping () -> Void,
-                                     animations: (() -> Void)? = nil,
-                                     completion: ((Bool) -> Void)? = nil) {        
+
+    @objc static func animate(withDuration duration: TimeInterval,
+                              fromView view: UIView,
+                              constraints: @escaping () -> Void,
+                              animations: (() -> Void)? = nil,
+                              completion: ((Bool) -> Void)? = nil) {
         view.layoutIfNeeded()
         constraints()
-        
+
         UIView.animate(withDuration: duration,
                        animations: {
                         view.layoutIfNeeded()

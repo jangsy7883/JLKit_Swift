@@ -10,7 +10,6 @@
 import UIKit
 
 public extension UISwitch {
-
     func toggle(animated: Bool = true) {
         setOn(!isOn, animated: animated)
     }

@@ -1,5 +1,5 @@
 //
-//  EdgeInsetsExtensions.swift
+//  UIEdgeInsetsExtensions.swift
 //  JLKit_Swift
 //
 //  Created by 장석용 on 2022/04/01.
@@ -20,10 +20,10 @@ public extension UIEdgeInsets {
 }
 
 public extension UIEdgeInsets {
-
     static func all(_ value: CGFloat) -> UIEdgeInsets {
         UIEdgeInsets(top: value, left: value, bottom: value, right: value)
     }
+
     /*
     init(horizontal: CGFloat, vertical: CGFloat) {
         self.init(top: vertical / 2, left: horizontal / 2, bottom: vertical / 2, right: horizontal / 2)
@@ -33,10 +33,11 @@ public extension UIEdgeInsets {
     func insetBy(top: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: self.top + top, left: left, bottom: bottom, right: right)
     }
-    
+
     func insetBy(left: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: top, left: self.left + left, bottom: bottom, right: right)
     }
+
     func insetBy(bottom: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: top, left: left, bottom: self.bottom + bottom, right: right)
     }

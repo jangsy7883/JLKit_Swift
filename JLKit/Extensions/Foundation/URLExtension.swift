@@ -1,5 +1,5 @@
 //
-//  URL+JLExtension.swift
+//  URLExtension.swift
 //  JLKit_Swift
 //
 //  Created by Jangsy on 2018. 2. 19..
@@ -12,6 +12,7 @@ public extension URL {
     var domain: String? {
         guard let scheme = scheme else { return nil }
         guard let host = host else { return nil }
+
         if let port = port {
             return "\(scheme)://\(host):\(port)"
         } else {

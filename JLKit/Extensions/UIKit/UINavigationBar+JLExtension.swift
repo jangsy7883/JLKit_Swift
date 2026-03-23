@@ -5,11 +5,11 @@
 //  Created by Jangsy on 2018. 7. 3..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
-extension UINavigationBar {
-    public var titleTintColor: UIColor? {
+public extension UINavigationBar {
+    var titleTintColor: UIColor? {
         set {
             var attributes: [NSAttributedString.Key: Any]?
 

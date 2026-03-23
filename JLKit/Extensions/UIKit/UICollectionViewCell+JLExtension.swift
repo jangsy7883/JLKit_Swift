@@ -5,25 +5,26 @@
 //  Created by jangsy on 2018. 5. 23..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
-extension UICollectionViewCell {
-    @objc public var superCollectionView:UICollectionView? {
+public extension UICollectionViewCell {
+    @objc var superCollectionView: UICollectionView? {
         var view = superview
-        
+
         while view != nil {
             if let tableView = view as? UICollectionView {
                 return tableView
-            }else {
+            } else {
                 view = view?.superview
             }
         }
         return nil
     }
-    
-    @objc public var indexPath:IndexPath? {
+
+    @objc var indexPath: IndexPath? {
         guard let collectionView = superCollectionView else { return nil }
+
         return collectionView.indexPath(for: self)
     }
 }
