@@ -87,6 +87,7 @@ public extension UIImage {
             context.fill(CGRect(origin: .zero, size: size))
         }
         guard let cgImage = image.cgImage else { return nil }
+
         self.init(cgImage: cgImage)
         #else
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
@@ -96,6 +97,7 @@ public extension UIImage {
             context.fill(CGRect(origin: .zero, size: size))
         }
         guard let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
+
         self.init(cgImage: cgImage)
         #endif
     }
