@@ -236,7 +236,7 @@ public extension String {
 
 #if os(iOS)
     func boundingSize(maxSize: CGSize, font: UIFont) -> CGSize {
-        return boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
+        return (self as NSString).boundingRect(with: maxSize, options: [.usesFontLeading, .usesLineFragmentOrigin, .truncatesLastVisibleLine], attributes: [.font: font], context: nil).size
     }
 #endif
 }
