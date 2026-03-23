@@ -222,7 +222,7 @@ public extension String {
 
 // MARK: - UIKit only (iOS)
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension String {
