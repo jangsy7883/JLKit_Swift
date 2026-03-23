@@ -34,11 +34,18 @@ public extension UIImage {
 
     func withInsets(_ insets: UIEdgeInsets) -> UIImage? {
         let size = CGSize(width: self.size.width + insets.left + insets.right, height: self.size.height + insets.top + insets.bottom)
+        #if os(iOS)
         let format = UIGraphicsImageRendererFormat()
         format.scale = scale
         return UIGraphicsImageRenderer(size: size, format: format).image { _ in
             draw(at: CGPoint(x: insets.left, y: insets.top))
         }
+        #else
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(at: CGPoint(x: insets.left, y: insets.top))
+        return UIGraphicsGetImageFromCurrentImageContext()
+        #endif
     }
 
     /*
@@ -74,13 +81,23 @@ public extension UIImage {
     // MARK:
 
     convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        #if os(iOS)
         let image = UIGraphicsImageRenderer(size: size).image { context in
             color.setFill()
             context.fill(CGRect(origin: .zero, size: size))
         }
         guard let cgImage = image.cgImage else { return nil }
-
         self.init(cgImage: cgImage)
+        #else
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        defer { UIGraphicsEndImageContext() }
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(color.cgColor)
+            context.fill(CGRect(origin: .zero, size: size))
+        }
+        guard let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
+        self.init(cgImage: cgImage)
+        #endif
     }
 
     // MARK: Crop

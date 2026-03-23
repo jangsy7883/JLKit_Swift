@@ -5,7 +5,7 @@ let package = Package(
     name: "JLKit_Swift",
     platforms: [
         .iOS(.v16),
-        .watchOS(.v9)
+        .watchOS(.v9),
     ],
     products: [
         .library(
