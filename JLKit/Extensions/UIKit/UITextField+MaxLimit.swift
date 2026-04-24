@@ -9,35 +9,27 @@
 import UIKit
 
 private var kAssociationKeyMaxLength: Int = 0
-private var kAssociationKeyMaxLengthTextView: Int = 0
+
 public extension UITextField {
     @IBInspectable var maxLength: Int {
         get {
-            if let length = objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int {
-                return length
-            } else {
-                return Int.max
-            }
+            return (objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int) ?? Int.max
         }
         set {
             objc_setAssociatedObject(self, &kAssociationKeyMaxLength, newValue, .OBJC_ASSOCIATION_RETAIN)
-            addTarget(self, action: #selector(checkMaxLength), for: .editingChanged)
+            removeTarget(self, action: #selector(_checkMaxLength), for: .editingChanged)
+            addTarget(self, action: #selector(_checkMaxLength), for: .editingChanged)
         }
     }
 
-    @objc func checkMaxLength(textField: UITextField) {
-        guard let prospectiveText = text,
-              prospectiveText.count > maxLength
-              else {
-                return
-        }
+    @objc private func _checkMaxLength() {
+        guard let text, text.count > maxLength else { return }
+
+        // IME 조합 중(한/중/일 입력)일 때는 truncation 스킵
+        if let markedRange = markedTextRange, !markedRange.isEmpty { return }
 
         let selection = selectedTextRange
-
-        let indexEndOfText = prospectiveText.index(prospectiveText.startIndex, offsetBy: maxLength)
-        let substring = prospectiveText[..<indexEndOfText]
-        text = String(substring)
-
+        self.text = String(text.prefix(maxLength))
         selectedTextRange = selection
     }
 }
