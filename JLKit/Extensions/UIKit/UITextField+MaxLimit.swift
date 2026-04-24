@@ -23,10 +23,17 @@ public extension UITextField {
     }
 
     @objc private func _checkMaxLength() {
-        guard let text, text.count > maxLength else { return }
+        guard let text else { return }
 
-        // IME 조합 중(한/중/일 입력)일 때는 truncation 스킵
-        if let markedRange = markedTextRange, !markedRange.isEmpty { return }
+        if let markedRange = markedTextRange, !markedRange.isEmpty {
+            // 조합 중인 글자를 제외한 확정 텍스트가 한도에 도달하면 잘라낸다.
+            // (한글 IME: 확정 글자 수가 maxLength면 새 글자 조합을 막음)
+            let markedText = self.text(in: markedRange) ?? ""
+            let committedCount = text.count - markedText.count
+            guard committedCount >= maxLength else { return }
+        } else {
+            guard text.count > maxLength else { return }
+        }
 
         let selection = selectedTextRange
         self.text = String(text.prefix(maxLength))
