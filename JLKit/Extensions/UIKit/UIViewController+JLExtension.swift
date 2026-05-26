@@ -66,17 +66,30 @@ extension UIViewController {
     }
 
     @objc public var isPresented: Bool {
+        // nav stack에서 push된 child VC
         if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
             return false
-        } else if presentingViewController != nil {
-            return true
-        } else if navigationController?.presentingViewController?.presentedViewController == navigationController {
-            return true
-        } else if tabBarController?.presentingViewController is UITabBarController {
-            return true
-        } else {
-            return false
         }
+
+        // self(또는 self의 nav)가 tabBarController의 탭 root인 경우
+        // → tabBarController 자체가 modal로 present 되었을 때만 true
+        if let tabBar = tabBarController {
+            let isTabRoot = (navigationController.map { tabBar.viewControllers?.contains($0) ?? false } ?? false)
+                         || (tabBar.viewControllers?.contains(self) ?? false)
+            if isTabRoot {
+                return tabBar.presentingViewController != nil
+            }
+        }
+
+        // self가 nav의 root이고, nav가 modal로 present 된 경우
+        if let nav = navigationController,
+           nav.viewControllers.first === self,
+           nav.presentingViewController?.presentedViewController === nav {
+            return true
+        }
+
+        // self가 직접 modal로 present 된 경우
+        return presentingViewController != nil && navigationController == nil
     }
 
     public static func instantiate(storyboard: UIStoryboard.Name, identifier: String) -> UIViewController {
