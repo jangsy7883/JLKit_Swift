@@ -71,25 +71,13 @@ extension UIViewController {
             return false
         }
 
-        // self(또는 self의 nav)가 tabBarController의 탭 root인 경우
-        // → tabBarController 자체가 modal로 present 되었을 때만 true
-        if let tabBar = tabBarController {
-            let isTabRoot = (navigationController.map { tabBar.viewControllers?.contains($0) ?? false } ?? false)
-                         || (tabBar.viewControllers?.contains(self) ?? false)
-            if isTabRoot {
-                return tabBar.presentingViewController != nil
-            }
+        // parent 체인의 최상위 조상이 modal로 present된 객체인지 확인
+        // (직접 present, nav root, 탭 root, 컨테이너에 embed된 경우 모두 커버)
+        var top: UIViewController = self
+        while let parent = top.parent {
+            top = parent
         }
-
-        // self가 nav의 root이고, nav가 modal로 present 된 경우
-        if let nav = navigationController,
-           nav.viewControllers.first === self,
-           nav.presentingViewController?.presentedViewController === nav {
-            return true
-        }
-
-        // self가 직접 modal로 present 된 경우
-        return presentingViewController != nil && navigationController == nil
+        return top.presentingViewController?.presentedViewController === top
     }
 
     public static func instantiate(storyboard: UIStoryboard.Name, identifier: String) -> UIViewController {
