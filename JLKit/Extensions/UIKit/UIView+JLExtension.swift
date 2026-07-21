@@ -65,10 +65,10 @@ public extension UIView {
     }
 
     static func animate(withDuration duration: TimeInterval,
-                              fromView view: UIView,
-                              constraints: @escaping () -> Void,
-                              animations: (() -> Void)? = nil,
-                              completion: ((Bool) -> Void)? = nil) {
+                        fromView view: UIView,
+                        constraints: @escaping () -> Void,
+                        animations: (() -> Void)? = nil,
+                        completion: ((Bool) -> Void)? = nil) {
         view.layoutIfNeeded()
         constraints()
 

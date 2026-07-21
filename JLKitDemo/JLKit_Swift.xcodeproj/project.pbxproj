@@ -49,7 +49,6 @@
 				"Foundation/NSDate+JLAge.m",
 				"Foundation/NSDictionary+JLKit.m",
 				"Foundation/NSString+JLKit.m",
-				"Foundation/NSThread+JLKit.m",
 				"UIKit/UIColor+JLKit.m",
 				"UIKit/UIImage+JLKit.m",
 			);
