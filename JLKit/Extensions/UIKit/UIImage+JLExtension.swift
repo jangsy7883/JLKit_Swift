@@ -48,30 +48,6 @@ public extension UIImage {
         #endif
     }
 
-    /*
-    public func withTint(_ color: UIColor) -> UIImage? {
-        if #available(iOS 13.0, watchOS 6.0, *) {
-            return withTintColor(color, renderingMode: .alwaysOriginal)
-        }else {
-            /*
-             let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-             UIGraphicsBeginImageContextWithOptions(size, false, scale)
-             color.set()
-             UIRectFill(rect)
-             draw(in: rect, blendMode: .destinationIn, alpha: 1.0)
-             let image = UIGraphicsGetImageFromCurrentImageContext()
-             UIGraphicsEndImageContext()
-             return image
-             */
-            defer { UIGraphicsEndImageContext() }
-            UIGraphicsBeginImageContextWithOptions(size, false, scale)
-            color.set()
-            self.withRenderingMode(.alwaysTemplate).draw(in: CGRect(origin: .zero, size: size))
-            return UIGraphicsGetImageFromCurrentImageContext()
-        }
-    }
-     */
-
     func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {
         guard let cgImage = cgImage else { return nil }
 
@@ -229,27 +205,23 @@ public extension UIImage {
     #if os(iOS)
     static func dynamicImage(withLight light: @autoclosure () -> UIImage?,
                              dark: @autoclosure () -> UIImage?) -> UIImage? {
-        if #available(iOS 13.0, *) {
-            let lightTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .light)])
-            let darkTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .dark)])
+        let lightTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .light)])
+        let darkTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .dark)])
 
-            var lightImage: UIImage?
-            var darkImage: UIImage?
+        var lightImage: UIImage?
+        var darkImage: UIImage?
 
-            lightTC.performAsCurrent {
-                lightImage = light()
-            }
-            darkTC.performAsCurrent {
-                darkImage = dark()
-            }
-
-            if let darkImage {
-                lightImage?.imageAsset?.register(darkImage, with: UITraitCollection(userInterfaceStyle: .dark))
-            }
-            return lightImage
-        } else {
-            return light()
+        lightTC.performAsCurrent {
+            lightImage = light()
         }
+        darkTC.performAsCurrent {
+            darkImage = dark()
+        }
+
+        if let darkImage {
+            lightImage?.imageAsset?.register(darkImage, with: UITraitCollection(userInterfaceStyle: .dark))
+        }
+        return lightImage
     }
     #endif
 }

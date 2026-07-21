@@ -12,49 +12,21 @@ import UIKit
 
 public extension UICollectionViewDiffableDataSource {
     func reloadData(snapshot: NSDiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>, completion: (() -> Void)? = nil) {
-        if #available(iOS 15.0, *) {
-            applySnapshotUsingReloadData(snapshot, completion: completion)
-        } else {
-            apply(snapshot, animatingDifferences: false, completion: completion)
-        }
+        applySnapshotUsingReloadData(snapshot, completion: completion)
     }
 
     func applySnapshot(_ snapshot: NSDiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>, animated: Bool, completion: (() -> Void)? = nil) {
-            if #available(iOS 15.0, *) {
-                apply(snapshot, animatingDifferences: animated, completion: completion)
-            } else {
-                if animated {
-                    apply(snapshot, animatingDifferences: true, completion: completion)
-                } else {
-                    UIView.performWithoutAnimation {
-                        self.apply(snapshot, animatingDifferences: true, completion: completion)
-                    }
-                }
-            }
-        }
+        apply(snapshot, animatingDifferences: animated, completion: completion)
+    }
 }
 
 public extension UITableViewDiffableDataSource {
     func reloadData(snapshot: NSDiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>, completion: (() -> Void)? = nil) {
-        if #available(iOS 15.0, *) {
-            applySnapshotUsingReloadData(snapshot, completion: completion)
-        } else {
-            apply(snapshot, animatingDifferences: false, completion: completion)
-        }
+        applySnapshotUsingReloadData(snapshot, completion: completion)
     }
 
     func applySnapshot(_ snapshot: NSDiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>, animated: Bool, completion: (() -> Void)? = nil) {
-        if #available(iOS 15.0, *) {
-            apply(snapshot, animatingDifferences: animated, completion: completion)
-        } else {
-            if animated {
-                apply(snapshot, animatingDifferences: true, completion: completion)
-            } else {
-                // UIView.performWithoutAnimation {
-                apply(snapshot, animatingDifferences: false, completion: completion)
-                //                }
-            }
-        }
+        apply(snapshot, animatingDifferences: animated, completion: completion)
     }
 }
 #endif
