@@ -9,11 +9,11 @@
 import Foundation
 
 public extension Bundle {
-    @objc var appVersion: String? {
+    var appVersion: String? {
         return infoDictionary?["CFBundleShortVersionString"] as? String ?? nil
     }
 
-    @objc var buildVersion: String? {
+    var buildVersion: String? {
         return infoDictionary?[kCFBundleVersionKey as String] as? String ?? nil
     }
 

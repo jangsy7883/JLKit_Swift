@@ -11,7 +11,7 @@ import CoreLocation
 import Foundation
 
 public extension CLPlacemark {
-    @objc var formattedAddress: String? {
+    var formattedAddress: String? {
         var value: String?
 
         if let postalAddress = postalAddress {

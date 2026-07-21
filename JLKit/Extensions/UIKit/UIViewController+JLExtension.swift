@@ -28,11 +28,11 @@ extension UIViewController {
          */
     }
 
-    @objc open class func topMost() -> UIViewController? {
+    open class func topMost() -> UIViewController? {
         return topMost(keyRootViewController)
     }
 
-    @objc open class func topMost(_ viewController: UIViewController?) -> UIViewController? {
+    open class func topMost(_ viewController: UIViewController?) -> UIViewController? {
         // presented view controller
         if let presentedViewController = viewController?.presentedViewController {
             return topMost(presentedViewController)
@@ -65,7 +65,7 @@ extension UIViewController {
         return viewController
     }
 
-    @objc public var isPresented: Bool {
+    public var isPresented: Bool {
         // nav stack에서 push된 child VC
         if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
             return false

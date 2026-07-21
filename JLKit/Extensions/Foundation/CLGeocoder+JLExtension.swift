@@ -10,7 +10,7 @@ import CoreLocation
 import Foundation
 
 public extension CLGeocoder {
-    @objc static func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D, completion: ((CLPlacemark?, Error?) -> Void)? = nil) {
+    static func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D, completion: ((CLPlacemark?, Error?) -> Void)? = nil) {
         guard CLLocationCoordinate2DIsValid(coordinate) == true else { return }
 
         let location = CLLocation(coordinate: coordinate)
