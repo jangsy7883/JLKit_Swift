@@ -23,14 +23,6 @@ extension UITableViewCell: JLReusable {}
 extension UITableViewHeaderFooterView: JLReusable {}
 extension UICollectionReusableView: JLReusable {}
 
-public protocol JLNibLoadable {}
-
-public extension JLNibLoadable where Self: UIView {
-    static func nib(bundle: Bundle? = nil) -> UINib {
-        return UINib(nibName: String(describing: self), bundle: bundle)
-    }
-}
-
 public extension UITableView {
     func register<T: UITableViewCell>(_: T.Type) {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
@@ -56,9 +48,9 @@ public extension UITableView {
         return cell
     }
 
-    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T? {
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T {
         guard let view = dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T else {
-            return nil
+            fatalError("Could not dequeue header footer view with identifier: \(T.reuseIdentifier)")
         }
 
         return view
@@ -98,4 +90,5 @@ public extension UICollectionView {
         return view
     }
 }
+
 #endif
