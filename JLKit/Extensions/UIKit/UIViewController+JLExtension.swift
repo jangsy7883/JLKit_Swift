@@ -28,11 +28,11 @@ extension UIViewController {
          */
     }
 
-    open class func topMost() -> UIViewController? {
+    public class func topMost() -> UIViewController? {
         return topMost(keyRootViewController)
     }
 
-    open class func topMost(_ viewController: UIViewController?) -> UIViewController? {
+    public class func topMost(_ viewController: UIViewController?) -> UIViewController? {
         // presented view controller
         if let presentedViewController = viewController?.presentedViewController {
             return topMost(presentedViewController)

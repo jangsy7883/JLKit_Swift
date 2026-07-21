@@ -28,7 +28,7 @@ public extension UIImage {
                              dark: @autoclosure () -> UIImage?) -> UIImage? {
         let lightTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .light)])
         let darkTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .dark)])
-
+        
         var lightImage: UIImage?
         var darkImage: UIImage?
 
@@ -96,6 +96,21 @@ public extension UIImage {
             draw(in: rect)
         } ?? self
     }
+
+    #if os(iOS)
+    /// 표시용으로 미리 디코딩된 썸네일을 만듭니다. targetSize는 포인트 단위.
+    ///
+    /// 디스크/네트워크에서 로드한 큰 이미지를 작게 표시할 때 resize보다 메모리 효율이 좋고,
+    /// 반환된 이미지는 이미 디코딩되어 있어 렌더링 시점의 지연 디코딩이 없습니다.
+    func thumbnail(fitting targetSize: CGSize,
+                   resizeMode: ResizeMode = .aspectFill,
+                   scale: CGFloat = max(UITraitCollection.current.displayScale, 1)) async -> UIImage? {
+        let ratio = resizeMode.aspectRatio(to: targetSize, original: size)
+        let pixelSize = CGSize(width: size.width * ratio * scale,
+                               height: size.height * ratio * scale)
+        return await byPreparingThumbnail(ofSize: pixelSize)
+    }
+    #endif
 
     /// 포인트 단위 bounds로 잘라냅니다.
     func crop(bounds: CGRect) -> UIImage? {
