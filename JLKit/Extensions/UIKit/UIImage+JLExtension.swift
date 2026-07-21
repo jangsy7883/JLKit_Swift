@@ -98,24 +98,26 @@ public extension UIImage {
     }
 
     #if os(iOS)
-    /// 표시용으로 미리 디코딩된 썸네일을 만듭니다. targetSize는 포인트 단위.
+    /// 표시용으로 미리 디코딩된 썸네일을 만듭니다. targetSize는 포인트 단위이며,
+    /// scale을 생략하면 화면 스케일을 사용합니다.
     ///
     /// 디스크/네트워크에서 로드한 큰 이미지를 작게 표시할 때 resize보다 메모리 효율이 좋고,
     /// 반환된 이미지는 이미 디코딩되어 있어 렌더링 시점의 지연 디코딩이 없습니다.
     func thumbnail(fitting targetSize: CGSize,
                    resizeMode: ResizeMode = .aspectFill,
-                   scale: CGFloat = max(UITraitCollection.current.displayScale, 1)) async -> UIImage? {
+                   scale: CGFloat? = nil) async -> UIImage? {
         return await byPreparingThumbnail(ofSize: thumbnailPixelSize(fitting: targetSize, resizeMode: resizeMode, scale: scale))
     }
 
     /// 동기 버전 — 디코딩이 호출 스레드에서 일어나므로 백그라운드 스레드 사용을 권장합니다.
     func thumbnail(fitting targetSize: CGSize,
                    resizeMode: ResizeMode = .aspectFill,
-                   scale: CGFloat = max(UITraitCollection.current.displayScale, 1)) -> UIImage? {
+                   scale: CGFloat? = nil) -> UIImage? {
         return preparingThumbnail(of: thumbnailPixelSize(fitting: targetSize, resizeMode: resizeMode, scale: scale))
     }
 
-    private func thumbnailPixelSize(fitting targetSize: CGSize, resizeMode: ResizeMode, scale: CGFloat) -> CGSize {
+    private func thumbnailPixelSize(fitting targetSize: CGSize, resizeMode: ResizeMode, scale: CGFloat?) -> CGSize {
+        let scale = scale ?? max(UITraitCollection.current.displayScale, 1)
         let ratio = resizeMode.aspectRatio(to: targetSize, original: size)
         return CGSize(width: size.width * ratio * scale,
                       height: size.height * ratio * scale)

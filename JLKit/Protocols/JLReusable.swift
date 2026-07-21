@@ -74,6 +74,16 @@ public extension UICollectionView {
         register(T.nib(bundle: bundle), forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
 
+    /// supplementary view를 elementKind == reuseIdentifier 컨벤션으로 등록합니다.
+    /// 레이아웃의 elementKind에도 같은 값(T.reuseIdentifier)을 사용해야 합니다.
+    func register<T: UICollectionReusableView>(_: T.Type) {
+        register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier)
+    }
+
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+        register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier, bundle: bundle)
+    }
+
     func dequeueReusableCell<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
@@ -88,6 +98,11 @@ public extension UICollectionView {
         }
 
         return view
+    }
+
+    /// registerSupplementary로 등록한(elementKind == reuseIdentifier) supplementary view 디큐.
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(for indexPath: IndexPath) -> T {
+        return dequeueReusableSupplementaryView(ofKind: T.reuseIdentifier, for: indexPath)
     }
 }
 
