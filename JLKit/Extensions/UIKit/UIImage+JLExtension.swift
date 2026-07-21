@@ -105,10 +105,20 @@ public extension UIImage {
     func thumbnail(fitting targetSize: CGSize,
                    resizeMode: ResizeMode = .aspectFill,
                    scale: CGFloat = max(UITraitCollection.current.displayScale, 1)) async -> UIImage? {
+        return await byPreparingThumbnail(ofSize: thumbnailPixelSize(fitting: targetSize, resizeMode: resizeMode, scale: scale))
+    }
+
+    /// 동기 버전 — 디코딩이 호출 스레드에서 일어나므로 백그라운드 스레드 사용을 권장합니다.
+    func thumbnail(fitting targetSize: CGSize,
+                   resizeMode: ResizeMode = .aspectFill,
+                   scale: CGFloat = max(UITraitCollection.current.displayScale, 1)) -> UIImage? {
+        return preparingThumbnail(of: thumbnailPixelSize(fitting: targetSize, resizeMode: resizeMode, scale: scale))
+    }
+
+    private func thumbnailPixelSize(fitting targetSize: CGSize, resizeMode: ResizeMode, scale: CGFloat) -> CGSize {
         let ratio = resizeMode.aspectRatio(to: targetSize, original: size)
-        let pixelSize = CGSize(width: size.width * ratio * scale,
-                               height: size.height * ratio * scale)
-        return await byPreparingThumbnail(ofSize: pixelSize)
+        return CGSize(width: size.width * ratio * scale,
+                      height: size.height * ratio * scale)
     }
     #endif
 
