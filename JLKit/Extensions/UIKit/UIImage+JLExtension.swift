@@ -6,14 +6,51 @@
 //  Copyright © 2018년 Dalkomm. All rights reserved.
 //
 #if canImport(UIKit)
-import Foundation
 import UIKit
 
-/*
- 참고 : https://github.com/melvitax/ImageHelper
- */
+// MARK: - Create
+
 public extension UIImage {
-    enum UIImageResizeMode {
+    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let image = UIImage.render(size: size, scale: 1) {
+            if let context = UIGraphicsGetCurrentContext() {
+                context.setFillColor(color.cgColor)
+                context.fill(CGRect(origin: .zero, size: size))
+            }
+        }
+        guard let cgImage = image?.cgImage else { return nil }
+
+        self.init(cgImage: cgImage)
+    }
+
+    #if os(iOS)
+    static func dynamicImage(withLight light: @autoclosure () -> UIImage?,
+                             dark: @autoclosure () -> UIImage?) -> UIImage? {
+        let lightTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .light)])
+        let darkTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .dark)])
+
+        var lightImage: UIImage?
+        var darkImage: UIImage?
+
+        lightTC.performAsCurrent {
+            lightImage = light()
+        }
+        darkTC.performAsCurrent {
+            darkImage = dark()
+        }
+
+        if let darkImage {
+            lightImage?.imageAsset?.register(darkImage, with: UITraitCollection(userInterfaceStyle: .dark))
+        }
+        return lightImage
+    }
+    #endif
+}
+
+// MARK: - Resize / Crop
+
+public extension UIImage {
+    enum ResizeMode {
         case aspectFit
         case aspectFill
 
@@ -30,70 +67,6 @@ public extension UIImage {
         }
     }
 
-    // MARK:
-
-    func withInsets(_ insets: UIEdgeInsets) -> UIImage? {
-        let size = CGSize(width: self.size.width + insets.left + insets.right, height: self.size.height + insets.top + insets.bottom)
-        #if os(iOS)
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = scale
-        return UIGraphicsImageRenderer(size: size, format: format).image { _ in
-            draw(at: CGPoint(x: insets.left, y: insets.top))
-        }
-        #else
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        draw(at: CGPoint(x: insets.left, y: insets.top))
-        return UIGraphicsGetImageFromCurrentImageContext()
-        #endif
-    }
-
-    func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {
-        guard let cgImage = cgImage else { return nil }
-
-        return UIImage(cgImage: cgImage, scale: scale, orientation: orientation).withRenderingMode(renderingMode)
-    }
-
-    // MARK:
-
-    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
-        #if os(iOS)
-        let image = UIGraphicsImageRenderer(size: size).image { context in
-            color.setFill()
-            context.fill(CGRect(origin: .zero, size: size))
-        }
-        guard let cgImage = image.cgImage else { return nil }
-
-        self.init(cgImage: cgImage)
-        #else
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        defer { UIGraphicsEndImageContext() }
-        if let context = UIGraphicsGetCurrentContext() {
-            context.setFillColor(color.cgColor)
-            context.fill(CGRect(origin: .zero, size: size))
-        }
-        guard let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
-
-        self.init(cgImage: cgImage)
-        #endif
-    }
-
-    // MARK: Crop
-
-    func crop(bounds: CGRect) -> UIImage? {
-        guard let cgImage else { return nil }
-        guard let cropping = cgImage.cropping(to: bounds) else { return nil }
-
-        return UIImage(cgImage: cropping, scale: 0.0, orientation: imageOrientation)
-    }
-
-    func cropToSquare(scale: CGFloat = 1) -> UIImage {
-        let shortest = ceil(min(size.width, size.height))
-        return resize(to: CGRect(x: 0, y: 0, width: shortest, height: shortest), scale: scale)
-    }
-
-    // MARK: Resize
-
     func resize(toMaxPixel pixel: CGFloat, scale: CGFloat = 1) -> UIImage {
         let hRatio = pixel / size.width
         let vRatio = pixel / size.height
@@ -108,7 +81,7 @@ public extension UIImage {
         return resize(ratio: ratio, scale: scale)
     }
 
-    func resize(_ targetSize: CGSize, resizeMode: UIImageResizeMode = .aspectFill, scale: CGFloat = 1) -> UIImage {
+    func resize(_ targetSize: CGSize, resizeMode: ResizeMode = .aspectFill, scale: CGFloat = 1) -> UIImage {
         let ratio = resizeMode.aspectRatio(to: targetSize, original: size)
         return resize(ratio: ratio, scale: scale)
     }
@@ -119,34 +92,74 @@ public extension UIImage {
     }
 
     func resize(to rect: CGRect, scale: CGFloat = 1) -> UIImage {
+        return UIImage.render(size: rect.size, scale: scale) {
+            draw(in: rect)
+        } ?? self
+    }
+
+    /// 포인트 단위 bounds로 잘라냅니다.
+    func crop(bounds: CGRect) -> UIImage? {
+        guard let cgImage else { return nil }
+
+        let pixelBounds = CGRect(x: bounds.origin.x * scale,
+                                 y: bounds.origin.y * scale,
+                                 width: bounds.width * scale,
+                                 height: bounds.height * scale)
+        guard let cropping = cgImage.cropping(to: pixelBounds) else { return nil }
+
+        return UIImage(cgImage: cropping, scale: scale, orientation: imageOrientation)
+    }
+
+    func cropToSquare() -> UIImage? {
+        let shortest = min(size.width, size.height)
+        let origin = CGPoint(x: (size.width - shortest) / 2, y: (size.height - shortest) / 2)
+        return crop(bounds: CGRect(origin: origin, size: CGSize(width: shortest, height: shortest)))
+    }
+
+    func withInsets(_ insets: UIEdgeInsets) -> UIImage? {
+        let size = CGSize(width: self.size.width + insets.left + insets.right, height: self.size.height + insets.top + insets.bottom)
+        return UIImage.render(size: size, scale: scale) {
+            draw(at: CGPoint(x: insets.left, y: insets.top))
+        }
+    }
+
+    func withOrientation(_ orientation: UIImage.Orientation) -> UIImage? {
+        guard let cgImage = cgImage else { return nil }
+
+        return UIImage(cgImage: cgImage, scale: scale, orientation: orientation).withRenderingMode(renderingMode)
+    }
+
+    private static func render(size: CGSize, scale: CGFloat, actions: () -> Void) -> UIImage? {
         #if os(iOS)
         let format = UIGraphicsImageRendererFormat()
         format.scale = scale
-
-        return UIGraphicsImageRenderer(size: rect.size, format: format).image { _ in
-            self.draw(in: rect)
+        return UIGraphicsImageRenderer(size: size, format: format).image { _ in
+            actions()
         }
         #else
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, scale)
-        draw(in: rect)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return self }
-
-        UIGraphicsEndImageContext()
-
-        return image
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        actions()
+        return UIGraphicsGetImageFromCurrentImageContext()
         #endif
     }
 }
 
+// MARK: - Rendering Mode
+
 public extension UIImage {
-    var bytesSize: Int {
-        return jpegData(compressionQuality: 1)?.count ?? 0
+    var original: UIImage {
+        return withRenderingMode(.alwaysOriginal)
     }
 
-    var kilobytesSize: Int {
-        return bytesSize / 1024
+    var template: UIImage {
+        return withRenderingMode(.alwaysTemplate)
     }
+}
 
+// MARK: - Data
+
+public extension UIImage {
     enum ImageFormat {
         case JPEG(compressionQuality: CGFloat)
         case PNG
@@ -162,18 +175,20 @@ public extension UIImage {
             return data
         }
     }
+
+    func bytesSize(_ format: ImageFormat = .JPEG(compressionQuality: 1)) -> Int {
+        return data(format)?.count ?? 0
+    }
+
+    func kilobytesSize(_ format: ImageFormat = .JPEG(compressionQuality: 1)) -> Int {
+        return bytesSize(format) / 1024
+    }
 }
 
+// MARK: - Color
+
+#if canImport(CoreImage)
 public extension UIImage {
-    var original: UIImage {
-        return withRenderingMode(.alwaysOriginal)
-    }
-
-    var template: UIImage {
-        return withRenderingMode(.alwaysTemplate)
-    }
-
-    #if canImport(CoreImage)
     func averageColor() -> UIColor? {
         guard let ciImage = ciImage ?? CIImage(image: self) else { return nil }
 
@@ -198,32 +213,7 @@ public extension UIImage {
                        blue: CGFloat(bitmap[2]) / 255.0,
                        alpha: CGFloat(bitmap[3]) / 255.0)
     }
-    #endif
 }
-
-public extension UIImage {
-    #if os(iOS)
-    static func dynamicImage(withLight light: @autoclosure () -> UIImage?,
-                             dark: @autoclosure () -> UIImage?) -> UIImage? {
-        let lightTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .light)])
-        let darkTC = UITraitCollection(traitsFrom: [.current, .init(userInterfaceStyle: .dark)])
-
-        var lightImage: UIImage?
-        var darkImage: UIImage?
-
-        lightTC.performAsCurrent {
-            lightImage = light()
-        }
-        darkTC.performAsCurrent {
-            darkImage = dark()
-        }
-
-        if let darkImage {
-            lightImage?.imageAsset?.register(darkImage, with: UITraitCollection(userInterfaceStyle: .dark))
-        }
-        return lightImage
-    }
-    #endif
-}
+#endif
 
 #endif
