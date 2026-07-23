@@ -23,12 +23,20 @@ extension UITableViewCell: JLReusable {}
 extension UITableViewHeaderFooterView: JLReusable {}
 extension UICollectionReusableView: JLReusable {}
 
+// JLNibLoadable 오버로드에 bundle 기본값을 두면 안 된다: Swift는 "기본값 인자가 필요 없는 후보"를
+// "제네릭 제약이 더 구체적인 후보"보다 우선하므로, register(X.self)가 클래스 등록으로 해석되어
+// XIB 셀의 IBOutlet이 전부 nil인 채 조용히 깨진다. 그래서 인자 없는 전용 오버로드를 별도로 둔다.
+
 public extension UITableView {
     func register<T: UITableViewCell>(_: T.Type) {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UITableViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+    func register<T: UITableViewCell & JLNibLoadable>(_: T.Type) {
+        register(T.nib(), forCellReuseIdentifier: T.reuseIdentifier)
+    }
+
+    func register<T: UITableViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
         register(T.nib(bundle: bundle), forCellReuseIdentifier: T.reuseIdentifier)
     }
 
@@ -36,7 +44,11 @@ public extension UITableView {
         register(T.self, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UITableViewHeaderFooterView & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+    func register<T: UITableViewHeaderFooterView & JLNibLoadable>(_: T.Type) {
+        register(T.nib(), forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    }
+
+    func register<T: UITableViewHeaderFooterView & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
         register(T.nib(bundle: bundle), forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
 
@@ -62,7 +74,11 @@ public extension UICollectionView {
         register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UICollectionViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+    func register<T: UICollectionViewCell & JLNibLoadable>(_: T.Type) {
+        register(T.nib(), forCellWithReuseIdentifier: T.reuseIdentifier)
+    }
+
+    func register<T: UICollectionViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
         register(T.nib(bundle: bundle), forCellWithReuseIdentifier: T.reuseIdentifier)
     }
 
@@ -70,7 +86,11 @@ public extension UICollectionView {
         register(T.self, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle? = nil) {
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String) {
+        register(T.nib(), forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
+    }
+
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle?) {
         register(T.nib(bundle: bundle), forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
 
@@ -80,7 +100,11 @@ public extension UICollectionView {
         register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier)
     }
 
-    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type) {
+        register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier, bundle: nil)
+    }
+
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
         register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier, bundle: bundle)
     }
 
