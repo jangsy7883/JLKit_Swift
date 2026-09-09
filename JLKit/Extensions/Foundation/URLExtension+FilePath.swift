@@ -27,6 +27,24 @@ public extension URL {
         }
         return nil
     }
+
+    var isExcludedFromBackup: Bool {
+        (try? resourceValues(forKeys: [.isExcludedFromBackupKey]))?.isExcludedFromBackup ?? false
+    }
+
+    /// iCloud/iTunes 백업 제외 여부를 설정한다. 대상 파일/디렉터리가 이미 존재해야 한다.
+    /// - Returns: 성공 시 self (체이닝용), 실패 시 nil
+    @discardableResult func setExcludedFromBackup(_ excluded: Bool = true) -> URL? {
+        var url = self
+        var values = URLResourceValues()
+        values.isExcludedFromBackup = excluded
+        do {
+            try url.setResourceValues(values)
+        } catch {
+            return nil
+        }
+        return self
+    }
 }
 
 public extension URL {

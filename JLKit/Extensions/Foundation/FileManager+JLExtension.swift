@@ -61,13 +61,16 @@ public extension FileManager {
         return nil
     }
 
-    func containerURL(for groupIdentifier: String, paths: [String], createDirectory createConfig: CreateConfig? = CreateConfig()) -> URL? {
-        guard let documentsPath = containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier) else { return nil }
+    /// - Parameter createConfig: 전달하면 반환 경로의 디렉터리가 없을 때 생성한다.
+    ///   기본값은 `nil`(생성 안 함) — 속성 지정이 필요한 호출부가 `URL.createDirectory(attributes:)`를
+    ///   체이닝하는 기존 패턴과 충돌하지 않도록 생성 여부는 명시적으로 선택한다.
+    func containerURL(for groupIdentifier: String, paths: [String], createDirectory createConfig: CreateConfig? = nil) -> URL? {
+        guard let containerPath = containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier) else { return nil }
 
         let path = paths.joined(separator: "/")
-        let result = documentsPath.appendingPathComponent(path)
+        let result = path.isEmpty ? containerPath : containerPath.appendingPathComponent(path)
 
-        if let config = createConfig, fileExists(atPath: documentsPath.path) == false {
+        if let config = createConfig, fileExists(atPath: result.path) == false {
             try? createDirectory(at: result, withIntermediateDirectories: config.createIntermediateDirectories, attributes: config.attributes)
         }
 
