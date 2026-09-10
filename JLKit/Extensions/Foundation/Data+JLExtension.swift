@@ -13,7 +13,7 @@ public extension Data {
     func byteString(units: ByteCountFormatter.Units = [.useAll], countStyle: ByteCountFormatter.CountStyle = .file) -> String {
         let bcf = ByteCountFormatter()
         bcf.allowedUnits = units
-        bcf.countStyle = .file
+        bcf.countStyle = countStyle
 
         return bcf.string(fromByteCount: Int64(count))
     }

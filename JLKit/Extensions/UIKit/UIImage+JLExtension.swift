@@ -124,17 +124,27 @@ public extension UIImage {
     }
     #endif
 
-    /// 포인트 단위 bounds로 잘라냅니다.
+    /// 표시 방향을 기준으로 포인트 단위 bounds를 잘라냅니다. 결과 방향은 .up입니다.
     func crop(bounds: CGRect) -> UIImage? {
         guard let cgImage else { return nil }
+
+        let source: CGImage
+        if imageOrientation == .up {
+            source = cgImage
+        } else {
+            guard let normalized = UIImage.render(size: size, scale: scale, actions: {
+                draw(in: CGRect(origin: .zero, size: size))
+            })?.cgImage else { return nil }
+            source = normalized
+        }
 
         let pixelBounds = CGRect(x: bounds.origin.x * scale,
                                  y: bounds.origin.y * scale,
                                  width: bounds.width * scale,
                                  height: bounds.height * scale)
-        guard let cropping = cgImage.cropping(to: pixelBounds) else { return nil }
+        guard let cropping = source.cropping(to: pixelBounds) else { return nil }
 
-        return UIImage(cgImage: cropping, scale: scale, orientation: imageOrientation)
+        return UIImage(cgImage: cropping, scale: scale, orientation: .up)
     }
 
     func cropToSquare() -> UIImage? {

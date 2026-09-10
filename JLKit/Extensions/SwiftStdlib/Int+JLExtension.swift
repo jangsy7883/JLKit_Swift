@@ -9,9 +9,9 @@
 import Foundation
 
 public extension Int {
+    /// min과 max를 포함하는 범위에서 난수를 반환합니다. min <= max여야 합니다.
     static func random(min: Int, max: Int) -> Int {
-        let form = max - min + 1
-        return Int(UInt32(min) + arc4random_uniform(UInt32(form)))
+        return Int.random(in: min...max)
     }
 
     var decimalString: String {

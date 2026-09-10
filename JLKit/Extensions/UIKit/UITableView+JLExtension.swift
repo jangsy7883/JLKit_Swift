@@ -10,12 +10,10 @@ import UIKit
 
 public extension UITableView {
     func isValidIndexPath(_ indexPath: IndexPath) -> Bool {
-        if indexPath.section >= numberOfSections {
-            return false
-        } else if indexPath.row >= numberOfRows(inSection: indexPath.section) {
-            return false
-        }
-        return true
+        return indexPath.section >= 0 &&
+            indexPath.row >= 0 &&
+            indexPath.section < numberOfSections &&
+            indexPath.row < numberOfRows(inSection: indexPath.section)
     }
 
     func indexPath(forCellContainingView: UIView?) -> IndexPath? {
@@ -23,9 +21,8 @@ public extension UITableView {
         while view != nil {
             if let cell = view as? UITableViewCell {
                 return indexPath(for: cell)
-            } else if let superview = view?.superview {
-                view = superview
             }
+            view = view?.superview
         }
         return nil
     }
