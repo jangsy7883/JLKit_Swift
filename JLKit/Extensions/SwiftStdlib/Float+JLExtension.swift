@@ -21,7 +21,7 @@ public extension Float {
 
     #if canImport(UIKit) && os(iOS)
     static func pixel(_ value: CGFloat = 1.0) -> CGFloat {
-        return value / UIScreen.main.scale
+        return CGFloat.pixel(value)
     }
     #endif
 }
