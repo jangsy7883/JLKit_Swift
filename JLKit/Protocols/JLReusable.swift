@@ -9,53 +9,47 @@
 import Foundation
 import UIKit
 
-public protocol JLReusable {}
+public protocol JLReusable {
+    static var reuseIdentifier: String { get }
+}
 
-public extension UITableViewCell {
+public extension JLReusable {
     static var reuseIdentifier: String {
-        return String(describing: self.self)
+        return String(describing: self)
     }
 }
 
-public extension UITableViewHeaderFooterView {
-    static var reuseIdentifier: String {
-        return String(describing: self.self)
-    }
-}
+extension UITableViewCell: JLReusable {}
+extension UITableViewHeaderFooterView: JLReusable {}
+extension UICollectionReusableView: JLReusable {}
 
-public extension UICollectionReusableView {
-    static var reuseIdentifier: String {
-        return String(describing: self.self)
-    }
-}
-
-public protocol JLNibLoadable {}
-
-public extension JLNibLoadable where Self: UIView {
-    static func nib(bundle: Bundle? = nil) -> UINib? {
-        return UINib(nibName: String(describing: self.self), bundle: bundle)
-    }
-}
+// JLNibLoadable 오버로드에 bundle 기본값을 두면 안 된다: Swift는 "기본값 인자가 필요 없는 후보"를
+// "제네릭 제약이 더 구체적인 후보"보다 우선하므로, register(X.self)가 클래스 등록으로 해석되어
+// XIB 셀의 IBOutlet이 전부 nil인 채 조용히 깨진다. 그래서 인자 없는 전용 오버로드를 별도로 둔다.
 
 public extension UITableView {
-    func register<T: UITableViewCell>(_: T.Type, bundle: Bundle? = nil) {
+    func register<T: UITableViewCell>(_: T.Type) {
         register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UITableViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
-        guard let nib = T.nib(bundle: bundle) else { return }
+    func register<T: UITableViewCell & JLNibLoadable>(_: T.Type) {
+        register(T.nib(), forCellReuseIdentifier: T.reuseIdentifier)
+    }
 
-        register(nib, forCellReuseIdentifier: T.reuseIdentifier)
+    func register<T: UITableViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
+        register(T.nib(bundle: bundle), forCellReuseIdentifier: T.reuseIdentifier)
     }
 
     func register<T: UITableViewHeaderFooterView>(_: T.Type) {
         register(T.self, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UITableViewHeaderFooterView & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
-        guard let nib = T.nib(bundle: bundle) else { return }
+    func register<T: UITableViewHeaderFooterView & JLNibLoadable>(_: T.Type) {
+        register(T.nib(), forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    }
 
-        register(nib, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    func register<T: UITableViewHeaderFooterView & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
+        register(T.nib(bundle: bundle), forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
 
     func dequeueReusableCell<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T {
@@ -66,9 +60,9 @@ public extension UITableView {
         return cell
     }
 
-    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T? {
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T {
         guard let view = dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T else {
-            return nil
+            fatalError("Could not dequeue header footer view with identifier: \(T.reuseIdentifier)")
         }
 
         return view
@@ -76,24 +70,42 @@ public extension UITableView {
 }
 
 public extension UICollectionView {
-    func register<T: UICollectionViewCell>(_: T.Type, bundle: Bundle? = nil) {
+    func register<T: UICollectionViewCell>(_: T.Type) {
         register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UICollectionViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle? = nil) {
-        guard let nib = T.nib(bundle: bundle) else { return }
-
-        register(nib, forCellWithReuseIdentifier: T.reuseIdentifier)
+    func register<T: UICollectionViewCell & JLNibLoadable>(_: T.Type) {
+        register(T.nib(), forCellWithReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UICollectionReusableView>(_: T.Type, forSupplementaryViewOfKind elementKind: String = T.reuseIdentifier, bundle: Bundle? = nil) {
+    func register<T: UICollectionViewCell & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
+        register(T.nib(bundle: bundle), forCellWithReuseIdentifier: T.reuseIdentifier)
+    }
+
+    func register<T: UICollectionReusableView>(_: T.Type, forSupplementaryViewOfKind elementKind: String) {
         register(T.self, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
     }
 
-    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String = T.reuseIdentifier, bundle: Bundle? = nil) {
-        guard let nib = T.nib(bundle: bundle) else { return }
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String) {
+        register(T.nib(), forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
+    }
 
-        register(nib, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, forSupplementaryViewOfKind elementKind: String, bundle: Bundle?) {
+        register(T.nib(bundle: bundle), forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
+    }
+
+    /// supplementary view를 elementKind == reuseIdentifier 컨벤션으로 등록합니다.
+    /// 레이아웃의 elementKind에도 같은 값(T.reuseIdentifier)을 사용해야 합니다.
+    func register<T: UICollectionReusableView>(_: T.Type) {
+        register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier)
+    }
+
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type) {
+        register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier, bundle: nil)
+    }
+
+    func register<T: UICollectionReusableView & JLNibLoadable>(_: T.Type, bundle: Bundle?) {
+        register(T.self, forSupplementaryViewOfKind: T.reuseIdentifier, bundle: bundle)
     }
 
     func dequeueReusableCell<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T {
@@ -106,10 +118,16 @@ public extension UICollectionView {
 
     func dequeueReusableSupplementaryView<T: UICollectionReusableView>(ofKind elementKind: String, for indexPath: IndexPath) -> T {
         guard let view = dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
+            fatalError("Could not dequeue supplementary view with identifier: \(T.reuseIdentifier)")
         }
 
         return view
     }
+
+    /// registerSupplementary로 등록한(elementKind == reuseIdentifier) supplementary view 디큐.
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(for indexPath: IndexPath) -> T {
+        return dequeueReusableSupplementaryView(ofKind: T.reuseIdentifier, for: indexPath)
     }
+}
+
 #endif

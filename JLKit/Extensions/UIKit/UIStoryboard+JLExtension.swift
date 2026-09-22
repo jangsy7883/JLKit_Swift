@@ -31,11 +31,11 @@ public extension UIStoryboard {
 }
 
 public extension UIStoryboard {
-    @objc convenience init(name: String) {
+    convenience init(name: String) {
         self.init(name: name, bundle: nil)
     }
 
-    @objc static func viewController(_ identifier: String? = nil, storyboardName: String) -> UIViewController? {
+    static func viewController(_ identifier: String? = nil, storyboardName: String) -> UIViewController? {
         let storyboard = UIStoryboard(name: storyboardName)
 
         if identifier == nil {

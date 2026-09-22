@@ -29,6 +29,11 @@ let package = Package(
             linkerSettings: [
                 .linkedFramework("Photos", .when(platforms: [.iOS]))
             ]
+        ),
+        .testTarget(
+            name: "JLKit_SwiftTests",
+            dependencies: ["JLKit_Swift"],
+            path: "Tests/JLKit_SwiftTests"
         )
     ]
 )

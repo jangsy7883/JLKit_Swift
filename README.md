@@ -30,6 +30,10 @@ targets: [
 ]
 ```
 
+## Demo
+
+`Example/JLKit.xcodeproj` depends on this repository as a local Swift package (`..`), so no CocoaPods setup is required. Open the project in Xcode and run the `JLKit` scheme.
+
 ## Release For SPM
 
 SPM uses git tags. Create and push a new semantic version tag when releasing:

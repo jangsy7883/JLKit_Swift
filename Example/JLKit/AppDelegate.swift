@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  JLKit_Swift
+//  JLKit
 //
 //  Created by Jangsy on 2018. 4. 9..
 //  Copyright © 2018년 Dalkomm. All rights reserved.

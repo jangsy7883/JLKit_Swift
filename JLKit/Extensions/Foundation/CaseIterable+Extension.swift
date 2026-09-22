@@ -12,8 +12,8 @@ public extension CaseIterable where Self: Equatable, AllCases: BidirectionalColl
     func previous() -> Self {
         let all = Self.allCases
         let idx = all.firstIndex(of: self)!
-        let previous = all.index(before: idx)
-        return all[previous < all.startIndex ? all.index(before: all.endIndex) : previous]
+        let previous = all.index(before: idx == all.startIndex ? all.endIndex : idx)
+        return all[previous]
     }
 
     func next() -> Self {
@@ -41,12 +41,10 @@ public extension Collection where Element: Equatable {
 public extension BidirectionalCollection where Element: Equatable {
     func element(before element: Element, wrapping: Bool = false) -> Element? {
         if let index = firstIndex(of: element) {
-            let precedingIndex = self.index(before: index)
-            if precedingIndex >= startIndex {
-                return self[precedingIndex]
-            } else if wrapping {
-                return self[self.index(before: endIndex)]
+            if index == startIndex {
+                return wrapping ? self[self.index(before: endIndex)] : nil
             }
+            return self[self.index(before: index)]
         }
         return nil
     }

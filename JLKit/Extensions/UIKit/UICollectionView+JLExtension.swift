@@ -31,9 +31,8 @@ public extension UICollectionView {
         while view != nil {
             if let cell = view as? UICollectionViewCell {
                 return indexPath(for: cell)
-            } else if let superview = view?.superview {
-                view = superview
             }
+            view = view?.superview
         }
 
         return nil
@@ -47,7 +46,7 @@ public extension UICollectionView {
             return nil
         }
         guard numberOfItems(inSection: section) > 0 else {
-            return IndexPath(item: 0, section: section)
+            return nil
         }
 
         return IndexPath(item: numberOfItems(inSection: section) - 1, section: section)

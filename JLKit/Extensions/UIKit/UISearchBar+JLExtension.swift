@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UISearchBar {
-    @objc var textField: UITextField? {
+    var textField: UITextField? {
         func findTextField(in view: UIView?) -> UITextField? {
             if let textField = view as? UITextField {
                 return textField

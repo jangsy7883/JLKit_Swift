@@ -23,36 +23,25 @@ public extension Array {
         }
     }
 
+    /// 배열과 겹치는 범위만 반환하며, upperBound의 원소도 포함합니다.
     subscript(safe range: ClosedRange<Index>) -> ArraySlice<Element> {
-        let from = Swift.max(startIndex, range.lowerBound)
-        let to = Swift.min(endIndex, range.upperBound)
+        let from = Swift.min(endIndex, Swift.max(startIndex, range.lowerBound))
+        let to: Index
+        if range.upperBound < startIndex {
+            to = startIndex
+        } else if range.upperBound >= endIndex {
+            to = endIndex
+        } else {
+            to = range.upperBound + 1
+        }
         return self[from ..< to]
     }
 
     subscript(safe range: Range<Index>) -> ArraySlice<Element> {
-        let from = Swift.max(startIndex, range.lowerBound)
-        let to = Swift.min(endIndex, range.upperBound)
+        let from = Swift.min(endIndex, Swift.max(startIndex, range.lowerBound))
+        let to = Swift.min(endIndex, Swift.max(startIndex, range.upperBound))
         return self[from ..< to]
     }
-
-    // MARK: - Shuffle
-
-    /*
-    public mutating func shuffle() {
-        guard self.count >= 1 else { return }
-
-        for i in (1..<self.count).reversed() {
-            let j = (0...i).randomElement()!
-            self.swapAt(j, i)
-        }
-    }
-
-    public var shuffled: [Element] {
-        var elements = self
-        elements.shuffle()
-        return elements
-    }
-    */
 
     // MARK: - Sort
 

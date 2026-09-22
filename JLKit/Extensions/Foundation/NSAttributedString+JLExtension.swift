@@ -80,7 +80,7 @@ public extension NSMutableAttributedString {
     }
 
     func appendString(_ text: String, attributes: [NSAttributedString.Key: Any]) {
-        guard text.isEmpty == false, attributes.isEmpty == false else { return }
+        guard text.isEmpty == false else { return }
 
         append(NSAttributedString(string: text, attributes: attributes))
     }

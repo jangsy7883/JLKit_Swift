@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIView {
-    @objc var superViewController: UIViewController? {
+    var superViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while let responder = parentResponder {
             parentResponder = responder.next
@@ -20,14 +20,14 @@ public extension UIView {
         return nil
     }
 
-    @objc func screenShot(afterScreenUpdates: Bool = true) -> UIImage? {
+    func screenShot(afterScreenUpdates: Bool = true) -> UIImage? {
         let size = CGSize(width: floor(bounds.size.width), height: floor(bounds.size.height))
         return UIGraphicsImageRenderer(size: size).image { _ in
             drawHierarchy(in: self.bounds, afterScreenUpdates: afterScreenUpdates)
         }
     }
 
-    @objc func rotate(angle: CGFloat) {
+    func rotate(angle: CGFloat) {
         transform = CGAffineTransform.identity
 
         let radians = angle / 180.0 * CGFloat(Double.pi)
@@ -35,14 +35,14 @@ public extension UIView {
         transform = rotation
     }
 
-    @objc func roundingCorners(_ corners: UIRectCorner, radius: CGFloat) {
+    func roundingCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
     }
 
-    @objc func mask(withRect rect: CGRect, inverse: Bool = false) {
+    func mask(withRect rect: CGRect, inverse: Bool = false) {
         let path = UIBezierPath(rect: rect)
         let maskLayer = CAShapeLayer()
 
@@ -55,20 +55,20 @@ public extension UIView {
         layer.mask = maskLayer
     }
 
-    @objc func clearMask() {
+    func clearMask() {
         layer.mask = nil
     }
 
-    @objc @discardableResult func add(to view: UIView?) -> Self {
+    @discardableResult func add(to view: UIView?) -> Self {
         view?.addSubview(self)
         return self
     }
 
-    @objc static func animate(withDuration duration: TimeInterval,
-                              fromView view: UIView,
-                              constraints: @escaping () -> Void,
-                              animations: (() -> Void)? = nil,
-                              completion: ((Bool) -> Void)? = nil) {
+    static func animate(withDuration duration: TimeInterval,
+                        fromView view: UIView,
+                        constraints: @escaping () -> Void,
+                        animations: (() -> Void)? = nil,
+                        completion: ((Bool) -> Void)? = nil) {
         view.layoutIfNeeded()
         constraints()
 

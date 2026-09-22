@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EF3BB09D207AE60400857D26"
-               BuildableName = "JLKit_Swift.app"
-               BlueprintName = "JLKit_Swift"
-               ReferencedContainer = "container:JLKit_Swift.xcodeproj">
+               BuildableName = "JLKit.app"
+               BlueprintName = "JLKit"
+               ReferencedContainer = "container:JLKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EF3BB09D207AE60400857D26"
-            BuildableName = "JLKit_Swift.app"
-            BlueprintName = "JLKit_Swift"
-            ReferencedContainer = "container:JLKit_Swift.xcodeproj">
+            BuildableName = "JLKit.app"
+            BlueprintName = "JLKit"
+            ReferencedContainer = "container:JLKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EF3BB09D207AE60400857D26"
-            BuildableName = "JLKit_Swift.app"
-            BlueprintName = "JLKit_Swift"
-            ReferencedContainer = "container:JLKit_Swift.xcodeproj">
+            BuildableName = "JLKit.app"
+            BlueprintName = "JLKit"
+            ReferencedContainer = "container:JLKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

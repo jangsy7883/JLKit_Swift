@@ -65,6 +65,6 @@ extension Date {
     }()
 
     public func toLocalizedRelative(to date: Date = Date()) -> String {
-        Date.relativeFormatter.localizedString(for: self, relativeTo: Date())
+        Date.relativeFormatter.localizedString(for: self, relativeTo: date)
     }
 }

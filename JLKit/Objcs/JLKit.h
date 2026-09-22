@@ -13,7 +13,6 @@
 #import "NSArray+JLKit.h"
 #import "NSDictionary+JLKit.h"
 #import "NSString+JLKit.h"
-#import "NSThread+JLKit.h"
 
 //
 #import "CGGeometryExtension.h"

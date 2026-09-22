@@ -30,12 +30,39 @@ public extension String {
     }
 
     func localized(tableName: String? = nil, bundle: Bundle = Bundle.main, comment: String = "", arguments: [CVarArg] = []) -> String {
+        let format = String.localizedValue(forKey: self, tableName: tableName, bundle: bundle)
         if !arguments.isEmpty {
-            let format = NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
             return String(format: format, arguments: arguments)
         } else {
-            return NSLocalizedString(self, tableName: tableName, bundle: bundle, value: self, comment: comment)
+            return format
         }
+    }
+
+    /// 현재 언어에 번역이 없으면(키 누락 또는 빈 값) 기기 언어 우선순위 → 영어(en/Base) 순으로 폴백하고, 모두 없으면 키를 그대로 반환
+    private static func localizedValue(forKey key: String, tableName: String?, bundle: Bundle) -> String {
+        let notFound = "\u{1}JLKit.localized.notFound\u{1}"
+
+        let current = bundle.localizedString(forKey: key, value: notFound, table: tableName)
+        if current != notFound, !current.isEmpty {
+            return current
+        }
+
+        var candidates = Locale.preferredLanguages.flatMap {
+            Bundle.preferredLocalizations(from: bundle.localizations, forPreferences: [$0])
+        }
+        candidates += ["en", "Base"]
+
+        var visited = Set<String>()
+        for localization in candidates where visited.insert(localization).inserted {
+            guard let path = bundle.path(forResource: localization, ofType: "lproj"),
+                  let languageBundle = Bundle(path: path) else { continue }
+
+            let value = languageBundle.localizedString(forKey: key, value: notFound, table: tableName)
+            if value != notFound, !value.isEmpty {
+                return value
+            }
+        }
+        return key
     }
 
     func localized(tableName: String? = nil, bundle: Bundle = Bundle.main, comment: String = "", _ arguments: CVarArg...) -> String {
