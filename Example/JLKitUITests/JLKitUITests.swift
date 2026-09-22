@@ -1,6 +1,6 @@
 //
-//  JLKit_SwiftUITests.swift
-//  JLKit_SwiftUITests
+//  JLKitUITests.swift
+//  JLKitUITests
 //
 //  Created by Jangsy on 2018. 4. 9..
 //  Copyright © 2018년 Dalkomm. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class JLKit_SwiftUITests: XCTestCase {
+class JLKitUITests: XCTestCase {
     override func setUp() {
         super.setUp()
 

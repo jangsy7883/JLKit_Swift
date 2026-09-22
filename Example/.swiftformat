@@ -23,5 +23,4 @@
 
 # exclude files
 
---exclude Pods
 --exclude TheDayBefore/OpenSources

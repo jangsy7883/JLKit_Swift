@@ -7,13 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A1207AE60400857D26 /* AppDelegate.swift */; };
-		EF3BB0A4207AE60400857D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0A3207AE60400857D26 /* ViewController.swift */; };
-		EF3BB0A9207AE60500857D26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF3BB0A8207AE60500857D26 /* Assets.xcassets */; };
-		EF3BB0B7207AE60600857D26 /* JLKit_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3BB0B6207AE60600857D26 /* JLKit_SwiftUITests.swift */; };
-		EFE449A1213E4C770022B495 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */; };
-		EFE449A2213E4C770022B495 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE449A0213E4C770022B495 /* Main.storyboard */; };
-		EFE449A6213F5F4E0022B495 /* JLKit_Swift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */; };
+		2FDF3B002F9B1000008A810F /* JLKit_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDF3B012F9B1000008A810F /* JLKit_Swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,45 +16,35 @@
 			containerPortal = EF3BB096207AE60400857D26 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EF3BB09D207AE60400857D26;
-			remoteInfo = JLKit_Swift;
+			remoteInfo = JLKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EF2C682A207AE9BB000C07BA /* JLKit_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JLKit_Swift-Bridging-Header.h"; path = "JLKit_Swift/JLKit_Swift-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		EF3BB09E207AE60400857D26 /* JLKit_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLKit_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF3BB0A1207AE60400857D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EF3BB0A3207AE60400857D26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EF3BB0A8207AE60500857D26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EF3BB0AD207AE60500857D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EF3BB0B2207AE60500857D26 /* JLKit_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLKit_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF3BB0B6207AE60600857D26 /* JLKit_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLKit_SwiftUITests.swift; sourceTree = "<group>"; };
-		EF3BB0B8207AE60600857D26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EFE449A0213E4C770022B495 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JLKit_Swift.podspec; path = ../JLKit_Swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EF3BB09E207AE60400857D26 /* JLKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF3BB0B2207AE60500857D26 /* JLKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2FDF3AF22F9B02C9008A810F /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		2F8CF11F3061FE1B00E2DDC1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Foundation/NSArray+JLKit.m",
-				"Foundation/NSDate+JLAge.m",
-				"Foundation/NSDictionary+JLKit.m",
-				"Foundation/NSString+JLKit.m",
-				"UIKit/UIColor+JLKit.m",
-				"UIKit/UIImage+JLKit.m",
+				Info.plist,
 			);
-			target = EF3BB09D207AE60400857D26 /* JLKit_Swift */;
+			target = EF3BB09D207AE60400857D26 /* JLKit */;
+		};
+		2F8CF1243061FE1F00E2DDC1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				JLKitUITests.swift,
+			);
+			target = EF3BB0B1207AE60500857D26 /* JLKitUITests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2FDF3A5C2F9B02B7008A810F /* Protocols */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Protocols; sourceTree = "<group>"; };
-		2FDF3A9B2F9B02BD008A810F /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
-		2FDF3AD52F9B02C4008A810F /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
-		2FDF3AEA2F9B02C8008A810F /* Objcs */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2FDF3AF22F9B02C9008A810F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Objcs; sourceTree = "<group>"; };
+		2F8CF1183061FE1A00E2DDC1 /* JLKit */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2F8CF11F3061FE1B00E2DDC1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = JLKit; sourceTree = "<group>"; };
+		2F8CF1223061FE1E00E2DDC1 /* JLKitUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2F8CF1243061FE1F00E2DDC1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = JLKitUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FDF3B002F9B1000008A810F /* JLKit_Swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,25 +66,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EF2C6803207AE7A9000C07BA /* JLKit */ = {
-			isa = PBXGroup;
-			children = (
-				2FDF3AD52F9B02C4008A810F /* Utils */,
-				2FDF3AEA2F9B02C8008A810F /* Objcs */,
-				2FDF3A5C2F9B02B7008A810F /* Protocols */,
-				2FDF3A9B2F9B02BD008A810F /* Extensions */,
-			);
-			name = JLKit;
-			path = ../JLKit;
-			sourceTree = "<group>";
-		};
 		EF3BB095207AE60400857D26 = {
 			isa = PBXGroup;
 			children = (
-				EFE449A5213F5F4E0022B495 /* JLKit_Swift.podspec */,
-				EF2C6803207AE7A9000C07BA /* JLKit */,
-				EF3BB0A0207AE60400857D26 /* JLKit_Swift */,
-				EF3BB0B5207AE60600857D26 /* JLKit_SwiftUITests */,
+				2F8CF1183061FE1A00E2DDC1 /* JLKit */,
+				2F8CF1223061FE1E00E2DDC1 /* JLKitUITests */,
 				EF3BB09F207AE60400857D26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,41 +78,18 @@
 		EF3BB09F207AE60400857D26 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EF3BB09E207AE60400857D26 /* JLKit_Swift.app */,
-				EF3BB0B2207AE60500857D26 /* JLKit_SwiftUITests.xctest */,
+				EF3BB09E207AE60400857D26 /* JLKit.app */,
+				EF3BB0B2207AE60500857D26 /* JLKitUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EF3BB0A0207AE60400857D26 /* JLKit_Swift */ = {
-			isa = PBXGroup;
-			children = (
-				EF3BB0A1207AE60400857D26 /* AppDelegate.swift */,
-				EF3BB0A3207AE60400857D26 /* ViewController.swift */,
-				EF2C682A207AE9BB000C07BA /* JLKit_Swift-Bridging-Header.h */,
-				EF3BB0A8207AE60500857D26 /* Assets.xcassets */,
-				EFE4499F213E4C770022B495 /* LaunchScreen.storyboard */,
-				EFE449A0213E4C770022B495 /* Main.storyboard */,
-				EF3BB0AD207AE60500857D26 /* Info.plist */,
-			);
-			path = JLKit_Swift;
-			sourceTree = "<group>";
-		};
-		EF3BB0B5207AE60600857D26 /* JLKit_SwiftUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EF3BB0B6207AE60600857D26 /* JLKit_SwiftUITests.swift */,
-				EF3BB0B8207AE60600857D26 /* Info.plist */,
-			);
-			path = JLKit_SwiftUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EF3BB09D207AE60400857D26 /* JLKit_Swift */ = {
+		EF3BB09D207AE60400857D26 /* JLKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF3BB0BB207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKit_Swift" */;
+			buildConfigurationList = EF3BB0BB207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKit" */;
 			buildPhases = (
 				EF3BB09A207AE60400857D26 /* Sources */,
 				EF3BB09B207AE60400857D26 /* Frameworks */,
@@ -153,18 +101,19 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				2FDF3A5C2F9B02B7008A810F /* Protocols */,
-				2FDF3A9B2F9B02BD008A810F /* Extensions */,
-				2FDF3AD52F9B02C4008A810F /* Utils */,
+				2F8CF1183061FE1A00E2DDC1 /* JLKit */,
 			);
-			name = JLKit_Swift;
-			productName = JLKit_Swift;
-			productReference = EF3BB09E207AE60400857D26 /* JLKit_Swift.app */;
+			name = JLKit;
+			packageProductDependencies = (
+				2FDF3B012F9B1000008A810F /* JLKit_Swift */,
+			);
+			productName = JLKit;
+			productReference = EF3BB09E207AE60400857D26 /* JLKit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EF3BB0B1207AE60500857D26 /* JLKit_SwiftUITests */ = {
+		EF3BB0B1207AE60500857D26 /* JLKitUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF3BB0BE207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKit_SwiftUITests" */;
+			buildConfigurationList = EF3BB0BE207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKitUITests" */;
 			buildPhases = (
 				EF3BB0AE207AE60500857D26 /* Sources */,
 				EF3BB0AF207AE60500857D26 /* Frameworks */,
@@ -175,9 +124,9 @@
 			dependencies = (
 				EF3BB0B4207AE60500857D26 /* PBXTargetDependency */,
 			);
-			name = JLKit_SwiftUITests;
-			productName = JLKit_SwiftUITests;
-			productReference = EF3BB0B2207AE60500857D26 /* JLKit_SwiftUITests.xctest */;
+			name = JLKitUITests;
+			productName = JLKitUITests;
+			productReference = EF3BB0B2207AE60500857D26 /* JLKitUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -201,7 +150,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EF3BB099207AE60400857D26 /* Build configuration list for PBXProject "JLKit_Swift" */;
+			buildConfigurationList = EF3BB099207AE60400857D26 /* Build configuration list for PBXProject "JLKit" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -210,12 +159,15 @@
 				Base,
 			);
 			mainGroup = EF3BB095207AE60400857D26;
+			packageReferences = (
+				2FDF3B022F9B1000008A810F /* XCLocalSwiftPackageReference ".." */,
+			);
 			productRefGroup = EF3BB09F207AE60400857D26 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EF3BB09D207AE60400857D26 /* JLKit_Swift */,
-				EF3BB0B1207AE60500857D26 /* JLKit_SwiftUITests */,
+				EF3BB09D207AE60400857D26 /* JLKit */,
+				EF3BB0B1207AE60500857D26 /* JLKitUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,10 +177,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFE449A2213E4C770022B495 /* Main.storyboard in Resources */,
-				EFE449A6213F5F4E0022B495 /* JLKit_Swift.podspec in Resources */,
-				EF3BB0A9207AE60500857D26 /* Assets.xcassets in Resources */,
-				EFE449A1213E4C770022B495 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF3BB0A4207AE60400857D26 /* ViewController.swift in Sources */,
-				EF3BB0A2207AE60400857D26 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF3BB0B7207AE60600857D26 /* JLKit_SwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +230,7 @@
 /* Begin PBXTargetDependency section */
 		EF3BB0B4207AE60500857D26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EF3BB09D207AE60400857D26 /* JLKit_Swift */;
+			target = EF3BB09D207AE60400857D26 /* JLKit */;
 			targetProxy = EF3BB0B3207AE60500857D26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -344,7 +289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -401,7 +346,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -418,16 +363,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9RT68BBMY9;
-				INFOPLIST_FILE = JLKit_Swift/Info.plist;
+				INFOPLIST_FILE = JLKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.101;
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dalkomm.JLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,4";
@@ -441,16 +385,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9RT68BBMY9;
-				INFOPLIST_FILE = JLKit_Swift/Info.plist;
+				INFOPLIST_FILE = JLKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.101;
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dalkomm.JLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JLKit_Swift/JLKit_Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,4";
@@ -460,49 +403,47 @@
 		EF3BB0BF207AE60600857D26 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9RT68BBMY9;
-				INFOPLIST_FILE = JLKit_SwiftUITests/Info.plist;
+				INFOPLIST_FILE = JLKitUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-SwiftUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dalkomm.JLKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,4";
-				TEST_TARGET_NAME = JLKit_Swift;
+				TEST_TARGET_NAME = JLKit;
 			};
 			name = Debug;
 		};
 		EF3BB0C0207AE60600857D26 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9RT68BBMY9;
-				INFOPLIST_FILE = JLKit_SwiftUITests/Info.plist;
+				INFOPLIST_FILE = JLKitUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kr.dalkomm.JLKit-SwiftUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dalkomm.JLKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,4";
-				TEST_TARGET_NAME = JLKit_Swift;
+				TEST_TARGET_NAME = JLKit;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF3BB099207AE60400857D26 /* Build configuration list for PBXProject "JLKit_Swift" */ = {
+		EF3BB099207AE60400857D26 /* Build configuration list for PBXProject "JLKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF3BB0B9207AE60600857D26 /* Debug */,
@@ -511,7 +452,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF3BB0BB207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKit_Swift" */ = {
+		EF3BB0BB207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF3BB0BC207AE60600857D26 /* Debug */,
@@ -520,7 +461,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF3BB0BE207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKit_SwiftUITests" */ = {
+		EF3BB0BE207AE60600857D26 /* Build configuration list for PBXNativeTarget "JLKitUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF3BB0BF207AE60600857D26 /* Debug */,
@@ -530,6 +471,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		2FDF3B022F9B1000008A810F /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2FDF3B012F9B1000008A810F /* JLKit_Swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JLKit_Swift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF3BB096207AE60400857D26 /* Project object */;
 }
