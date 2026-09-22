@@ -14,7 +14,7 @@ public extension UIActivityViewController {
     }
 
     func show(animated: Bool = true) {
-        UIViewController.topMost()?.present(self, animated: animated, completion: nil)
+        UIViewController.appTopMost?.present(self, animated: animated, completion: nil)
     }
 }
 #endif

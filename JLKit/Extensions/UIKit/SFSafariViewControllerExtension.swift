@@ -9,14 +9,14 @@
 import SafariServices
 
 public extension SFSafariViewController {
-    func show(in viewController: UIViewController? = UIViewController.topMost(), animated: Bool = true) {
+    func show(in viewController: UIViewController? = UIViewController.appTopMost, animated: Bool = true) {
         let navigationController = UINavigationController(rootViewController: self)
         navigationController.isNavigationBarHidden = true
         viewController?.present(navigationController, animated: animated, completion: nil)
     }
 
     @MainActor func show(in viewController: UIViewController? = nil, animated: Bool = true) async {
-        guard let controller = viewController ?? UIViewController.topMost() else { return }
+        guard let controller = viewController ?? UIViewController.appTopMost else { return }
 
         await withCheckedContinuation { continuation in
             let navigationController = UINavigationController(rootViewController: self)

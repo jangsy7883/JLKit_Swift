@@ -37,7 +37,7 @@ public extension UIAlertController {
     }
 
     func show(animated: Bool = true, completion: (() -> Swift.Void)? = nil) {
-        UIViewController.topMost()?.present(self, animated: animated, completion: completion)
+        UIViewController.appTopMost?.present(self, animated: animated, completion: completion)
     }
 }
 #endif
