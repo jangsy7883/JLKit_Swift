@@ -40,7 +40,8 @@ public extension String {
 
     /// 현재 언어에 번역이 없으면(키 누락 또는 빈 값) 기기 언어 우선순위 → 영어(en/Base) 순으로 폴백하고, 모두 없으면 키를 그대로 반환
     private static func localizedValue(forKey key: String, tableName: String?, bundle: Bundle) -> String {
-        let notFound = "\u{1}JLKit.localized.notFound\u{1}"
+        // "Show non-localized strings"(NSShowNonLocalizedStrings) 옵션이 켜지면 누락 시 value를 대문자로 바꿔 반환하므로, 대문자화해도 변하지 않는 값을 사용
+        let notFound = "\u{1}JLKIT_LOCALIZED_NOTFOUND\u{1}"
 
         let current = bundle.localizedString(forKey: key, value: notFound, table: tableName)
         if current != notFound, !current.isEmpty {
