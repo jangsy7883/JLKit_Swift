@@ -9,10 +9,11 @@
 import UIKit
 
 extension UIViewController {
-    /// 앱 window 기준 최상단 뷰컨트롤러 — "지금 사용자가 보고 있는 화면 위에 띄운다"의 기준점.
+    /// "지금 사용자가 보고 있는 화면 위에 띄운다"의 기준점.
+    /// 표시 중인 팝업 window(`UIWindow.popup`)가 있으면 그 window, 없으면 앱 window(`UIWindow.app`) 기준 최상단이다.
     /// `UIWindow.app`이 없는 앱(씬 델리게이트 window 미소유)은 key window로 폴백한다.
     public class var appTopMost: UIViewController? {
-        topMost((UIWindow.app ?? UIWindow.keyFallback)?.rootViewController)
+        topMost((UIWindow.popup ?? UIWindow.app ?? UIWindow.keyFallback)?.rootViewController)
     }
 
     @available(*, deprecated, renamed: "appTopMost")

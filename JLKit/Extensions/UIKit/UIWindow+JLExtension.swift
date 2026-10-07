@@ -30,6 +30,20 @@ extension UIWindow {
         return (scene?.delegate as? UIWindowSceneDelegate)?.window ?? nil
     }
 
+    /// 표시 중인 팝업 window. 앱 window가 아니면서 보이고 스스로를 모달로 선언한(`accessibilityViewIsModal`) window 중
+    /// windowLevel이 가장 높은 것, 없으면 nil.
+    ///
+    /// 사용자가 닫기 전까지 유지되는 시트·다이얼로그는 앱 window 위의 별도 window에 뜨지만 key는 아니라서,
+    /// 팝업이 떠 있는 동안 앱 window 기준으로 present하면 띄운 화면이 팝업 뒤에 가려진다. 그래서 `appTopMost`는 이 window를 앱 window보다 먼저 쓴다.
+    /// SwiftEntryKit의 엔트리 window가 이 플래그를 켠다. 스낵바(SwiftMessages)는 안쪽 마스킹 뷰에만 켜고 window에는 켜지 않으며
+    /// 광고·UMP window도 켜지 않으므로, 잠깐 떴다 사라지는 오버레이(present한 화면이 함께 사라지는 쪽)는 걸리지 않는다.
+    public class var popup: UIWindow? {
+        let appWindow = app
+        return (appWindow?.windowScene?.windows ?? windowScenes.flatMap { $0.windows })
+            .filter { $0 !== appWindow && !$0.isHidden && $0.accessibilityViewIsModal && $0.rootViewController != nil }
+            .max { $0.windowLevel.rawValue < $1.windowLevel.rawValue }
+    }
+
     /// 현재 key window. 오버레이가 key를 가져갈 수 있으므로 present 기준으로는 `app`을 쓰고, 이건 폴백 전용이다.
     /// (`UIWindow.key` 류는 다른 라이브러리도 흔히 정의하므로 모듈 내부에만 두고 public으로 내보내지 않는다)
     class var keyFallback: UIWindow? {
